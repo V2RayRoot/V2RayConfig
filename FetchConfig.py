@@ -3,22 +3,29 @@ import re
 import json
 import logging
 import random
+import base64
+import asyncio
 from datetime import datetime, timedelta
 from telethon.sync import TelegramClient
 from telethon.tl.types import Message
-import asyncio
 from telethon.sessions import StringSession
 from telethon.errors import ChannelInvalidError, PeerIdInvalidError
 
-LOG_DIR = "Logs"
 SESSION_STRING = os.getenv("TELEGRAM_SESSION_STRING", None)
 API_ID = os.getenv("TELEGRAM_API_ID", None)
 API_HASH = os.getenv("TELEGRAM_API_HASH", None)
 CHANNELS_FILE = "telegram_channels.json"
+LOG_DIR = "Logs"
 OUTPUT_DIR = "Config"
 INVALID_CHANNELS_FILE = os.path.join(LOG_DIR, "invalid_channels.txt")
 STATS_FILE = os.path.join(LOG_DIR, "channel_stats.json")
-DESTINATION_CHANNEL = "@V2RayRootFree"
+DESTINATION_CHANNEL = "@V2RayRoot"
+CONFIG_PATTERNS = {
+    "vless": r"vless://[^\s]+",
+    "vmess": r"vmess://[^\s]+",
+    "shadowsocks": r"ss://[^\s]+",
+    "trojan": r"trojan://[^\s]+"  
+}
 
 if not os.path.exists(LOG_DIR):
     os.makedirs(LOG_DIR)
@@ -46,36 +53,50 @@ if not os.path.exists(OUTPUT_DIR):
     logger.info(f"Creating directory: {OUTPUT_DIR}")
     os.makedirs(OUTPUT_DIR)
 
-
-CONFIG_PATTERNS = {
-    "vless": r"vless://[^\s]+",
-    "vmess": r"vmess://[^\s]+",
-    "shadowsocks": r"ss://[^\s]+"
-}
+def extract_server_address(config, protocol):
+    try:
+        if protocol == "vmess":
+            
+            config_data = config.split("vmess://")[1]
+            decoded = base64.b64decode(config_data).decode("utf-8")
+            config_json = json.loads(decoded)
+            return config_json.get("add", "")
+        else:
+            
+            
+            match = re.search(r"@([^\s:]+):", config)
+            if match:
+                return match.group(1)
+            
+            match = re.search(r"{}://[^\s@]+?([^\s:]+):".format(protocol), config)
+            if match:
+                return match.group(1)
+        return None
+    except Exception as e:
+        logger.error(f"Failed to extract server address from {config}: {str(e)}")
+        return None
 
 async def fetch_configs_from_channel(client, channel):
-    configs = {"vless": [], "vmess": [], "shadowsocks": []}
+    configs = {"vless": [], "vmess": [], "shadowsocks": [], "trojan": []}
     try:
         
         await client.get_entity(channel)
     except (ChannelInvalidError, PeerIdInvalidError, ValueError) as e:
         logger.error(f"Channel {channel} does not exist or is inaccessible: {str(e)}")
-        return configs, False  
+        return configs, False
 
     try:
         message_count = 0
-        
         today = datetime.now().date()
         yesterday = today - timedelta(days=1)
         day_before_yesterday = today - timedelta(days=2)
 
         async for message in client.iter_messages(channel, limit=200):
             message_count += 1
-            
             if message.date:
                 message_date = message.date.date()
                 if message_date not in [today, yesterday, day_before_yesterday]:
-                    continue  
+                    continue
 
             if isinstance(message, Message) and message.message:
                 text = message.message
@@ -115,16 +136,13 @@ def save_invalid_channels(invalid_channels):
 
 def save_channel_stats(stats):
     logger.info(f"Saving channel stats to {STATS_FILE}")
-    
     stats_list = [{"channel": channel, **data} for channel, data in stats.items()]
-    
     sorted_stats = sorted(stats_list, key=lambda x: x["score"], reverse=True)
     with open(STATS_FILE, "w", encoding="utf-8") as f:
         json.dump(sorted_stats, f, ensure_ascii=False, indent=4)
     logger.info(f"Saved channel stats to {STATS_FILE}")
 
 async def post_config_to_channel(client, all_configs, channel_stats):
-    
     if not channel_stats:
         logger.warning("No channel stats available to determine the best channel.")
         return
@@ -143,7 +161,7 @@ async def post_config_to_channel(client, all_configs, channel_stats):
         return
 
     
-    channel_configs = {"vless": [], "vmess": [], "shadowsocks": []}
+    channel_configs = {"vless": [], "vmess": [], "shadowsocks": [], "trojan": []}
     try:
         temp_configs, _ = await fetch_configs_from_channel(client, best_channel)
         for protocol in channel_configs:
@@ -158,7 +176,7 @@ async def post_config_to_channel(client, all_configs, channel_stats):
     for protocol in channel_configs:
         for config in channel_configs[protocol]:
             all_channel_configs.append(config)
-            config_types.append(protocol.capitalize())  
+            config_types.append(protocol.capitalize())
 
     if not all_channel_configs:
         logger.warning(f"No configs found from the best channel {best_channel} to post.")
@@ -170,11 +188,11 @@ async def post_config_to_channel(client, all_configs, channel_stats):
     config_type = config_types[index]
 
     
-    message = f"⚙️🌐 {config_type} Config\n\n{selected_config}\n\n🆔 @V2RayRootFree"
+    message = f"⚙️🌐 {config_type} Config\n\n```\n{selected_config}\n```\n\n🆔 @V2RayRootFree"
 
     
     try:
-        await client.send_message(DESTINATION_CHANNEL, message)
+        await client.send_message(DESTINATION_CHANNEL, message, parse_mode="markdown")
         logger.info(f"Posted {config_type} config from {best_channel} to {DESTINATION_CHANNEL}")
     except Exception as e:
         logger.error(f"Failed to post config to {DESTINATION_CHANNEL}: {str(e)}")
@@ -184,7 +202,6 @@ async def main():
     invalid_channels = []
     channel_stats = {}
 
-    
     if not SESSION_STRING:
         logger.error("No session string provided.")
         print("Please set TELEGRAM_SESSION_STRING in environment variables.")
@@ -201,11 +218,9 @@ async def main():
         print("Invalid TELEGRAM_API_ID format. It must be a number.")
         return
 
-    
     TELEGRAM_CHANNELS = load_channels()
 
     session = StringSession(SESSION_STRING)
-    
     
     try:
         async with TelegramClient(session, api_id, API_HASH) as client:
@@ -214,9 +229,8 @@ async def main():
                 print("Invalid session string. Generate a new one using generate_session.py.")
                 return
 
-            
-            all_configs = {"vless": [], "vmess": [], "shadowsocks": []}
-            valid_channels = []  
+            all_configs = {"vless": [], "vmess": [], "shadowsocks": [], "trojan": []}
+            valid_channels = []
             for channel in TELEGRAM_CHANNELS:
                 logger.info(f"Fetching configs from {channel}...")
                 print(f"Fetching configs from {channel}...")
@@ -228,20 +242,26 @@ async def main():
                             "vless_count": 0,
                             "vmess_count": 0,
                             "shadowsocks_count": 0,
+                            "trojan_count": 0,
                             "total_configs": 0,
                             "score": 0,
                             "error": "Channel does not exist or is inaccessible"
                         }
                         continue
 
-                    valid_channels.append(channel)  
+                    valid_channels.append(channel)
                     total_configs = sum(len(configs) for configs in channel_configs.values())
+                    
+                    
+                    score = total_configs
+
                     channel_stats[channel] = {
                         "vless_count": len(channel_configs["vless"]),
                         "vmess_count": len(channel_configs["vmess"]),
                         "shadowsocks_count": len(channel_configs["shadowsocks"]),
+                        "trojan_count": len(channel_configs["trojan"]),
                         "total_configs": total_configs,
-                        "score": total_configs
+                        "score": score
                     }
                     for protocol in all_configs:
                         all_configs[protocol].extend(channel_configs[protocol])
@@ -251,6 +271,7 @@ async def main():
                         "vless_count": 0,
                         "vmess_count": 0,
                         "shadowsocks_count": 0,
+                        "trojan_count": 0,
                         "total_configs": 0,
                         "score": 0,
                         "error": str(e)
