@@ -42,6 +42,7 @@ STATS_FILE = "channel_stats.json"
 
 
 if not os.path.exists(OUTPUT_DIR):
+    logger.info(f"Creating directory: {OUTPUT_DIR}")
     os.makedirs(OUTPUT_DIR)
 
 
@@ -72,26 +73,31 @@ async def fetch_configs_from_channel(client, channel):
 
 def save_configs(configs, protocol):
     output_file = os.path.join(OUTPUT_DIR, f"{protocol}.txt")
+    logger.info(f"Saving configs to {output_file}")
     with open(output_file, "w", encoding="utf-8") as f:
         if configs:
             for config in configs:
                 f.write(config + "\n")
+            logger.info(f"Saved {len(configs)} {protocol} configs to {output_file}")
         else:
             f.write("No configs found for this protocol.\n")
-    logger.info(f"Saved {len(configs)} {protocol} configs to {output_file}")
+            logger.info(f"No {protocol} configs found, wrote placeholder to {output_file}")
 
 def save_invalid_channels(invalid_channels):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     output_file = f"{INVALID_CHANNELS_FILE}_{timestamp}.txt"
+    logger.info(f"Saving invalid channels to {output_file}")
     with open(output_file, "w", encoding="utf-8") as f:
         if invalid_channels:
             for channel in invalid_channels:
                 f.write(f"{channel}\n")
+            logger.info(f"Saved {len(invalid_channels)} invalid channels to {output_file}")
         else:
             f.write("No invalid channels found.\n")
-    logger.info(f"Saved {len(invalid_channels)} invalid channels to {output_file}")
+            logger.info(f"No invalid channels found, wrote placeholder to {output_file}")
 
 def save_channel_stats(stats):
+    logger.info(f"Saving channel stats to {STATS_FILE}")
     with open(STATS_FILE, "w", encoding="utf-8") as f:
         json.dump(stats, f, ensure_ascii=False, indent=4)
     logger.info(f"Saved channel stats to {STATS_FILE}")
@@ -121,55 +127,61 @@ async def main():
     session = StringSession(SESSION_STRING)
     
     
-    async with TelegramClient(session, api_id, API_HASH) as client:
-        if not await client.is_user_authorized():
-            logger.error("Invalid session string.")
-            print("Invalid session string. Generate a new one using generate_session.py.")
-            return
+    try:
+        async with TelegramClient(session, api_id, API_HASH) as client:
+            if not await client.is_user_authorized():
+                logger.error("Invalid session string.")
+                print("Invalid session string. Generate a new one using generate_session.py.")
+                return
 
-        
-        all_configs = {"vless": [], "vmess": [], "shadowsocks": []}
-        for channel in TELEGRAM_CHANNELS:
-            logger.info(f"Fetching configs from {channel}...")
-            print(f"Fetching configs from {channel}...")
-            try:
-                channel_configs = await fetch_configs_from_channel(client, channel)
-                total_configs = sum(len(configs) for configs in channel_configs.values())
-                channel_stats[channel] = {
-                    "vless_count": len(channel_configs["vless"]),
-                    "vmess_count": len(channel_configs["vmess"]),
-                    "shadowsocks_count": len(channel_configs["shadowsocks"]),
-                    "total_configs": total_configs,
-                    "score": total_configs
-                }
-                for protocol in all_configs:
-                    all_configs[protocol].extend(channel_configs[protocol])
-            except Exception as e:
-                invalid_channels.append(channel)
-                channel_stats[channel] = {
-                    "vless_count": 0,
-                    "vmess_count": 0,
-                    "shadowsocks_count": 0,
-                    "total_configs": 0,
-                    "score": 0,
-                    "error": str(e)
-                }
-                logger.error(f"Channel {channel} is invalid: {str(e)}")
+            
+            all_configs = {"vless": [], "vmess": [], "shadowsocks": []}
+            for channel in TELEGRAM_CHANNELS:
+                logger.info(f"Fetching configs from {channel}...")
+                print(f"Fetching configs from {channel}...")
+                try:
+                    channel_configs = await fetch_configs_from_channel(client, channel)
+                    total_configs = sum(len(configs) for configs in channel_configs.values())
+                    channel_stats[channel] = {
+                        "vless_count": len(channel_configs["vless"]),
+                        "vmess_count": len(channel_configs["vmess"]),
+                        "shadowsocks_count": len(channel_configs["shadowsocks"]),
+                        "total_configs": total_configs,
+                        "score": total_configs
+                    }
+                    for protocol in all_configs:
+                        all_configs[protocol].extend(channel_configs[protocol])
+                except Exception as e:
+                    invalid_channels.append(channel)
+                    channel_stats[channel] = {
+                        "vless_count": 0,
+                        "vmess_count": 0,
+                        "shadowsocks_count": 0,
+                        "total_configs": 0,
+                        "score": 0,
+                        "error": str(e)
+                    }
+                    logger.error(f"Channel {channel} is invalid: {str(e)}")
 
-        
-        for protocol in all_configs:
-            all_configs[protocol] = list(set(all_configs[protocol]))
-            logger.info(f"Found {len(all_configs[protocol])} unique {protocol} configs")
+            
+            for protocol in all_configs:
+                all_configs[protocol] = list(set(all_configs[protocol]))
+                logger.info(f"Found {len(all_configs[protocol])} unique {protocol} configs")
 
-        
-        for protocol in all_configs:
-            save_configs(all_configs[protocol], protocol)
+            
+            for protocol in all_configs:
+                save_configs(all_configs[protocol], protocol)
 
-        
-        save_invalid_channels(invalid_channels)
+            
+            save_invalid_channels(invalid_channels)
 
-        
-        save_channel_stats(channel_stats)
+            
+            save_channel_stats(channel_stats)
+
+    except Exception as e:
+        logger.error(f"Error in main loop: {str(e)}")
+        print(f"Error in main loop: {str(e)}")
+        return
 
     logger.info("Config collection process completed")
 
