@@ -24,15 +24,22 @@ jobs:
       - name: Run script
         env:
           TELEGRAM_SESSION_STRING: ${{ secrets.TELEGRAM_SESSION_STRING }}
+          TELEGRAM_API_ID: ${{ secrets.TELEGRAM_API_ID }}
+          TELEGRAM_API_HASH: ${{ secrets.TELEGRAM_API_HASH }}
         run: |
-          python FetchConfig.py
+          python bot.py
 
       - name: Commit and push changes
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
-          git add v2ray_configs/* channel_stats.json invalid_channels*.txt collector.log
-          git commit -m "Update configs and stats $(date +%Y%m%d_%H%M%S)" || echo "No changes to commit"
-          git push
+          git add Config/vless.txt || true
+          git add Config/vmess.txt || true
+          git add Config/shadowsocks.txt || true
+          git add channel_stats.json || true
+          git add invalid_channels*.txt || true
+          git add collector.log || true
+          git commit -m "Update V2Ray configs in Config/ directory" || echo "No changes to commit"
+          git push || echo "No changes to push"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
