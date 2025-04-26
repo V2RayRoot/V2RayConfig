@@ -8,6 +8,7 @@ from telethon.tl.types import Message
 import asyncio
 from telethon.sessions import StringSession
 
+
 logging.basicConfig(
     filename="collector.log",
     level=logging.INFO,
@@ -15,29 +16,34 @@ logging.basicConfig(
 )
 logger = logging.getLogger()
 
+
 SESSION_STRING = os.getenv("TELEGRAM_SESSION_STRING", None)
+API_ID = os.getenv("TELEGRAM_API_ID", None)
+API_HASH = os.getenv("TELEGRAM_API_HASH", None)
+
 
 TELEGRAM_CHANNELS = [
-    "@V2Line", "@PrivateVPNs", "@VlessConfig", "@V2pedia", "@DailyV2RY",
-    "@proxystore11", "@DirectVPN", "@VmessProtocol", "@OutlineVpnOfficial",
-    "@networknim", "@beiten", "@MsV2ray", "@foxrayiran", "@yaney_01",
-    "@FreakConfig", "@EliV2ray", "@ServerNett", "@v2rayng_fa2",
-    "@v2rayng_org", "@V2rayNGvpni", "@custom_14", "@V2rayNG_VPNN",
-    "@v2ray_outlineir", "@v2_vmess", "@FreeVlessVpn", "@vmess_vless_v2rayng",
-    "@freeland8", "@vmessiran", "@Outline_Vpn", "@vmessq", "@WeePeeN",
-    "@V2rayNG3", "@ShadowsocksM", "@shadowsocksshop", "@v2rayan",
-    "@ShadowSocks_s", "@hope_net", "@azadnet", "@customv2ray",
-    "@nim_vpn_ir", "@outline_vpn", "@fnet00", "@V2rayNG_Matsuri",
-    "@proxystore11_2", "@v2rayng_vpn", "@freev2rayconfigs", "@V2RayFast",
-    "@ProxyMTProto", "@V2RayHub", "@ConfigV2Ray"
+    "@V2RayNGn", "@V2RayNG_VPN", "@FreeV2rayChannel", "@V2RayNG_Config", "@V2RayNG_Configs",
+    "@V2RayN_VPN", "@V2RayNG_Iran", "@V2RayNG_V2Ray", "@V2RayNG_Fast", "@V2RayNG_Pro",
+    "@V2RayNG_Store", "@V2RayNG_Club", "@V2RayNG_Premium", "@V2RayNG_Elite", "@V2RayNG_Master",
+    "@V2RayNG_Expert", "@V2RayNG_Star", "@V2RayNG_Power", "@V2RayNG_Sky", "@V2RayNG_Gold",
+    "@V2RayNG_Diamond", "@V2RayNG_Platinum", "@V2RayNG_Silver", "@V2RayNG_Bronze", "@V2RayNG_Iron",
+    "@V2RayNG_Steel", "@V2RayNG_Copper", "@V2RayNG_Titanium", "@V2RayNG_Aluminum", "@V2RayNG_Zinc",
+    "@V2RayNG_Nickel", "@V2RayNG_Chrome", "@V2RayNG_Metal", "@V2RayNG_Fire", "@V2RayNG_Water",
+    "@V2RayNG_Earth", "@V2RayNG_Air", "@V2RayNG_Spirit", "@V2RayNG_Light", "@V2RayNG_Dark",
+    "@V2RayNG_Shadow", "@V2RayNG_Ghost", "@V2RayNG_Phantom", "@V2RayNG_Specter", "@V2RayNG_Wraith",
+    "@V2RayNG_Banshee", "@V2RayNG_Vampire", "@V2RayNG_Werewolf", "@V2RayNG_Zombie", "@V2RayNG_Dragon"
 ]
 
-OUTPUT_DIR = "v2ray_configs"
+
+OUTPUT_DIR = "Config"
 INVALID_CHANNELS_FILE = "invalid_channels.txt"
 STATS_FILE = "channel_stats.json"
 
+
 if not os.path.exists(OUTPUT_DIR):
     os.makedirs(OUTPUT_DIR)
+
 
 CONFIG_PATTERNS = {
     "vless": r"vless://[^\s]+",
@@ -48,32 +54,42 @@ CONFIG_PATTERNS = {
 async def fetch_configs_from_channel(client, channel):
     configs = {"vless": [], "vmess": [], "shadowsocks": []}
     try:
-        async for message in client.iter_messages(channel, limit=100):
+        message_count = 0
+        async for message in client.iter_messages(channel, limit=200):
+            message_count += 1
             if isinstance(message, Message) and message.message:
                 text = message.message
                 for protocol, pattern in CONFIG_PATTERNS.items():
                     matches = re.findall(pattern, text)
-                    configs[protocol].extend(matches)
-        logger.info(f"Fetched {sum(len(v) for v in configs.values())} configs from {channel}")
+                    if matches:
+                        logger.info(f"Found {len(matches)} {protocol} configs in message from {channel}: {matches}")
+                        configs[protocol].extend(matches)
+        logger.info(f"Processed {message_count} messages from {channel}, found {sum(len(v) for v in configs.values())} configs")
         return configs
     except Exception as e:
         logger.error(f"Failed to fetch from {channel}: {str(e)}")
         return configs
 
 def save_configs(configs, protocol):
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    output_file = os.path.join(OUTPUT_DIR, f"{protocol}_configs_{timestamp}.txt")
+    output_file = os.path.join(OUTPUT_DIR, f"{protocol}.txt")
     with open(output_file, "w", encoding="utf-8") as f:
-        for config in configs:
-            f.write(config + "\n")
+        if configs:
+            for config in configs:
+                f.write(config + "\n")
+        else:
+            f.write("No configs found for this protocol.\n")
     logger.info(f"Saved {len(configs)} {protocol} configs to {output_file}")
 
 def save_invalid_channels(invalid_channels):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    with open(f"{INVALID_CHANNELS_FILE}_{timestamp}.txt", "w", encoding="utf-8") as f:
-        for channel in invalid_channels:
-            f.write(f"{channel}\n")
-    logger.info(f"Saved {len(invalid_channels)} invalid channels to {INVALID_CHANNELS_FILE}_{timestamp}.txt")
+    output_file = f"{INVALID_CHANNELS_FILE}_{timestamp}.txt"
+    with open(output_file, "w", encoding="utf-8") as f:
+        if invalid_channels:
+            for channel in invalid_channels:
+                f.write(f"{channel}\n")
+        else:
+            f.write("No invalid channels found.\n")
+    logger.info(f"Saved {len(invalid_channels)} invalid channels to {output_file}")
 
 def save_channel_stats(stats):
     with open(STATS_FILE, "w", encoding="utf-8") as f:
@@ -85,21 +101,36 @@ async def main():
     invalid_channels = []
     channel_stats = {}
 
+    
     if not SESSION_STRING:
         logger.error("No session string provided.")
         print("Please set TELEGRAM_SESSION_STRING in environment variables.")
         return
+    if not API_ID or not API_HASH:
+        logger.error("API ID or API Hash not provided.")
+        print("Please set TELEGRAM_API_ID and TELEGRAM_API_HASH in environment variables.")
+        return
+
+    try:
+        api_id = int(API_ID)
+    except ValueError:
+        logger.error("Invalid TELEGRAM_API_ID format. It must be a number.")
+        print("Invalid TELEGRAM_API_ID format. It must be a number.")
+        return
 
     session = StringSession(SESSION_STRING)
     
-    async with TelegramClient(session, api_id=1, api_hash="dummy") as client:
+    
+    async with TelegramClient(session, api_id, API_HASH) as client:
         if not await client.is_user_authorized():
             logger.error("Invalid session string.")
             print("Invalid session string. Generate a new one using generate_session.py.")
             return
 
+        
         all_configs = {"vless": [], "vmess": [], "shadowsocks": []}
         for channel in TELEGRAM_CHANNELS:
+            logger.info(f"Fetching configs from {channel}...")
             print(f"Fetching configs from {channel}...")
             try:
                 channel_configs = await fetch_configs_from_channel(client, channel)
@@ -125,23 +156,20 @@ async def main():
                 }
                 logger.error(f"Channel {channel} is invalid: {str(e)}")
 
+        
         for protocol in all_configs:
             all_configs[protocol] = list(set(all_configs[protocol]))
             logger.info(f"Found {len(all_configs[protocol])} unique {protocol} configs")
 
-        for protocol, configs in all_configs.items():
-            if configs:
-                save_configs(configs, protocol)
-            else:
-                logger.warning(f"No {protocol} configs found")
+        
+        for protocol in all_configs:
+            save_configs(all_configs[protocol], protocol)
 
-        if invalid_channels:
-            save_invalid_channels(invalid_channels)
+        
+        save_invalid_channels(invalid_channels)
 
+        
         save_channel_stats(channel_stats)
-
-        session_str = session.save()
-        print(f"Session string (save this in GitHub Secrets as TELEGRAM_SESSION_STRING):\n{session_str}")
 
     logger.info("Config collection process completed")
 
