@@ -2,7 +2,7 @@ name: Fetch V2Ray Config
 
 on:
   schedule:
-    - cron: "*/5 * * * *" 
+    - cron: "*/5 * * * *"
   workflow_dispatch:
 
 jobs:
@@ -40,6 +40,6 @@ jobs:
           git add invalid_channels*.txt || true
           git add collector.log || true
           git commit -m "Update V2Ray configs in Config/ directory" || echo "No changes to commit"
-          git push || echo "No changes to push"
+          git push || echo "Failed to push changes, check permissions"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
