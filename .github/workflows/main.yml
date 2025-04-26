@@ -2,7 +2,7 @@ name: Fetch V2Ray Config
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "*/30 * * * *"
   workflow_dispatch:
 
 jobs:
@@ -39,7 +39,8 @@ jobs:
           git add Logs/channel_stats.json || true
           git add Logs/invalid_channels.txt || true
           git add Logs/collector.log || true
-          git commit -m "Update configs " || echo "No changes to commit"
+          git add Logs/telegram_channels.json || true
+          git commit -m "Update configs" || echo "No changes to commit"
           git push || echo "Failed to push changes, check permissions"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
