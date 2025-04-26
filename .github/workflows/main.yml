@@ -1,0 +1,38 @@
+name: Fetch V2Ray Config
+
+     on:
+       schedule:
+         - cron: "*/2 * * * *"
+       workflow_dispatch:
+
+     jobs:
+       update-configs:
+         runs-on: ubuntu-latest
+         steps:
+           - name: Checkout repository
+             uses: actions/checkout@v3
+
+           - name: Set up Python
+             uses: actions/setup-python@v4
+             with:
+               python-version: "3.10"
+
+           - name: Install dependencies
+             run: |
+               pip install telethon requests
+
+           - name: Run script
+             env:
+               TELEGRAM_SESSION_STRING: ${{ secrets.TELEGRAM_SESSION_STRING }}
+             run: |
+               python bot.py
+
+           - name: Commit and push changes
+             run: |
+               git config --global user.name "GitHub Action"
+               git config --global user.email "action@github.com"
+               git add v2ray_configs/* channel_stats.json invalid_channels*.txt collector.log
+               git commit -m "Update configs and stats $(date +%Y%m%d_%H%M%S)" || echo "No changes to commit"
+               git push
+             env:
+               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
