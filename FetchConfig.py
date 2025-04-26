@@ -2,19 +2,26 @@ import os
 import re
 import json
 import logging
-from datetime import datetime
+import random
+from datetime import datetime, timedelta
 from telethon.sync import TelegramClient
 from telethon.tl.types import Message
 import asyncio
 from telethon.sessions import StringSession
-
+from telethon.errors import ChannelInvalidError, PeerIdInvalidError
 
 LOG_DIR = "Logs"
-
+SESSION_STRING = os.getenv("TELEGRAM_SESSION_STRING", None)
+API_ID = os.getenv("TELEGRAM_API_ID", None)
+API_HASH = os.getenv("TELEGRAM_API_HASH", None)
+CHANNELS_FILE = "telegram_channels.json"
+OUTPUT_DIR = "Config"
+INVALID_CHANNELS_FILE = os.path.join(LOG_DIR, "invalid_channels.txt")
+STATS_FILE = os.path.join(LOG_DIR, "channel_stats.json")
+DESTINATION_CHANNEL = "@V2RayRootFree"
 
 if not os.path.exists(LOG_DIR):
     os.makedirs(LOG_DIR)
-
 
 logging.basicConfig(
     filename=os.path.join(LOG_DIR, "collector.log"),
@@ -23,30 +30,17 @@ logging.basicConfig(
 )
 logger = logging.getLogger()
 
-
-SESSION_STRING = os.getenv("TELEGRAM_SESSION_STRING", None)
-API_ID = os.getenv("TELEGRAM_API_ID", None)
-API_HASH = os.getenv("TELEGRAM_API_HASH", None)
-
-
-TELEGRAM_CHANNELS = [
-    "@V2RayNGn", "@V2RayNG_VPN", "@FreeV2rayChannel", "@V2RayNG_Config", "@V2RayNG_Configs",
-    "@V2RayN_VPN", "@V2RayNG_Iran", "@V2RayNG_V2Ray", "@V2RayNG_Fast", "@V2RayNG_Pro",
-    "@V2RayNG_Store", "@V2RayNG_Club", "@V2RayNG_Premium", "@V2RayNG_Elite", "@V2RayNG_Master",
-    "@V2RayNG_Expert", "@V2RayNG_Star", "@V2RayNG_Power", "@V2RayNG_Sky", "@V2RayNG_Gold",
-    "@V2RayNG_Diamond", "@V2RayNG_Platinum", "@V2RayNG_Silver", "@V2RayNG_Bronze", "@V2RayNG_Iron",
-    "@V2RayNG_Steel", "@V2RayNG_Copper", "@V2RayNG_Titanium", "@V2RayNG_Aluminum", "@V2RayNG_Zinc",
-    "@V2RayNG_Nickel", "@V2RayNG_Chrome", "@V2RayNG_Metal", "@V2RayNG_Fire", "@V2RayNG_Water",
-    "@V2RayNG_Earth", "@V2RayNG_Air", "@V2RayNG_Spirit", "@V2RayNG_Light", "@V2RayNG_Dark",
-    "@V2RayNG_Shadow", "@V2RayNG_Ghost", "@V2RayNG_Phantom", "@V2RayNG_Specter", "@V2RayNG_Wraith",
-    "@V2RayNG_Banshee", "@V2RayNG_Vampire", "@V2RayNG_Werewolf", "@V2RayNG_Zombie", "@V2RayNG_Dragon"
-]
+def load_channels():
+    with open(CHANNELS_FILE, "r", encoding="utf-8") as f:
+        channels = json.load(f)
+    logger.info(f"Loaded {len(channels)} channels from {CHANNELS_FILE}")
+    return channels
 
 
-OUTPUT_DIR = "Config"
-INVALID_CHANNELS_FILE = os.path.join(LOG_DIR, "invalid_channels.txt")
-STATS_FILE = os.path.join(LOG_DIR, "channel_stats.json")
-
+def update_channels(channels):
+    with open(CHANNELS_FILE, "w", encoding="utf-8") as f:
+        json.dump(channels, f, ensure_ascii=False, indent=4)
+    logger.info(f"Updated {CHANNELS_FILE} with {len(channels)} channels")
 
 if not os.path.exists(OUTPUT_DIR):
     logger.info(f"Creating directory: {OUTPUT_DIR}")
@@ -62,9 +56,27 @@ CONFIG_PATTERNS = {
 async def fetch_configs_from_channel(client, channel):
     configs = {"vless": [], "vmess": [], "shadowsocks": []}
     try:
+        
+        await client.get_entity(channel)
+    except (ChannelInvalidError, PeerIdInvalidError, ValueError) as e:
+        logger.error(f"Channel {channel} does not exist or is inaccessible: {str(e)}")
+        return configs, False  
+
+    try:
         message_count = 0
+        
+        today = datetime.now().date()
+        yesterday = today - timedelta(days=1)
+        day_before_yesterday = today - timedelta(days=2)
+
         async for message in client.iter_messages(channel, limit=200):
             message_count += 1
+            
+            if message.date:
+                message_date = message.date.date()
+                if message_date not in [today, yesterday, day_before_yesterday]:
+                    continue  
+
             if isinstance(message, Message) and message.message:
                 text = message.message
                 for protocol, pattern in CONFIG_PATTERNS.items():
@@ -73,10 +85,10 @@ async def fetch_configs_from_channel(client, channel):
                         logger.info(f"Found {len(matches)} {protocol} configs in message from {channel}: {matches}")
                         configs[protocol].extend(matches)
         logger.info(f"Processed {message_count} messages from {channel}, found {sum(len(v) for v in configs.values())} configs")
-        return configs
+        return configs, True
     except Exception as e:
         logger.error(f"Failed to fetch from {channel}: {str(e)}")
-        return configs
+        return configs, False
 
 def save_configs(configs, protocol):
     output_file = os.path.join(OUTPUT_DIR, f"{protocol}.txt")
@@ -103,9 +115,69 @@ def save_invalid_channels(invalid_channels):
 
 def save_channel_stats(stats):
     logger.info(f"Saving channel stats to {STATS_FILE}")
+    
+    stats_list = [{"channel": channel, **data} for channel, data in stats.items()]
+    
+    sorted_stats = sorted(stats_list, key=lambda x: x["score"], reverse=True)
     with open(STATS_FILE, "w", encoding="utf-8") as f:
-        json.dump(stats, f, ensure_ascii=False, indent=4)
+        json.dump(sorted_stats, f, ensure_ascii=False, indent=4)
     logger.info(f"Saved channel stats to {STATS_FILE}")
+
+async def post_config_to_channel(client, all_configs, channel_stats):
+    
+    if not channel_stats:
+        logger.warning("No channel stats available to determine the best channel.")
+        return
+
+    
+    best_channel = None
+    best_score = -1
+    for channel, stats in channel_stats.items():
+        score = stats.get("score", 0)
+        if score > best_score:
+            best_score = score
+            best_channel = channel
+
+    if not best_channel or best_score == 0:
+        logger.warning("No valid channel with configs found to post.")
+        return
+
+    
+    channel_configs = {"vless": [], "vmess": [], "shadowsocks": []}
+    try:
+        temp_configs, _ = await fetch_configs_from_channel(client, best_channel)
+        for protocol in channel_configs:
+            channel_configs[protocol].extend(temp_configs[protocol])
+    except Exception as e:
+        logger.error(f"Failed to fetch configs from best channel {best_channel}: {str(e)}")
+        return
+
+    
+    all_channel_configs = []
+    config_types = []
+    for protocol in channel_configs:
+        for config in channel_configs[protocol]:
+            all_channel_configs.append(config)
+            config_types.append(protocol.capitalize())  
+
+    if not all_channel_configs:
+        logger.warning(f"No configs found from the best channel {best_channel} to post.")
+        return
+
+    
+    index = random.randint(0, len(all_channel_configs) - 1)
+    selected_config = all_channel_configs[index]
+    config_type = config_types[index]
+
+    
+    message = f"⚙️🌐 {config_type} Config\n\n{selected_config}\n\n🆔 @V2RayRootFree"
+
+    
+    try:
+        await client.send_message(DESTINATION_CHANNEL, message)
+        logger.info(f"Posted {config_type} config from {best_channel} to {DESTINATION_CHANNEL}")
+    except Exception as e:
+        logger.error(f"Failed to post config to {DESTINATION_CHANNEL}: {str(e)}")
 
 async def main():
     logger.info("Starting config collection process")
@@ -129,6 +201,9 @@ async def main():
         print("Invalid TELEGRAM_API_ID format. It must be a number.")
         return
 
+    
+    TELEGRAM_CHANNELS = load_channels()
+
     session = StringSession(SESSION_STRING)
     
     
@@ -141,11 +216,25 @@ async def main():
 
             
             all_configs = {"vless": [], "vmess": [], "shadowsocks": []}
+            valid_channels = []  
             for channel in TELEGRAM_CHANNELS:
                 logger.info(f"Fetching configs from {channel}...")
                 print(f"Fetching configs from {channel}...")
                 try:
-                    channel_configs = await fetch_configs_from_channel(client, channel)
+                    channel_configs, is_valid = await fetch_configs_from_channel(client, channel)
+                    if not is_valid:
+                        invalid_channels.append(channel)
+                        channel_stats[channel] = {
+                            "vless_count": 0,
+                            "vmess_count": 0,
+                            "shadowsocks_count": 0,
+                            "total_configs": 0,
+                            "score": 0,
+                            "error": "Channel does not exist or is inaccessible"
+                        }
+                        continue
+
+                    valid_channels.append(channel)  
                     total_configs = sum(len(configs) for configs in channel_configs.values())
                     channel_stats[channel] = {
                         "vless_count": len(channel_configs["vless"]),
@@ -182,6 +271,12 @@ async def main():
 
             
             save_channel_stats(channel_stats)
+
+            
+            await post_config_to_channel(client, all_configs, channel_stats)
+
+            
+            update_channels(valid_channels)
 
     except Exception as e:
         logger.error(f"Error in main loop: {str(e)}")
