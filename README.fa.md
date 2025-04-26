@@ -1,6 +1,6 @@
 # V2RayConfig
 
-این پروژه به صورت خودکار کانفیگ‌های V2Ray رو از کانال‌های تلگرامی هر ۵ دقیقه یک‌بار با استفاده از GitHub Actions جمع‌آوری می‌کنه.
+این پروژه به صورت خودکار کانفیگ‌های V2Ray رو از کانال‌های تلگرامی هر ۳۰ دقیقه یک‌بار با استفاده از GitHub Actions جمع‌آوری می‌کنه و بهترین کانفیگ رو توی کانال @V2RayRootFree منتشر می‌کنه.
 
 **[نسخه انگلیسی (English)](README.md)**
 
@@ -14,25 +14,20 @@
 
 ## کانال‌های تلگرام
 
-کانفیگ‌ها از کانال‌های تلگرامی زیر جمع‌آوری می‌شن:
+لیست کانال‌های تلگرامی به صورت پویا به‌روزرسانی می‌شه و توی فایل [`Logs/telegram_channels.json`](Logs/telegram_channels.json) ذخیره می‌شه. کانال‌هایی که نامعتبر بشن به صورت خودکار از این لیست حذف می‌شن.
 
-|               |               |               |               |
-|---------------|---------------|---------------|---------------|
-| @V2RayNGn     | @V2RayNG_VPN  | @FreeV2rayChannel | @V2RayNG_Config |
-| @V2RayNG_Configs | @V2RayN_VPN   | @V2RayNG_Iran | @V2RayNG_V2Ray |
-| @V2RayNG_Fast | @V2RayNG_Pro  | @V2RayNG_Store| @V2RayNG_Club  |
-| @V2RayNG_Premium | @V2RayNG_Elite | @V2RayNG_Master | @V2RayNG_Expert |
-| @V2RayNG_Star | @V2RayNG_Power | @V2RayNG_Sky  | @V2RayNG_Gold  |
-| @V2RayNG_Diamond | @V2RayNG_Platinum | @V2RayNG_Silver | @V2RayNG_Bronze |
-| @V2RayNG_Iron | @V2RayNG_Steel | @V2RayNG_Copper | @V2RayNG_Titanium |
-| @V2RayNG_Aluminum | @V2RayNG_Zinc | @V2RayNG_Nickel | @V2RayNG_Chrome |
-| @V2RayNG_Metal | @V2RayNG_Fire | @V2RayNG_Water | @V2RayNG_Earth |
-| @V2RayNG_Air  | @V2RayNG_Spirit | @V2RayNG_Light | @V2RayNG_Dark  |
-| @V2RayNG_Shadow | @V2RayNG_Ghost | @V2RayNG_Phantom | @V2RayNG_Specter |
-| @V2RayNG_Wraith | @V2RayNG_Banshee | @V2RayNG_Vampire | @V2RayNG_Werewolf |
-| @V2RayNG_Zombie | @V2RayNG_Dragon |               |               |
+## آمار کانال‌ها
+
+فایل [`Logs/channel_stats.json`](Logs/channel_stats.json) شامل آمار هر کانال می‌شه، از جمله:
+- تعداد کانفیگ‌های VLESS، VMess و Shadowsocks که پیدا شدن.
+- تعداد کل کانفیگ‌ها (`total_configs`).
+- یه امتیاز (`score`) که برابر با تعداد کل کانفیگ‌هاست و برای انتخاب بهترین کانال برای انتشار کانفیگ‌ها استفاده می‌شه.
+
+می‌تونید از این فایل استفاده کنید تا ببینید کدوم کانال‌ها بیشترین تعداد کانفیگ رو ارائه می‌دن.
 
 ## نکات
 
-- کانفیگ‌ها هر ۵ دقیقه به‌روزرسانی می‌شن.
-- ممکنه برخی کانال‌ها نامعتبر باشن یا کانفیگی نداشته باشن. برای جزئیات، فایل `Logs/invalid_channels.txt` رو بررسی کن.
+- کانفیگ‌ها هر ۳۰ دقیقه به‌روزرسانی می‌شن.
+- بهترین کانفیگ توی کانال تلگرامی @V2RayRootFree منتشر می‌شه.
+- ممکنه برخی کانال‌ها نامعتبر باشن یا کانفیگی نداشته باشن. برای جزئیات، فایل `Logs/invalid_channels.txt` رو می‌تونید بررسی کنید.
+- **کانال جدیدی می‌شناسید؟** اگه کانال تلگرامی‌ای می‌شناسید که کانفیگ‌های V2Ray ارائه می‌ده، لطفاً توی بخش [Issues](https://github.com/USERNAME/REPOSITORY/issues) معرفیش کنید تا به لیست اضافه کنیم!
