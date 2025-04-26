@@ -25,7 +25,7 @@ jobs:
         env:
           TELEGRAM_SESSION_STRING: ${{ secrets.TELEGRAM_SESSION_STRING }}
         run: |
-          python bot.py
+          python FetchConfig.py
 
       - name: Commit and push changes
         run: |
