@@ -9,8 +9,15 @@ import asyncio
 from telethon.sessions import StringSession
 
 
+LOG_DIR = "Logs"
+
+
+if not os.path.exists(LOG_DIR):
+    os.makedirs(LOG_DIR)
+
+
 logging.basicConfig(
-    filename="collector.log",
+    filename=os.path.join(LOG_DIR, "collector.log"),
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s"
 )
@@ -37,8 +44,8 @@ TELEGRAM_CHANNELS = [
 
 
 OUTPUT_DIR = "Config"
-INVALID_CHANNELS_FILE = "invalid_channels.txt"
-STATS_FILE = "channel_stats.json"
+INVALID_CHANNELS_FILE = os.path.join(LOG_DIR, "invalid_channels.txt")
+STATS_FILE = os.path.join(LOG_DIR, "channel_stats.json")
 
 
 if not os.path.exists(OUTPUT_DIR):
@@ -84,17 +91,15 @@ def save_configs(configs, protocol):
             logger.info(f"No {protocol} configs found, wrote placeholder to {output_file}")
 
 def save_invalid_channels(invalid_channels):
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    output_file = f"{INVALID_CHANNELS_FILE}_{timestamp}.txt"
-    logger.info(f"Saving invalid channels to {output_file}")
-    with open(output_file, "w", encoding="utf-8") as f:
+    logger.info(f"Saving invalid channels to {INVALID_CHANNELS_FILE}")
+    with open(INVALID_CHANNELS_FILE, "w", encoding="utf-8") as f:
         if invalid_channels:
             for channel in invalid_channels:
                 f.write(f"{channel}\n")
-            logger.info(f"Saved {len(invalid_channels)} invalid channels to {output_file}")
+            logger.info(f"Saved {len(invalid_channels)} invalid channels to {INVALID_CHANNELS_FILE}")
         else:
             f.write("No invalid channels found.\n")
-            logger.info(f"No invalid channels found, wrote placeholder to {output_file}")
+            logger.info(f"No invalid channels found, wrote placeholder to {INVALID_CHANNELS_FILE}")
 
 def save_channel_stats(stats):
     logger.info(f"Saving channel stats to {STATS_FILE}")
