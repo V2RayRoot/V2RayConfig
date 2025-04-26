@@ -19,7 +19,7 @@ LOG_DIR = "Logs"
 OUTPUT_DIR = "Config"
 INVALID_CHANNELS_FILE = os.path.join(LOG_DIR, "invalid_channels.txt")
 STATS_FILE = os.path.join(LOG_DIR, "channel_stats.json")
-DESTINATION_CHANNEL = "@V2RayRoot"
+DESTINATION_CHANNEL = "@V2RayRootFree"
 CONFIG_PATTERNS = {
     "vless": r"vless://[^\s]+",
     "vmess": r"vmess://[^\s]+",
