@@ -16,8 +16,18 @@ This project automatically fetches V2Ray configurations from Telegram channels e
 
 The list of Telegram channels is dynamically updated and stored in [`Logs/telegram_channels.json`](Logs/telegram_channels.json). Channels that become invalid are automatically removed from this list.
 
+## Channel Statistics
+
+The file [`Logs/channel_stats.json`](Logs/channel_stats.json) contains statistics for each channel, including:
+- The number of VLESS, VMess, and Shadowsocks configs found.
+- The total number of configs (`total_configs`).
+- A score (`score`), which is equal to the total number of configs, used to determine the best channel for posting configs.
+
+You can use this file to see which channels are providing the most configs.
+
 ## Notes
 
 - Configurations are updated every 30 minutes.
 - The best config is posted to the Telegram channel @V2RayRootFree.
 - Some channels may be invalid or contain no configs. Check `Logs/invalid_channels.txt` for details.
+- **Know a new channel?** If you know a Telegram channel that provides V2Ray configs, please share it in the [Issues](https://github.com/USERNAME/REPOSITORY/issues) section, and we'll add it to the list!
