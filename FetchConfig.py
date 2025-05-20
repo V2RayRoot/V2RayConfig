@@ -30,20 +30,21 @@ CONFIG_PATTERNS = {
 if not os.path.exists(LOG_DIR):
     os.makedirs(LOG_DIR)
 
-logging.basicConfig(
-    filename=os.path.join(LOG_DIR, "collector.log"),
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s"
-)
 logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
+logger.handlers = []
+
+file_handler = logging.FileHandler(os.path.join(LOG_DIR, "collector.log"), mode='w', encoding='utf-8')
+file_handler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
+logger.addHandler(file_handler)
 
 def load_channels():
     with open(CHANNELS_FILE, "r", encoding="utf-8") as f:
         channels = json.load(f)
     logger.info(f"Loaded {len(channels)} channels from {CHANNELS_FILE}")
     return channels
-
-
+    
 def update_channels(channels):
     with open(CHANNELS_FILE, "w", encoding="utf-8") as f:
         json.dump(channels, f, ensure_ascii=False, indent=4)
