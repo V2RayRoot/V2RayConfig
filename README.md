@@ -14,7 +14,7 @@ This project automatically fetches V2Ray configurations from Telegram channels e
 
 ## Telegram Channels
 
-The list of Telegram channels is dynamically updated and stored in [`Logs/telegram_channels.json`](Logs/telegram_channels.json). Channels that become invalid are automatically removed from this list.
+The list of Telegram channels is dynamically updated and stored in [`telegram_channels.json`](telegram_channels.json). Channels that become invalid are automatically removed from this list.
 
 ## Channel Statistics
 
