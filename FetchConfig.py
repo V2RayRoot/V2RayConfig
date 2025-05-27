@@ -189,7 +189,7 @@ async def post_config_to_channel(client, all_configs, channel_stats):
     config_type = config_types[index]
 
     
-    message = f"⚙️🌐 {config_type} Config\n\n```\n{selected_config}\n```\n\n🆔 @V2RayRootFree"
+    message = f"⚙️🌐 {config_type} Config\n\n```{selected_config}```\n\n🆔 @V2RayRootFree"
 
     
     try:
