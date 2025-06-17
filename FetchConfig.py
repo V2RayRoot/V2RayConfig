@@ -178,6 +178,14 @@ def save_channel_stats(stats):
         json.dump(sorted_stats, f, ensure_ascii=False, indent=4)
     logger.info(f"Saved channel stats to {STATS_FILE}")
 
+def format_proxies_in_rows(proxies, per_row=4):
+    lines = []
+    for i in range(0, len(proxies), per_row):
+        chunk = proxies[i:i+per_row]
+        line = " | ".join([f"Proxy {i+j+1} ({proxy})" for j, proxy in enumerate(chunk)])
+        lines.append(line)
+    return "\n".join(lines)
+
 async def post_config_and_proxies_to_channel(client, all_configs, all_proxies, channel_stats):
     if not channel_stats:
         logger.warning("No channel stats available to determine the best channel.")
@@ -224,10 +232,10 @@ async def post_config_and_proxies_to_channel(client, all_configs, all_proxies, c
     message = f"⚙️🌐 {config_type} Config\n\n```{selected_config}```"
 
     random.shuffle(all_proxies)
-    fresh_proxies = all_proxies[:7] if len(all_proxies) >= 7 else all_proxies
+    fresh_proxies = all_proxies[:8] if len(all_proxies) >= 8 else all_proxies
     if fresh_proxies:
-        proxy_links = "\n".join([f"Proxy {i+1} ({proxy})" for i, proxy in enumerate(fresh_proxies)])
-        message += "\n" + proxy_links
+        proxies_formatted = format_proxies_in_rows(fresh_proxies, per_row=4)
+        message += "\n" + proxies_formatted
 
     message += "\n\n🆔 @V2RayRootFree"
 
