@@ -182,7 +182,7 @@ def format_proxies_in_rows(proxies, per_row=4):
     lines = []
     for i in range(0, len(proxies), per_row):
         chunk = proxies[i:i+per_row]
-        line = " | ".join([f"Proxy {i+j+1} ({proxy})" for j, proxy in enumerate(chunk)])
+        line = " | ".join([f"[Proxy {i+j+1}]({proxy})" for j, proxy in enumerate(chunk)])
         lines.append(line)
     return "\n".join(lines)
 
