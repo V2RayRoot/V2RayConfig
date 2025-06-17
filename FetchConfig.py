@@ -26,8 +26,7 @@ CONFIG_PATTERNS = {
     "shadowsocks": r"ss://[^\s]+",
     "trojan": r"trojan://[^\s]+"
 }
-PROXY_PATTERN = r"\[.*?\]\((https:\/\/t\.me\/proxy\?server=[^&\s]+&port=\d+&secret=[^\s\)]+)\)"
-
+PROXY_PATTERN = r"https:\/\/t\.me\/proxy\?server=[^&\s]+&port=\d+&secret=[^\s\)\]\n]+"
 if not os.path.exists(LOG_DIR):
     os.makedirs(LOG_DIR)
 
