@@ -27,6 +27,7 @@ CONFIG_PATTERNS = {
     "trojan": r"trojan://[^\s]+"
 }
 PROXY_PATTERN = r"https:\/\/t\.me\/proxy\?server=[^&\s]+&port=\d+&secret=[^\s\)\]\n]+"
+
 if not os.path.exists(LOG_DIR):
     os.makedirs(LOG_DIR)
 
@@ -208,7 +209,7 @@ async def post_config_and_proxies_to_channel(client, all_configs, all_proxies, c
     random.shuffle(all_proxies)
     fresh_proxies = all_proxies[:7] if len(all_proxies) >= 7 else all_proxies
     if fresh_proxies:
-        proxy_links = "\n".join([f"[Proxy {i+1}]({proxy})" for i, proxy in enumerate(fresh_proxies)])
+        proxy_links = " | ".join([f"[Proxy {i+1}]({proxy})" for i, proxy in enumerate(fresh_proxies)])
         message += "\n" + proxy_links
 
     message += "\n\n🆔 @V2RayRootFree"
