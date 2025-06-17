@@ -26,7 +26,6 @@ CONFIG_PATTERNS = {
     "shadowsocks": r"ss://[^\s]+",
     "trojan": r"trojan://[^\s]+"
 }
-
 PROXY_PATTERN = r"\[.*?\]\((https:\/\/t\.me\/proxy\?server=[^&\s]+&port=\d+&secret=[^\s\)]+)\)"
 
 if not os.path.exists(LOG_DIR):
@@ -87,7 +86,7 @@ async def fetch_configs_and_proxies_from_channel(client, channel):
         today = datetime.now().date()
         yesterday = today - timedelta(days=1)
         day_before_yesterday = today - timedelta(days=2)
-        min_proxy_date = today - timedelta(days=1)  
+        min_proxy_date = today - timedelta(days=1)
 
         async for message in client.iter_messages(channel, limit=200):
             message_count += 1
@@ -96,21 +95,18 @@ async def fetch_configs_and_proxies_from_channel(client, channel):
             else:
                 continue
 
-            
             if message_date not in [today, yesterday, day_before_yesterday] and message_date < min_proxy_date:
                 continue
 
             if isinstance(message, Message) and message.message:
                 text = message.message
 
-                
                 for protocol, pattern in CONFIG_PATTERNS.items():
                     matches = re.findall(pattern, text)
                     if matches:
                         logger.info(f"Found {len(matches)} {protocol} configs in message from {channel}: {matches}")
                         configs[protocol].extend(matches)
 
-                
                 if message_date >= min_proxy_date:
                     proxy_links = re.findall(PROXY_PATTERN, text)
                     if proxy_links:
@@ -182,7 +178,6 @@ async def post_config_and_proxies_to_channel(client, all_configs, all_proxies, c
         logger.warning("No valid channel with configs found to post.")
         return
 
-    
     channel_configs = {"vless": [], "vmess": [], "shadowsocks": [], "trojan": []}
     channel_proxies = []
     try:
@@ -201,7 +196,6 @@ async def post_config_and_proxies_to_channel(client, all_configs, all_proxies, c
             all_channel_configs.append(config)
             config_types.append(protocol.capitalize())
 
-    
     if not all_channel_configs:
         logger.warning(f"No configs found from the best channel {best_channel} to post.")
         return
@@ -212,12 +206,11 @@ async def post_config_and_proxies_to_channel(client, all_configs, all_proxies, c
 
     message = f"⚙️🌐 {config_type} Config\n\n```{selected_config}```"
 
-    
     random.shuffle(all_proxies)
     fresh_proxies = all_proxies[:7] if len(all_proxies) >= 7 else all_proxies
     if fresh_proxies:
         proxy_links = "\n".join([f"[Proxy {i+1}]({proxy})" for i, proxy in enumerate(fresh_proxies)])
-        message += "\n\n🟢 پروکسی‌های جدید ۲۴ ساعت گذشته:\n" + proxy_links
+        message += "\n" + proxy_links
 
     message += "\n\n🆔 @V2RayRootFree"
 
@@ -283,7 +276,6 @@ async def main():
                     valid_channels.append(channel)
                     total_configs = sum(len(configs) for configs in channel_configs.values())
                     proxy_count = len(channel_proxies)
-                    
                     score = total_configs + proxy_count
 
                     channel_stats[channel] = {
@@ -312,13 +304,11 @@ async def main():
                     }
                     logger.error(f"Channel {channel} is invalid: {str(e)}")
 
-            
             for protocol in all_configs:
                 all_configs[protocol] = list(set(all_configs[protocol]))
                 logger.info(f"Found {len(all_configs[protocol])} unique {protocol} configs")
             all_proxies = list(set(all_proxies))
 
-            
             for protocol in all_configs:
                 save_configs(all_configs[protocol], protocol)
             save_proxies(all_proxies)
