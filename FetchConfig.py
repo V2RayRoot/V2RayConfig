@@ -26,7 +26,7 @@ CONFIG_PATTERNS = {
     "shadowsocks": r"ss://[^\s]+",
     "trojan": r"trojan://[^\s]+"  
 }
-PROXY_PATTERN = r"\[proxy\]\((https://t\.me/proxy\?server=[^\s&]+&port=\d+&secret=[^\s)]+)\)"
+PROXY_PATTERN = r"(?:\[.*?\])?\s*\(?(https://t\.me/proxy\?server=[^\s&]+&port=\d+&secret=[^\s)]+)(?:\s*\)?"
 
 if not os.path.exists(LOG_DIR):
     os.makedirs(LOG_DIR)
@@ -97,6 +97,8 @@ async def fetch_configs_and_proxies_from_channel(client, channel):
 
             if isinstance(message, Message) and message.message:
                 text = message.message
+                # Log raw message for debugging
+                logger.debug(f"Raw message from {channel}: {text}")
                 # Extract configs
                 for protocol, pattern in CONFIG_PATTERNS.items():
                     matches = re.findall(pattern, text)
@@ -106,8 +108,10 @@ async def fetch_configs_and_proxies_from_channel(client, channel):
                 # Extract proxies
                 proxy_matches = re.findall(PROXY_PATTERN, text)
                 if proxy_matches:
-                    logger.info(f"Found {len(proxy_matches)} proxies in message from {channel}")
+                    logger.info(f"Found {len(proxy_matches)} proxies in message from {channel}: {proxy_matches}")
                     proxies.extend(proxy_matches)
+                else:
+                    logger.debug(f"No proxies found in message from {channel}")
         logger.info(f"Processed {message_count} messages from {channel}, found {sum(len(v) for v in configs.values())} configs and {len(proxies)} proxies")
         return configs, proxies, True
     except Exception as e:
@@ -201,11 +205,22 @@ async def post_config_and_proxies_to_channel(client, all_configs, all_proxies, c
     async for message in client.iter_messages(best_channel, limit=200):
         if message.date and message.date.date() in [today, yesterday] and message.message:
             proxy_matches = re.findall(PROXY_PATTERN, message.message)
+            if proxy_matches:
+                logger.info(f"Found {len(proxy_matches)} recent proxies in message from {best_channel}: {proxy_matches}")
             recent_proxies.extend(proxy_matches)
     
-    # Ensure at least 7 proxies
+    # Fallback to posting only config if no proxies found
     if len(recent_proxies) < 7:
-        logger.warning(f"Only {len(recent_proxies)} proxies found from {best_channel} in last 24 hours, need at least 7.")
+        logger.warning(f"Only {len(recent_proxies)} proxies found from {best_channel} in last 24 hours, need at least 7. Posting config only.")
+        if selected_config:
+            message = f"⚙️🌐 {config_type} Config\n\n```{selected_config}```\n\n🆔 @V2RayRootFree"
+            try:
+                await client.send_message(DESTINATION_CHANNEL, message, parse_mode="markdown")
+                logger.info(f"Posted {config_type} config from {best_channel} to {DESTINATION_CHANNEL} (no proxies)")
+            except Exception as e:
+                logger.error(f"Failed to post config to {DESTINATION_CHANNEL}: {str(e)}")
+        else:
+            logger.warning("No configs available to post.")
         return
 
     # Select 7 random proxies
