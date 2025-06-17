@@ -7,7 +7,7 @@ import base64
 import asyncio
 from datetime import datetime, timedelta
 from telethon.sync import TelegramClient
-from telethon.tl.types import Message
+from telethon.tl.types import Message, MessageEntityTextUrl, MessageEntityUrl
 from telethon.sessions import StringSession
 from telethon.errors import ChannelInvalidError, PeerIdInvalidError
 
@@ -26,7 +26,7 @@ CONFIG_PATTERNS = {
     "shadowsocks": r"ss://[^\s]+",
     "trojan": r"trojan://[^\s]+"
 }
-PROXY_PATTERN = r"https:\/\/t\.me\/proxy\?server=[^&\s]+&port=\d+&secret=[^\s\)\]\n]+"
+PROXY_PATTERN = r"https:\/\/t\.me\/proxy\?server=[^&\s\)]+&port=\d+&secret=[^\s\)]+"
 
 if not os.path.exists(LOG_DIR):
     os.makedirs(LOG_DIR)
@@ -72,6 +72,23 @@ def extract_server_address(config, protocol):
         logger.error(f"Failed to extract server address from {config}: {str(e)}")
         return None
 
+def extract_proxies_from_message(message):
+    proxies = []
+    proxies += re.findall(PROXY_PATTERN, message.message or "")
+    if hasattr(message, 'entities') and message.entities:
+        text = message.message or ""
+        for entity in message.entities:
+            if isinstance(entity, (MessageEntityTextUrl, MessageEntityUrl)):
+                if hasattr(entity, 'url'):
+                    url = entity.url
+                else:
+                    offset = entity.offset
+                    length = entity.length
+                    url = text[offset:offset+length]
+                if url.startswith("https://t.me/proxy?"):
+                    proxies.append(url)
+    return proxies
+
 async def fetch_configs_and_proxies_from_channel(client, channel):
     configs = {"vless": [], "vmess": [], "shadowsocks": [], "trojan": []}
     proxies = []
@@ -108,7 +125,7 @@ async def fetch_configs_and_proxies_from_channel(client, channel):
                         configs[protocol].extend(matches)
 
                 if message_date >= min_proxy_date:
-                    proxy_links = re.findall(PROXY_PATTERN, text)
+                    proxy_links = extract_proxies_from_message(message)
                     if proxy_links:
                         logger.info(f"Found {len(proxy_links)} proxies in message from {channel}: {proxy_links}")
                         proxies.extend(proxy_links)
@@ -209,7 +226,7 @@ async def post_config_and_proxies_to_channel(client, all_configs, all_proxies, c
     random.shuffle(all_proxies)
     fresh_proxies = all_proxies[:7] if len(all_proxies) >= 7 else all_proxies
     if fresh_proxies:
-        proxy_links = " | ".join([f"[Proxy {i+1}]({proxy})" for i, proxy in enumerate(fresh_proxies)])
+        proxy_links = "\n".join([f"Proxy {i+1} ({proxy})" for i, proxy in enumerate(fresh_proxies)])
         message += "\n" + proxy_links
 
     message += "\n\n🆔 @V2RayRootFree"
