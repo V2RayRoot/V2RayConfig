@@ -101,8 +101,8 @@ async def fetch_configs_and_proxies_from_channel(client, channel):
     try:
         message_count = 0
         today = datetime.now().date()
-        yesterday = today - timedelta(days=1)
-        day_before_yesterday = today - timedelta(days=2)
+        # yesterday = today - timedelta(days=1)
+        # day_before_yesterday = today - timedelta(days=2)
         min_proxy_date = today - timedelta(days=1)
 
         async for message in client.iter_messages(channel, limit=200):
@@ -112,7 +112,7 @@ async def fetch_configs_and_proxies_from_channel(client, channel):
             else:
                 continue
 
-            if message_date not in [today, yesterday, day_before_yesterday] and message_date < min_proxy_date:
+            if message_date not in [today] and message_date < min_proxy_date:
                 continue
 
             if isinstance(message, Message) and message.message:
