@@ -48,7 +48,7 @@ jobs:
           git add Logs/collector.log || true
           git add telegram_channels.json || true
           git add FetchConfig.py || true
-          git commit -m "Update configs and operator files" || echo "No changes to commit"
+          git commit -m "Update configs 🚀" || echo "No changes to commit"
           git push || echo "Failed to push changes, check permissions"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
