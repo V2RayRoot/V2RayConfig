@@ -36,11 +36,19 @@ jobs:
           git add Config/vless.txt || true
           git add Config/vmess.txt || true
           git add Config/shadowsocks.txt || true
+          git add Config/trojan.txt || true
+          git add Config/HamrahAval.txt || true
+          git add Config/Irancell.txt || true
+          git add Config/Makhaberat.txt || true
+          git add Config/Samantel.txt || true
+          git add Config/Shatel.txt || true
+          git add Config/proxies.txt || true
           git add Logs/channel_stats.json || true
           git add Logs/invalid_channels.txt || true
           git add Logs/collector.log || true
-          git add Logs/telegram_channels.json || true
-          git commit -m "Update configs" || echo "No changes to commit"
+          git add telegram_channels.json || true
+          git add FetchConfig.py || true
+          git commit -m "Update configs and operator files" || echo "No changes to commit"
           git push || echo "Failed to push changes, check permissions"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
