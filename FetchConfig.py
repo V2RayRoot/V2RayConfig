@@ -10,6 +10,7 @@ from telethon.sync import TelegramClient
 from telethon.tl.types import Message, MessageEntityTextUrl, MessageEntityUrl
 from telethon.sessions import StringSession
 from telethon.errors import ChannelInvalidError, PeerIdInvalidError
+from collections import defaultdict
 
 SESSION_STRING = os.getenv("TELEGRAM_SESSION_STRING", None)
 API_ID = os.getenv("TELEGRAM_API_ID", None)
@@ -27,6 +28,21 @@ CONFIG_PATTERNS = {
     "trojan": r"trojan://[^\s]+"
 }
 PROXY_PATTERN = r"https:\/\/t\.me\/proxy\?server=[^&\s\)]+&port=\d+&secret=[^\s\)]+"
+
+OPERATORS = {
+    "همراه اول": "HamrahAval",
+    "#همراه_اول": "HamrahAval",
+    "ایرانسل": "Irancell",
+    "#ایرانسل": "Irancell",
+    "مخابرات": "Makhaberat",
+    "#مخابرات": "Makhaberat",
+    "سامانتل": "Samantel",
+    "#سامانتل": "Samantel",
+    "سامان تل": "Samantel",
+    "#سامان_تل": "Samantel",
+    "شاتل": "Shatel",
+    "#شاتل": "Shatel",
+}
 
 if not os.path.exists(LOG_DIR):
     os.makedirs(LOG_DIR)
@@ -89,20 +105,26 @@ def extract_proxies_from_message(message):
                     proxies.append(url)
     return proxies
 
+def detect_operator(text):
+    text_lower = text.lower()
+    for keyword, op in OPERATORS.items():
+        if keyword.lower() in text_lower:
+            return op
+    return None
+
 async def fetch_configs_and_proxies_from_channel(client, channel):
     configs = {"vless": [], "vmess": [], "shadowsocks": [], "trojan": []}
+    operator_configs = defaultdict(list)
     proxies = []
     try:
         await client.get_entity(channel)
     except (ChannelInvalidError, PeerIdInvalidError, ValueError) as e:
         logger.error(f"Channel {channel} does not exist or is inaccessible: {str(e)}")
-        return configs, proxies, False
+        return configs, operator_configs, proxies, False
 
     try:
         message_count = 0
         today = datetime.now().date()
-        # yesterday = today - timedelta(days=1)
-        # day_before_yesterday = today - timedelta(days=2)
         min_proxy_date = today - timedelta(days=1)
 
         async for message in client.iter_messages(channel, limit=200):
@@ -118,11 +140,16 @@ async def fetch_configs_and_proxies_from_channel(client, channel):
             if isinstance(message, Message) and message.message:
                 text = message.message
 
+                operator = detect_operator(text)
+
                 for protocol, pattern in CONFIG_PATTERNS.items():
                     matches = re.findall(pattern, text)
                     if matches:
                         logger.info(f"Found {len(matches)} {protocol} configs in message from {channel}: {matches}")
                         configs[protocol].extend(matches)
+                        if operator:
+                            for config in matches:
+                                operator_configs[operator].append(config)
 
                 if message_date >= min_proxy_date:
                     proxy_links = extract_proxies_from_message(message)
@@ -130,10 +157,10 @@ async def fetch_configs_and_proxies_from_channel(client, channel):
                         logger.info(f"Found {len(proxy_links)} proxies in message from {channel}: {proxy_links}")
                         proxies.extend(proxy_links)
         logger.info(f"Processed {message_count} messages from {channel}, found {sum(len(v) for v in configs.values())} configs, {len(proxies)} proxies")
-        return configs, proxies, True
+        return configs, operator_configs, proxies, True
     except Exception as e:
         logger.error(f"Failed to fetch from {channel}: {str(e)}")
-        return configs, proxies, False
+        return configs, operator_configs, proxies, False
 
 def save_configs(configs, protocol):
     output_file = os.path.join(OUTPUT_DIR, f"{protocol}.txt")
@@ -146,6 +173,19 @@ def save_configs(configs, protocol):
         else:
             f.write("No configs found for this protocol.\n")
             logger.info(f"No {protocol} configs found, wrote placeholder to {output_file}")
+
+def save_operator_configs(operator_configs):
+    for op, configs in operator_configs.items():
+        output_file = os.path.join(OUTPUT_DIR, f"{op}.txt")
+        logger.info(f"Saving operator configs to {output_file}")
+        with open(output_file, "w", encoding="utf-8") as f:
+            if configs:
+                for config in configs:
+                    f.write(config + "\n")
+                logger.info(f"Saved {len(configs)} configs for {op} to {output_file}")
+            else:
+                f.write(f"No configs found for {op}.\n")
+                logger.info(f"No configs found for {op}, wrote placeholder to {output_file}")
 
 def save_proxies(proxies):
     output_file = os.path.join(OUTPUT_DIR, f"proxies.txt")
@@ -206,7 +246,7 @@ async def post_config_and_proxies_to_channel(client, all_configs, all_proxies, c
     channel_configs = {"vless": [], "vmess": [], "shadowsocks": [], "trojan": []}
     channel_proxies = []
     try:
-        temp_configs, temp_proxies, _ = await fetch_configs_and_proxies_from_channel(client, best_channel)
+        temp_configs, _, temp_proxies, _ = await fetch_configs_and_proxies_from_channel(client, best_channel)
         for protocol in channel_configs:
             channel_configs[protocol].extend(temp_configs[protocol])
         channel_proxies.extend(temp_proxies)
@@ -277,13 +317,14 @@ async def main():
                 return
 
             all_configs = {"vless": [], "vmess": [], "shadowsocks": [], "trojan": []}
+            all_operator_configs = defaultdict(list)
             all_proxies = []
             valid_channels = []
             for channel in TELEGRAM_CHANNELS:
                 logger.info(f"Fetching configs/proxies from {channel}...")
                 print(f"Fetching configs/proxies from {channel}...")
                 try:
-                    channel_configs, channel_proxies, is_valid = await fetch_configs_and_proxies_from_channel(client, channel)
+                    channel_configs, channel_operator_configs, channel_proxies, is_valid = await fetch_configs_and_proxies_from_channel(client, channel)
                     if not is_valid:
                         invalid_channels.append(channel)
                         channel_stats[channel] = {
@@ -314,6 +355,8 @@ async def main():
                     }
                     for protocol in all_configs:
                         all_configs[protocol].extend(channel_configs[protocol])
+                    for op in channel_operator_configs:
+                        all_operator_configs[op].extend(channel_operator_configs[op])
                     all_proxies.extend(channel_proxies)
                 except Exception as e:
                     invalid_channels.append(channel)
@@ -332,10 +375,14 @@ async def main():
             for protocol in all_configs:
                 all_configs[protocol] = list(set(all_configs[protocol]))
                 logger.info(f"Found {len(all_configs[protocol])} unique {protocol} configs")
+            for op in all_operator_configs:
+                all_operator_configs[op] = list(set(all_operator_configs[op]))
+                logger.info(f"Found {len(all_operator_configs[op])} unique configs for operator {op}")
             all_proxies = list(set(all_proxies))
 
             for protocol in all_configs:
                 save_configs(all_configs[protocol], protocol)
+            save_operator_configs(all_operator_configs)
             save_proxies(all_proxies)
             save_invalid_channels(invalid_channels)
             save_channel_stats(channel_stats)
