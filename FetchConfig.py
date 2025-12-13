@@ -386,7 +386,7 @@ async def main():
             save_proxies(all_proxies)
             save_invalid_channels(invalid_channels)
             save_channel_stats(channel_stats)
-            # await post_config_and_proxies_to_channel(client, all_configs, all_proxies, channel_stats)
+            await post_config_and_proxies_to_channel(client, all_configs, all_proxies, channel_stats)
             update_channels(valid_channels)
 
     except Exception as e:
