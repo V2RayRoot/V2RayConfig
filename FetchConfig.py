@@ -20,12 +20,12 @@ LOG_DIR = "Logs"
 OUTPUT_DIR = "Config"
 INVALID_CHANNELS_FILE = os.path.join(LOG_DIR, "invalid_channels.txt")
 STATS_FILE = os.path.join(LOG_DIR, "channel_stats.json")
-DESTINATION_CHANNEL = "@V2RayRootFree"
+DESTINATION_CHANNEL = "https://t.me/+y1Q12fMoe0wyNDI0"
 CONFIG_PATTERNS = {
-    "vless": r"vless://[^\s]+",
-    "vmess": r"vmess://[^\s]+",
-    "shadowsocks": r"ss://[^\s]+",
-    "trojan": r"trojan://[^\s]+"
+    "vless": r"vless://[^\s\n]+",
+    "vmess": r"vmess://[^\s\n]+",
+    "shadowsocks": r"ss://[^\s\n]+",
+    "trojan": r"trojan://[^\s\n]+"
 }
 PROXY_PATTERN = r"https:\/\/t\.me\/proxy\?server=[^&\s\)]+&port=\d+&secret=[^\s\)]+"
 
@@ -48,10 +48,11 @@ if not os.path.exists(LOG_DIR):
     os.makedirs(LOG_DIR)
 
 logger = logging.getLogger()
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
 logger.handlers = []
 file_handler = logging.FileHandler(os.path.join(LOG_DIR, "collector.log"), mode='w', encoding='utf-8')
 file_handler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
+file_handler.setLevel(logging.DEBUG)
 logger.addHandler(file_handler)
 
 def load_channels():
@@ -124,17 +125,15 @@ async def fetch_configs_and_proxies_from_channel(client, channel):
 
     try:
         message_count = 0
+        configs_found_count = 0
         today = datetime.now().date()
-        min_proxy_date = today - timedelta(days=1)
+        min_proxy_date = today - timedelta(days=7)
 
-        async for message in client.iter_messages(channel, limit=200):
+        async for message in client.iter_messages(channel, limit=500):
             message_count += 1
             if message.date:
                 message_date = message.date.date()
             else:
-                continue
-
-            if message_date not in [today] and message_date < min_proxy_date:
                 continue
 
             if isinstance(message, Message) and message.message:
@@ -145,8 +144,10 @@ async def fetch_configs_and_proxies_from_channel(client, channel):
                 for protocol, pattern in CONFIG_PATTERNS.items():
                     matches = re.findall(pattern, text)
                     if matches:
-                        logger.info(f"Found {len(matches)} {protocol} configs in message from {channel}: {matches}")
+                        logger.info(f"[{channel}] Found {len(matches)} {protocol} configs in message {message.id}")
+                        print(f"✅ [{channel}] Found {len(matches)} {protocol} configs")
                         configs[protocol].extend(matches)
+                        configs_found_count += len(matches)
                         if operator:
                             for config in matches:
                                 operator_configs[operator].append(config)
@@ -154,12 +155,17 @@ async def fetch_configs_and_proxies_from_channel(client, channel):
                 if message_date >= min_proxy_date:
                     proxy_links = extract_proxies_from_message(message)
                     if proxy_links:
-                        logger.info(f"Found {len(proxy_links)} proxies in message from {channel}: {proxy_links}")
+                        logger.info(f"[{channel}] Found {len(proxy_links)} proxies in message {message.id}")
+                        print(f"✅ [{channel}] Found {len(proxy_links)} proxies")
                         proxies.extend(proxy_links)
-        logger.info(f"Processed {message_count} messages from {channel}, found {sum(len(v) for v in configs.values())} configs, {len(proxies)} proxies")
+        
+        summary = f"[{channel}] ✔️ Processed {message_count} messages → Found {configs_found_count} configs + {len(proxies)} proxies"
+        logger.info(summary)
+        print(summary)
         return configs, operator_configs, proxies, True
     except Exception as e:
         logger.error(f"Failed to fetch from {channel}: {str(e)}")
+        print(f"❌ [{channel}] Error: {str(e)}")
         return configs, operator_configs, proxies, False
 
 def save_configs(configs, protocol):
@@ -226,9 +232,41 @@ def format_proxies_in_rows(proxies, per_row=4):
         lines.append(line)
     return "\n".join(lines)
 
+def parse_channel_identifier(channel_str):
+    channel_str = channel_str.strip()
+    
+    if channel_str.startswith('-100'):
+        return int(channel_str)
+    
+    if channel_str.startswith('/c/'):
+        try:
+            channel_id = int(channel_str.replace('/c/', ''))
+            return -100 * (10**9) + channel_id
+        except ValueError:
+            return channel_str
+    
+    if channel_str.isdigit():
+        return int(channel_str)
+    
+    return channel_str
+
+async def send_message_to_destination(client, destination, message, parse_mode="markdown"):
+    try:
+        dest_identifier = parse_channel_identifier(destination)
+        
+        await client.send_message(dest_identifier, message, parse_mode=parse_mode)
+        logger.info(f"Successfully sent message to {destination}")
+        print(f"✅ Message posted to {destination}")
+        return True
+    except Exception as e:
+        logger.error(f"Failed to send message to {destination}: {str(e)}")
+        print(f"❌ Failed to send message to {destination}: {str(e)}")
+        return False
+
 async def post_config_and_proxies_to_channel(client, all_configs, all_proxies, channel_stats):
     if not channel_stats:
         logger.warning("No channel stats available to determine the best channel.")
+        print("⚠️  No channel stats available")
         return
 
     best_channel = None
@@ -241,6 +279,7 @@ async def post_config_and_proxies_to_channel(client, all_configs, all_proxies, c
 
     if not best_channel or best_score == 0:
         logger.warning("No valid channel with configs found to post.")
+        print("⚠️  No valid channel with configs found")
         return
 
     channel_configs = {"vless": [], "vmess": [], "shadowsocks": [], "trojan": []}
@@ -252,6 +291,7 @@ async def post_config_and_proxies_to_channel(client, all_configs, all_proxies, c
         channel_proxies.extend(temp_proxies)
     except Exception as e:
         logger.error(f"Failed to fetch configs/proxies from best channel {best_channel}: {str(e)}")
+        print(f"❌ Failed to fetch from {best_channel}: {str(e)}")
         return
 
     all_channel_configs = []
@@ -263,6 +303,7 @@ async def post_config_and_proxies_to_channel(client, all_configs, all_proxies, c
 
     if not all_channel_configs:
         logger.warning(f"No configs found from the best channel {best_channel} to post.")
+        print(f"⚠️  No configs from {best_channel}")
         return
 
     index = random.randint(0, len(all_channel_configs) - 1)
@@ -279,14 +320,17 @@ async def post_config_and_proxies_to_channel(client, all_configs, all_proxies, c
 
     message += "\n\n🆔 @V2RayRootFree"
 
-    try:
-        await client.send_message(DESTINATION_CHANNEL, message, parse_mode="markdown")
+    success = await send_message_to_destination(client, DESTINATION_CHANNEL, message, parse_mode="markdown")
+    
+    if success:
         logger.info(f"Posted {config_type} config + proxies from {best_channel} to {DESTINATION_CHANNEL}")
-    except Exception as e:
-        logger.error(f"Failed to post config/proxies to {DESTINATION_CHANNEL}: {str(e)}")
+        print(f"📤 Posted {config_type} config from {best_channel}")
+    else:
+        logger.error(f"Failed to post to {DESTINATION_CHANNEL}")
 
 async def main():
     logger.info("Starting config+proxy collection process")
+    print("🚀 Starting config+proxy collection process...\n")
     invalid_channels = []
     channel_stats = {}
 
@@ -322,10 +366,11 @@ async def main():
             valid_channels = []
             for channel in TELEGRAM_CHANNELS:
                 logger.info(f"Fetching configs/proxies from {channel}...")
-                print(f"Fetching configs/proxies from {channel}...")
+                print(f"\n📡 Fetching from {channel}...")
                 try:
                     channel_configs, channel_operator_configs, channel_proxies, is_valid = await fetch_configs_and_proxies_from_channel(client, channel)
                     if not is_valid:
+                        print(f"⚠️  [{channel}] Invalid or inaccessible")
                         invalid_channels.append(channel)
                         channel_stats[channel] = {
                             "vless_count": 0,
@@ -343,6 +388,7 @@ async def main():
                     total_configs = sum(len(configs) for configs in channel_configs.values())
                     proxy_count = len(channel_proxies)
                     score = total_configs + proxy_count
+                    print(f"   └─ vless: {len(channel_configs['vless'])} | vmess: {len(channel_configs['vmess'])} | ss: {len(channel_configs['shadowsocks'])} | trojan: {len(channel_configs['trojan'])} | proxies: {proxy_count}")
 
                     channel_stats[channel] = {
                         "vless_count": len(channel_configs["vless"]),
@@ -359,6 +405,7 @@ async def main():
                         all_operator_configs[op].extend(channel_operator_configs[op])
                     all_proxies.extend(channel_proxies)
                 except Exception as e:
+                    print(f"❌ [{channel}] Exception: {str(e)}")
                     invalid_channels.append(channel)
                     channel_stats[channel] = {
                         "vless_count": 0,
@@ -372,13 +419,18 @@ async def main():
                     }
                     logger.error(f"Channel {channel} is invalid: {str(e)}")
 
+            print("\n" + "="*60)
             for protocol in all_configs:
                 all_configs[protocol] = list(set(all_configs[protocol]))
+                print(f"📊 Found {len(all_configs[protocol])} unique {protocol.upper()} configs")
                 logger.info(f"Found {len(all_configs[protocol])} unique {protocol} configs")
             for op in all_operator_configs:
                 all_operator_configs[op] = list(set(all_operator_configs[op]))
+                print(f"📊 Found {len(all_operator_configs[op])} configs for {op}")
                 logger.info(f"Found {len(all_operator_configs[op])} unique configs for operator {op}")
             all_proxies = list(set(all_proxies))
+            print(f"📊 Found {len(all_proxies)} unique proxies")
+            print("="*60 + "\n")
 
             for protocol in all_configs:
                 save_configs(all_configs[protocol], protocol)
@@ -395,6 +447,7 @@ async def main():
         return
 
     logger.info("Config+proxy collection process completed")
+    print("✅ Config+proxy collection process completed!")
 
 if __name__ == "__main__":
     asyncio.run(main())
