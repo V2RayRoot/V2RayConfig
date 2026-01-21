@@ -306,27 +306,64 @@ async def post_config_and_proxies_to_channel(client, all_configs, all_proxies, c
         print(f"⚠️  No configs from {best_channel}")
         return
 
-    index = random.randint(0, len(all_channel_configs) - 1)
-    selected_config = all_channel_configs[index]
-    config_type = config_types[index]
+    # index = random.randint(0, len(all_channel_configs) - 1)
+    # selected_config = all_channel_configs[index]
+    # config_type = config_types[index]
 
-    message = f"⚙️🌐 {config_type} Config\n\n```{selected_config}```"
+    # message = f"⚙️🌐 {config_type} Config\n\n```{selected_config}```"
 
-    random.shuffle(all_proxies)
-    fresh_proxies = all_proxies[:8] if len(all_proxies) >= 8 else all_proxies
-    if fresh_proxies:
-        proxies_formatted = format_proxies_in_rows(fresh_proxies, per_row=4)
-        message += "\n" + proxies_formatted
+    # random.shuffle(all_proxies)
+    # fresh_proxies = all_proxies[:8] if len(all_proxies) >= 8 else all_proxies
+    # if fresh_proxies:
+    #     proxies_formatted = format_proxies_in_rows(fresh_proxies, per_row=4)
+    #     message += "\n" + proxies_formatted
 
-    message += "\n\n🆔 @V2RayRootFree"
+    # message += "\n\n🆔 @V2RayRootFree"
 
-    success = await send_message_to_destination(client, DESTINATION_CHANNEL, message, parse_mode="markdown")
+    # success = await send_message_to_destination(client, DESTINATION_CHANNEL, message, parse_mode="markdown")
     
-    if success:
-        logger.info(f"Posted {config_type} config + proxies from {best_channel} to {DESTINATION_CHANNEL}")
-        print(f"📤 Posted {config_type} config from {best_channel}")
-    else:
-        logger.error(f"Failed to post to {DESTINATION_CHANNEL}")
+    # if success:
+    #     logger.info(f"Posted {config_type} config + proxies from {best_channel} to {DESTINATION_CHANNEL}")
+    #     print(f"📤 Posted {config_type} config from {best_channel}")
+    # else:
+    #     logger.error(f"Failed to post to {DESTINATION_CHANNEL}")
+
+    POST_COUNT = 5
+    
+    random_indices = random.sample(
+        range(len(all_channel_configs)),
+        min(POST_COUNT, len(all_channel_configs))
+    )
+    
+    for i, idx in enumerate(random_indices, start=1):
+        selected_config = all_channel_configs[idx]
+        config_type = config_types[idx]
+    
+        message = f"⚙️🌐 {config_type} Config ({i}/{len(random_indices)})\n\n```{selected_config}```"
+    
+        random.shuffle(all_proxies)
+        fresh_proxies = all_proxies[:8] if len(all_proxies) >= 8 else all_proxies
+        if fresh_proxies:
+            proxies_formatted = format_proxies_in_rows(fresh_proxies, per_row=4)
+            message += "\n" + proxies_formatted
+    
+        message += "\n\n🆔 @V2RayRootFree"
+    
+        success = await send_message_to_destination(
+            client,
+            DESTINATION_CHANNEL,
+            message,
+            parse_mode="markdown"
+        )
+    
+        if success:
+            logger.info(f"Posted {config_type} config {i}")
+            print(f"📤 Posted config {i}")
+        else:
+            logger.error(f"Failed to post config {i}")
+    
+        await asyncio.sleep(8)
+
 
 async def main():
     logger.info("Starting config+proxy collection process")
@@ -438,7 +475,7 @@ async def main():
             save_proxies(all_proxies)
             save_invalid_channels(invalid_channels)
             save_channel_stats(channel_stats)
-            # await post_config_and_proxies_to_channel(client, all_configs, all_proxies, channel_stats)
+            await post_config_and_proxies_to_channel(client, all_configs, all_proxies, channel_stats)
             update_channels(valid_channels)
 
     except Exception as e:
