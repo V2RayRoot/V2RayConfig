@@ -5,7 +5,6 @@ import logging
 import random
 import base64
 import asyncio
-import aiohttp
 from datetime import datetime, timedelta
 from telethon.sync import TelegramClient
 from telethon.tl.types import Message, MessageEntityTextUrl, MessageEntityUrl, DocumentAttributeFilename
@@ -13,7 +12,6 @@ from telethon.sessions import StringSession
 from telethon.errors import ChannelInvalidError, PeerIdInvalidError
 from collections import defaultdict
 
-# ======================== تنظیمات اولیه ========================
 SESSION_STRING = os.getenv("TELEGRAM_SESSION_STRING", None)
 API_ID = os.getenv("TELEGRAM_API_ID", None)
 API_HASH = os.getenv("TELEGRAM_API_HASH", None)
