@@ -22,7 +22,7 @@ OUTPUT_DIR = "Config"
 NPVT_DIR = os.path.join(OUTPUT_DIR, "npvt")
 INVALID_CHANNELS_FILE = os.path.join(LOG_DIR, "invalid_channels.txt")
 STATS_FILE = os.path.join(LOG_DIR, "channel_stats.json")
-DESTINATION_CHANNEL = "@V2RayRoot"
+DESTINATION_CHANNEL = "@V2RayRootFree"
 CONFIG_PATTERNS = {
     "vless": r"vless://[^\s\n]+",
     "vmess": r"vmess://[^\s\n]+",
@@ -161,17 +161,19 @@ async def download_npvt_from_message(client, message, channel):
 
 async def fetch_configs_and_proxies_from_channel(client, channel):
     configs = {"vless": [], "vmess": [], "shadowsocks": [], "trojan": []}
+    config_timeline = []
     operator_configs = defaultdict(list)
     proxies = []
+    proxy_timeline = []
     npvt_files = []
     try:
         channel_entity = await resolve_channel_target(client, channel)
     except (ChannelInvalidError, PeerIdInvalidError, ValueError) as e:
         logger.error(f"Channel {channel} does not exist or is inaccessible: {str(e)}")
-        return configs, operator_configs, proxies, npvt_files, False
+        return configs, config_timeline, operator_configs, proxies, npvt_files, proxy_timeline, False
     except Exception as e:
         logger.error(f"Channel {channel} could not be resolved: {str(e)}")
-        return configs, operator_configs, proxies, npvt_files, False
+        return configs, config_timeline, operator_configs, proxies, npvt_files, proxy_timeline, False
 
     try:
         message_count = 0
@@ -188,7 +190,10 @@ async def fetch_configs_and_proxies_from_channel(client, channel):
 
             downloaded_npvt = await download_npvt_from_message(client, message, channel)
             if downloaded_npvt:
-                npvt_files.append(downloaded_npvt)
+                npvt_files.append({
+                    "file_path": downloaded_npvt,
+                    "source": str(channel)
+                })
 
             if isinstance(message, Message) and message.message:
                 text = message.message
@@ -201,6 +206,12 @@ async def fetch_configs_and_proxies_from_channel(client, channel):
                         logger.info(f"[{channel}] Found {len(matches)} {protocol} configs in message {message.id}")
                         print(f"✅ [{channel}] Found {len(matches)} {protocol} configs")
                         configs[protocol].extend(matches)
+                        for config in matches:
+                            config_timeline.append({
+                                "protocol": protocol.capitalize(),
+                                "config": config,
+                                "source": str(channel)
+                            })
                         configs_found_count += len(matches)
                         if operator:
                             for config in matches:
@@ -212,15 +223,20 @@ async def fetch_configs_and_proxies_from_channel(client, channel):
                         logger.info(f"[{channel}] Found {len(proxy_links)} proxies in message {message.id}")
                         print(f"✅ [{channel}] Found {len(proxy_links)} proxies")
                         proxies.extend(proxy_links)
+                        for proxy in proxy_links:
+                            proxy_timeline.append({
+                                "proxy": proxy,
+                                "source": str(channel)
+                            })
         
         summary = f"[{channel}] ✔️ Processed {message_count} messages → Found {configs_found_count} configs + {len(proxies)} proxies + {len(npvt_files)} npvt"
         logger.info(summary)
         print(summary)
-        return configs, operator_configs, proxies, npvt_files, True
+        return configs, config_timeline, operator_configs, proxies, npvt_files, proxy_timeline, True
     except Exception as e:
         logger.error(f"Failed to fetch from {channel}: {str(e)}")
         print(f"❌ [{channel}] Error: {str(e)}")
-        return configs, operator_configs, proxies, npvt_files, False
+        return configs, config_timeline, operator_configs, proxies, npvt_files, proxy_timeline, False
 
 def save_configs(configs, protocol):
     output_file = os.path.join(OUTPUT_DIR, f"{protocol}.txt")
@@ -285,6 +301,170 @@ def format_proxies_in_rows(proxies, per_row=4):
         line = " | ".join([f"[Proxy {i+j+1}]({proxy})" for j, proxy in enumerate(chunk)])
         lines.append(line)
     return "\n".join(lines)
+
+def format_proxies_for_caption(proxies, max_count=4):
+    if not proxies:
+        return "No proxies found"
+
+    selected = list(proxies[:max_count])
+    links = [f"[Proxy {i+1}]({item['proxy']})" for i, item in enumerate(selected)]
+    first_row = " | ".join(links[:4])
+    second_row = " | ".join(links[4:8])
+    if second_row:
+        return f"{first_row}\n{second_row}"
+    return first_row
+
+def build_sources_text(config_source, npvt_source, proxy_sources):
+    proxies_sources_text = ", ".join([format_channel_source(src) for src in proxy_sources]) if proxy_sources else "N/A"
+    return (
+        f"- Config: {format_channel_source(config_source)}\n"
+        f"- NPVT: {format_channel_source(npvt_source)}\n"
+        f"- Proxies: {proxies_sources_text}"
+    )
+
+def format_channel_source(channel):
+    if not isinstance(channel, str):
+        return str(channel)
+
+    value = channel.strip()
+    if value.startswith("http://") or value.startswith("https://"):
+        return value
+    if value.startswith("@"):
+        return f"https://t.me/{value[1:]}"
+    if value.startswith("+"):
+        return f"https://t.me/{value}"
+    if value.startswith("joinchat/"):
+        return f"https://t.me/{value}"
+    if value.startswith("t.me/"):
+        return f"https://{value}"
+    return value
+
+def build_npvt_caption(proxies_text, index, total, config_source, npvt_source, proxy_sources, config_type, config_value):
+    sources_text = build_sources_text(config_source, npvt_source, proxy_sources)
+    return (
+        f"🧩 **NPVT + Config Pack** ({index}/{total})\n\n"
+        f"⚙️ **Random {config_type} Config**\n"
+        f"```{config_value}```\n\n"
+        f"🔗 **Latest 8 Proxies**\n{proxies_text}\n\n"
+        f"📡 **Source Channels**\n{sources_text}\n\n"
+        f"🆔 @V2RayRootFree"
+    )
+
+def select_post_payloads(last_channels, channel_recent_configs, channel_recent_npvt, best_channel, required_count):
+    selected = []
+    used_config_idx = defaultdict(int)
+    used_npvt_idx = defaultdict(int)
+
+    def take_one_from_channel(channel):
+        configs = channel_recent_configs.get(channel, [])
+        npvts = channel_recent_npvt.get(channel, [])
+        config_idx = used_config_idx.get(channel, 0)
+        npvt_idx = used_npvt_idx.get(channel, 0)
+
+        if config_idx < len(configs) and npvt_idx < len(npvts):
+            payload = {
+                "channel": channel,
+                "config_item": configs[config_idx],
+                "npvt_item": npvts[npvt_idx]
+            }
+            used_config_idx[channel] = config_idx + 1
+            used_npvt_idx[channel] = npvt_idx + 1
+            return payload
+        return None
+
+    for channel in last_channels:
+        payload = take_one_from_channel(channel)
+        if payload:
+            selected.append(payload)
+        if len(selected) == required_count:
+            return selected
+
+    if best_channel:
+        while len(selected) < required_count:
+            payload = take_one_from_channel(best_channel)
+            if not payload:
+                break
+            selected.append(payload)
+
+    if len(selected) < required_count:
+        for channel in last_channels:
+            while len(selected) < required_count:
+                payload = take_one_from_channel(channel)
+                if not payload:
+                    break
+                selected.append(payload)
+            if len(selected) == required_count:
+                break
+
+    if selected and len(selected) < required_count:
+        source = list(selected)
+        repeat_idx = 0
+        while len(selected) < required_count:
+            selected.append(source[repeat_idx % len(source)])
+            repeat_idx += 1
+
+    return selected[:required_count]
+
+def select_proxy_items_for_post(random_channels, channel_recent_proxies, best_channel, required_count=8):
+    selected = []
+
+    for channel in random_channels:
+        selected.extend(channel_recent_proxies.get(channel, []))
+        if len(selected) >= required_count:
+            break
+
+    if len(selected) < required_count and best_channel:
+        selected.extend(channel_recent_proxies.get(best_channel, []))
+
+    return selected[:required_count]
+
+def get_best_scoring_channel(channel_stats, channels):
+    best_channel = None
+    best_score = -1
+    for channel in channels:
+        score = channel_stats.get(channel, {}).get("score", 0)
+        if score > best_score:
+            best_score = score
+            best_channel = channel
+    return best_channel
+
+def select_last_items_with_fallback(last_channels, items_by_channel, best_channel, required_count):
+    selected = []
+    used_index = defaultdict(int)
+
+    for channel in last_channels:
+        channel_items = items_by_channel.get(channel, [])
+        if channel_items:
+            selected.append(channel_items[0])
+            used_index[channel] = 1
+        if len(selected) == required_count:
+            return selected
+
+    if best_channel:
+        best_items = items_by_channel.get(best_channel, [])
+        idx = used_index.get(best_channel, 0)
+        while idx < len(best_items) and len(selected) < required_count:
+            selected.append(best_items[idx])
+            idx += 1
+        used_index[best_channel] = idx
+
+    if len(selected) < required_count:
+        for channel in last_channels:
+            channel_items = items_by_channel.get(channel, [])
+            idx = used_index.get(channel, 0)
+            while idx < len(channel_items) and len(selected) < required_count:
+                selected.append(channel_items[idx])
+                idx += 1
+            used_index[channel] = idx
+
+    if selected and len(selected) < required_count:
+        source = list(selected)
+        repeat_idx = 0
+        while len(selected) < required_count:
+            selected.append(source[repeat_idx % len(source)])
+            repeat_idx += 1
+
+    return selected[:required_count]
 
 def parse_channel_identifier(channel_str):
     if not isinstance(channel_str, str):
@@ -371,14 +551,14 @@ async def resolve_channel_target(client, channel):
     parsed = parse_channel_identifier(channel)
     return await client.get_entity(parsed)
 
-async def send_message_to_destination(client, destination, message, parse_mode="markdown"):
+async def send_message_to_destination(client, destination, message, parse_mode="markdown", reply_to=None):
     try:
         if isinstance(destination, str):
             dest_identifier = await resolve_channel_target(client, destination)
         else:
             dest_identifier = destination
         
-        await client.send_message(dest_identifier, message, parse_mode=parse_mode)
+        await client.send_message(dest_identifier, message, parse_mode=parse_mode, reply_to=reply_to)
         logger.info(f"Successfully sent message to {destination}")
         print(f"✅ Message posted to {destination}")
         return True
@@ -394,33 +574,54 @@ async def send_file_to_destination(client, destination, file_path, caption, pars
         else:
             dest_identifier = destination
 
-        await client.send_file(dest_identifier, file_path, caption=caption, parse_mode=parse_mode)
+        sent_message = await client.send_file(dest_identifier, file_path, caption=caption, parse_mode=parse_mode)
         logger.info(f"Successfully sent file to {destination}: {file_path}")
         print(f"✅ File posted to {destination}: {os.path.basename(file_path)}")
-        return True
+        return sent_message
     except Exception as e:
         logger.error(f"Failed to send file to {destination}: {str(e)}")
         print(f"❌ Failed to send file to {destination}: {str(e)}")
-        return False
+        return None
 
-async def post_config_and_proxies_to_channel(client, all_configs, all_proxies, all_npvt_files, channel_stats):
-    if not channel_stats:
-        logger.warning("No channel stats available to determine the best channel.")
-        print("⚠️  No channel stats available")
+async def post_config_and_proxies_to_channel(client, channel_stats, valid_channels, channel_recent_configs, channel_recent_npvt, channel_recent_proxies):
+    POST_COUNT = 5
+
+    if not valid_channels:
+        logger.warning("No valid channels available for post selection.")
+        print("⚠️  No valid channels available")
         return
 
-    best_channel = None
-    best_score = -1
-    for channel, stats in channel_stats.items():
-        score = stats.get("score", 0)
-        if score > best_score:
-            best_score = score
-            best_channel = channel
+    random_channels = random.sample(valid_channels, min(POST_COUNT, len(valid_channels)))
+    best_channel = get_best_scoring_channel(channel_stats, valid_channels)
 
-    if not best_channel or best_score == 0:
-        logger.warning("No valid channel with configs found to post.")
-        print("⚠️  No valid channel with configs found")
+    selected_payloads = select_post_payloads(
+        random_channels,
+        channel_recent_configs,
+        channel_recent_npvt,
+        best_channel,
+        POST_COUNT
+    )
+
+    random.shuffle(selected_payloads)
+
+    if not selected_payloads:
+        logger.warning("No payloads available to post.")
+        print("⚠️  No payloads available to post")
         return
+
+    selected_proxy_items = select_proxy_items_for_post(
+        random_channels,
+        channel_recent_proxies,
+        best_channel,
+        required_count=8
+    )
+
+    if not selected_proxy_items:
+        logger.warning("No proxy items available to post.")
+        print("⚠️  No proxy items available to post")
+        return
+
+    proxy_sources = list(dict.fromkeys([item["source"] for item in selected_proxy_items]))
 
     try:
         destination_entity = await resolve_channel_target(client, DESTINATION_CHANNEL)
@@ -429,100 +630,45 @@ async def post_config_and_proxies_to_channel(client, all_configs, all_proxies, a
         print(f"❌ Failed to resolve destination channel: {str(e)}")
         return
 
-    channel_configs = {"vless": [], "vmess": [], "shadowsocks": [], "trojan": []}
-    channel_proxies = []
-    try:
-        temp_configs, _, temp_proxies, _, _ = await fetch_configs_and_proxies_from_channel(client, best_channel)
-        for protocol in channel_configs:
-            channel_configs[protocol].extend(temp_configs[protocol])
-        channel_proxies.extend(temp_proxies)
-    except Exception as e:
-        logger.error(f"Failed to fetch configs/proxies from best channel {best_channel}: {str(e)}")
-        print(f"❌ Failed to fetch from {best_channel}: {str(e)}")
-        return
+    for i, payload in enumerate(selected_payloads, start=1):
+        source_channel = payload["channel"]
+        config_item = payload["config_item"]
+        npvt_item = payload["npvt_item"]
 
-    all_channel_configs = []
-    config_types = []
-    for protocol in channel_configs:
-        for config in channel_configs[protocol]:
-            all_channel_configs.append(config)
-            config_types.append(protocol.capitalize())
+        config_type = config_item["protocol"]
+        selected_config = config_item["config"]
+        config_source = config_item["source"]
+        npvt_file = npvt_item["file_path"]
+        npvt_source = npvt_item["source"]
 
-    if not all_channel_configs:
-        logger.warning(f"No configs found from the best channel {best_channel} to post.")
-        print(f"⚠️  No configs from {best_channel}")
-        return
+        proxies_text = format_proxies_for_caption(selected_proxy_items, max_count=8)
+        caption = build_npvt_caption(
+            proxies_text,
+            i,
+            POST_COUNT,
+            config_source,
+            npvt_source,
+            proxy_sources,
+            config_type,
+            selected_config
+        )
 
-    # index = random.randint(0, len(all_channel_configs) - 1)
-    # selected_config = all_channel_configs[index]
-    # config_type = config_types[index]
+        sent_file_message = await send_file_to_destination(
+            client,
+            destination_entity,
+            npvt_file,
+            caption,
+            parse_mode="markdown"
+        )
 
-    # message = f"⚙️🌐 {config_type} Config\n\n```{selected_config}```"
-
-    # random.shuffle(all_proxies)
-    # fresh_proxies = all_proxies[:8] if len(all_proxies) >= 8 else all_proxies
-    # if fresh_proxies:
-    #     proxies_formatted = format_proxies_in_rows(fresh_proxies, per_row=4)
-    #     message += "\n" + proxies_formatted
-
-    # message += "\n\n🆔 @V2RayRootFree"
-
-    # success = await send_message_to_destination(client, DESTINATION_CHANNEL, message, parse_mode="markdown")
-    
-    # if success:
-    #     logger.info(f"Posted {config_type} config + proxies from {best_channel} to {DESTINATION_CHANNEL}")
-    #     print(f"📤 Posted {config_type} config from {best_channel}")
-    # else:
-    #     logger.error(f"Failed to post to {DESTINATION_CHANNEL}")
-
-    POST_COUNT = 5
-    
-    random_indices = random.sample(
-        range(len(all_channel_configs)),
-        min(POST_COUNT, len(all_channel_configs))
-    )
-
-    shuffled_npvt = list(all_npvt_files)
-    random.shuffle(shuffled_npvt)
-    
-    for i, idx in enumerate(random_indices, start=1):
-        selected_config = all_channel_configs[idx]
-        config_type = config_types[idx]
-    
-        message = f"⚙️🌐 {config_type} Config ({i}/{len(random_indices)})\n\n```{selected_config}```"
-    
-        random.shuffle(all_proxies)
-        fresh_proxies = all_proxies[:8] if len(all_proxies) >= 8 else all_proxies
-        if fresh_proxies:
-            proxies_formatted = format_proxies_in_rows(fresh_proxies, per_row=4)
-            message += "\n" + proxies_formatted
-    
-        message += "\n\n🆔 @V2RayRootFree"
-    
-        if shuffled_npvt:
-            npvt_file = shuffled_npvt[(i - 1) % len(shuffled_npvt)]
-            success = await send_file_to_destination(
-                client,
-                destination_entity,
-                npvt_file,
-                message,
-                parse_mode="markdown"
-            )
-        else:
-            success = await send_message_to_destination(
-                client,
-                destination_entity,
-                message,
-                parse_mode="markdown"
-            )
-    
+        success = bool(sent_file_message)
         if success:
-            logger.info(f"Posted {config_type} config {i}")
-            print(f"📤 Posted config {i}")
+            logger.info(f"Posted {config_type} + NPVT ({i}/{POST_COUNT})")
+            print(f"📤 Posted NPVT + config {i}/{POST_COUNT}")
         else:
-            logger.error(f"Failed to post config {i}")
-    
-        await asyncio.sleep(8)
+            logger.error(f"Failed to post NPVT + config ({i}/{POST_COUNT})")
+
+        await asyncio.sleep(4)
 
 
 async def main():
@@ -561,12 +707,16 @@ async def main():
             all_operator_configs = defaultdict(list)
             all_proxies = []
             all_npvt_files = []
+            channel_recent_configs = {}
+            channel_recent_npvt = {}
+            channel_recent_proxies = {}
             valid_channels = []
+
             for channel in TELEGRAM_CHANNELS:
                 logger.info(f"Fetching configs/proxies from {channel}...")
                 print(f"\n📡 Fetching from {channel}...")
                 try:
-                    channel_configs, channel_operator_configs, channel_proxies, channel_npvt_files, is_valid = await fetch_configs_and_proxies_from_channel(client, channel)
+                    channel_configs, channel_config_timeline, channel_operator_configs, channel_proxies, channel_npvt_files, channel_proxy_timeline, is_valid = await fetch_configs_and_proxies_from_channel(client, channel)
                     if not is_valid:
                         print(f"⚠️  [{channel}] Invalid or inaccessible")
                         invalid_channels.append(channel)
@@ -597,12 +747,17 @@ async def main():
                         "total_configs": total_configs,
                         "score": score
                     }
+
                     for protocol in all_configs:
                         all_configs[protocol].extend(channel_configs[protocol])
                     for op in channel_operator_configs:
                         all_operator_configs[op].extend(channel_operator_configs[op])
+
                     all_proxies.extend(channel_proxies)
-                    all_npvt_files.extend(channel_npvt_files)
+                    all_npvt_files.extend([item["file_path"] for item in channel_npvt_files])
+                    channel_recent_configs[channel] = channel_config_timeline
+                    channel_recent_npvt[channel] = channel_npvt_files
+                    channel_recent_proxies[channel] = channel_proxy_timeline
                 except Exception as e:
                     print(f"❌ [{channel}] Exception: {str(e)}")
                     invalid_channels.append(channel)
@@ -618,7 +773,7 @@ async def main():
                     }
                     logger.error(f"Channel {channel} is invalid: {str(e)}")
 
-            print("\n" + "="*60)
+            print("\n" + "=" * 60)
             for protocol in all_configs:
                 all_configs[protocol] = list(set(all_configs[protocol]))
                 print(f"📊 Found {len(all_configs[protocol])} unique {protocol.upper()} configs")
@@ -627,11 +782,12 @@ async def main():
                 all_operator_configs[op] = list(set(all_operator_configs[op]))
                 print(f"📊 Found {len(all_operator_configs[op])} configs for {op}")
                 logger.info(f"Found {len(all_operator_configs[op])} unique configs for operator {op}")
-            all_proxies = list(set(all_proxies))
+
+            all_proxies = list(dict.fromkeys(all_proxies))
             all_npvt_files = list(dict.fromkeys(all_npvt_files))
             print(f"📊 Found {len(all_proxies)} unique proxies")
             print(f"📊 Found {len(all_npvt_files)} downloaded NPVT files")
-            print("="*60 + "\n")
+            print("=" * 60 + "\n")
 
             for protocol in all_configs:
                 save_configs(all_configs[protocol], protocol)
@@ -639,7 +795,15 @@ async def main():
             save_proxies(all_proxies)
             save_invalid_channels(invalid_channels)
             save_channel_stats(channel_stats)
-            await post_config_and_proxies_to_channel(client, all_configs, all_proxies, all_npvt_files, channel_stats)
+
+            await post_config_and_proxies_to_channel(
+                client,
+                channel_stats,
+                valid_channels,
+                channel_recent_configs,
+                channel_recent_npvt,
+                channel_recent_proxies
+            )
             update_channels(valid_channels)
 
     except Exception as e:
@@ -649,6 +813,7 @@ async def main():
 
     logger.info("Config+proxy collection process completed")
     print("✅ Config+proxy collection process completed!")
+
 
 if __name__ == "__main__":
     asyncio.run(main())
