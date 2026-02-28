@@ -8,6 +8,7 @@ import asyncio
 from datetime import datetime, timedelta
 from telethon.sync import TelegramClient
 from telethon.tl.types import Message, MessageEntityTextUrl, MessageEntityUrl
+from telethon.tl.functions.messages import CheckChatInviteRequest, ImportChatInviteRequest
 from telethon.sessions import StringSession
 from telethon.errors import ChannelInvalidError, PeerIdInvalidError
 from collections import defaultdict
@@ -18,9 +19,10 @@ API_HASH = os.getenv("TELEGRAM_API_HASH", None)
 CHANNELS_FILE = "telegram_channels.json"
 LOG_DIR = "Logs"
 OUTPUT_DIR = "Config"
+NPVT_DIR = os.path.join(OUTPUT_DIR, "npvt")
 INVALID_CHANNELS_FILE = os.path.join(LOG_DIR, "invalid_channels.txt")
 STATS_FILE = os.path.join(LOG_DIR, "channel_stats.json")
-DESTINATION_CHANNEL = "@V2RayRootFree"
+DESTINATION_CHANNEL = "@V2RayRoot"
 CONFIG_PATTERNS = {
     "vless": r"vless://[^\s\n]+",
     "vmess": r"vmess://[^\s\n]+",
@@ -70,6 +72,10 @@ if not os.path.exists(OUTPUT_DIR):
     logger.info(f"Creating directory: {OUTPUT_DIR}")
     os.makedirs(OUTPUT_DIR)
 
+if not os.path.exists(NPVT_DIR):
+    logger.info(f"Creating directory: {NPVT_DIR}")
+    os.makedirs(NPVT_DIR)
+
 def extract_server_address(config, protocol):
     try:
         if protocol == "vmess":
@@ -113,15 +119,59 @@ def detect_operator(text):
             return op
     return None
 
+def extract_npvt_filename(message):
+    file_name = None
+    if getattr(message, "file", None):
+        file_name = getattr(message.file, "name", None)
+
+    if not file_name and getattr(message, "document", None):
+        for attr in getattr(message.document, "attributes", []):
+            if hasattr(attr, "file_name"):
+                file_name = attr.file_name
+                break
+
+    if file_name and file_name.lower().endswith(".npvt"):
+        return file_name
+    return None
+
+async def download_npvt_from_message(client, message, channel):
+    file_name = extract_npvt_filename(message)
+    if not file_name:
+        return None
+
+    safe_channel = re.sub(r"[^\\w\\-\\.]+", "_", str(channel))
+    base_name = os.path.basename(file_name)
+    output_name = f"{safe_channel}_{message.id}_{base_name}"
+    output_path = os.path.join(NPVT_DIR, output_name)
+
+    if os.path.exists(output_path):
+        logger.info(f"[{channel}] NPVT already downloaded: {output_path}")
+        return output_path
+
+    try:
+        downloaded_path = await client.download_media(message, file=output_path)
+        if downloaded_path:
+            logger.info(f"[{channel}] Downloaded NPVT file: {downloaded_path}")
+            print(f"✅ [{channel}] Downloaded NPVT: {os.path.basename(downloaded_path)}")
+            return downloaded_path
+    except Exception as e:
+        logger.error(f"[{channel}] Failed to download NPVT from message {message.id}: {str(e)}")
+
+    return None
+
 async def fetch_configs_and_proxies_from_channel(client, channel):
     configs = {"vless": [], "vmess": [], "shadowsocks": [], "trojan": []}
     operator_configs = defaultdict(list)
     proxies = []
+    npvt_files = []
     try:
-        await client.get_entity(channel)
+        channel_entity = await resolve_channel_target(client, channel)
     except (ChannelInvalidError, PeerIdInvalidError, ValueError) as e:
         logger.error(f"Channel {channel} does not exist or is inaccessible: {str(e)}")
-        return configs, operator_configs, proxies, False
+        return configs, operator_configs, proxies, npvt_files, False
+    except Exception as e:
+        logger.error(f"Channel {channel} could not be resolved: {str(e)}")
+        return configs, operator_configs, proxies, npvt_files, False
 
     try:
         message_count = 0
@@ -129,12 +179,16 @@ async def fetch_configs_and_proxies_from_channel(client, channel):
         today = datetime.now().date()
         min_proxy_date = today - timedelta(days=7)
 
-        async for message in client.iter_messages(channel, limit=500):
+        async for message in client.iter_messages(channel_entity, limit=150):
             message_count += 1
             if message.date:
                 message_date = message.date.date()
             else:
                 continue
+
+            downloaded_npvt = await download_npvt_from_message(client, message, channel)
+            if downloaded_npvt:
+                npvt_files.append(downloaded_npvt)
 
             if isinstance(message, Message) and message.message:
                 text = message.message
@@ -159,14 +213,14 @@ async def fetch_configs_and_proxies_from_channel(client, channel):
                         print(f"✅ [{channel}] Found {len(proxy_links)} proxies")
                         proxies.extend(proxy_links)
         
-        summary = f"[{channel}] ✔️ Processed {message_count} messages → Found {configs_found_count} configs + {len(proxies)} proxies"
+        summary = f"[{channel}] ✔️ Processed {message_count} messages → Found {configs_found_count} configs + {len(proxies)} proxies + {len(npvt_files)} npvt"
         logger.info(summary)
         print(summary)
-        return configs, operator_configs, proxies, True
+        return configs, operator_configs, proxies, npvt_files, True
     except Exception as e:
         logger.error(f"Failed to fetch from {channel}: {str(e)}")
         print(f"❌ [{channel}] Error: {str(e)}")
-        return configs, operator_configs, proxies, False
+        return configs, operator_configs, proxies, npvt_files, False
 
 def save_configs(configs, protocol):
     output_file = os.path.join(OUTPUT_DIR, f"{protocol}.txt")
@@ -233,26 +287,96 @@ def format_proxies_in_rows(proxies, per_row=4):
     return "\n".join(lines)
 
 def parse_channel_identifier(channel_str):
+    if not isinstance(channel_str, str):
+        return channel_str
+
     channel_str = channel_str.strip()
+
+    for prefix in ("https://t.me/", "http://t.me/", "t.me/"):
+        if channel_str.startswith(prefix):
+            channel_str = channel_str[len(prefix):]
+            break
+
+    if "/" in channel_str and not channel_str.startswith(("c/", "joinchat/")):
+        channel_str = channel_str.split("/", 1)[0]
+
+    if channel_str.startswith("+") or channel_str.startswith("joinchat/"):
+        return channel_str
     
     if channel_str.startswith('-100'):
         return int(channel_str)
     
-    if channel_str.startswith('/c/'):
+    if channel_str.startswith('/c/') or channel_str.startswith('c/'):
         try:
-            channel_id = int(channel_str.replace('/c/', ''))
+            channel_id = int(channel_str.replace('/c/', '').replace('c/', ''))
             return -100 * (10**9) + channel_id
         except ValueError:
             return channel_str
     
     if channel_str.isdigit():
         return int(channel_str)
+
+    if channel_str and not channel_str.startswith('@'):
+        return f"@{channel_str}"
     
     return channel_str
 
+def extract_invite_hash(channel):
+    if not isinstance(channel, str):
+        return None
+
+    value = channel.strip()
+
+    if value.startswith("https://t.me/+"):
+        return value.split("https://t.me/+", 1)[1].split("/", 1)[0]
+    if value.startswith("http://t.me/+"):
+        return value.split("http://t.me/+", 1)[1].split("/", 1)[0]
+    if value.startswith("t.me/+"):
+        return value.split("t.me/+", 1)[1].split("/", 1)[0]
+    if value.startswith("+"):
+        return value[1:].split("/", 1)[0]
+
+    if value.startswith("https://t.me/joinchat/"):
+        return value.split("https://t.me/joinchat/", 1)[1].split("/", 1)[0]
+    if value.startswith("http://t.me/joinchat/"):
+        return value.split("http://t.me/joinchat/", 1)[1].split("/", 1)[0]
+    if value.startswith("t.me/joinchat/"):
+        return value.split("t.me/joinchat/", 1)[1].split("/", 1)[0]
+    if value.startswith("joinchat/"):
+        return value.split("joinchat/", 1)[1].split("/", 1)[0]
+
+    return None
+
+async def resolve_channel_target(client, channel):
+    invite_hash = extract_invite_hash(channel)
+    if invite_hash:
+        try:
+            import_result = await client(ImportChatInviteRequest(invite_hash))
+            chats = getattr(import_result, "chats", None)
+            if chats:
+                return chats[0]
+        except Exception as e:
+            logger.info(f"Invite import skipped/failed for {channel}: {str(e)}")
+
+        try:
+            invite_info = await client(CheckChatInviteRequest(invite_hash))
+            if hasattr(invite_info, "chat") and invite_info.chat:
+                return invite_info.chat
+        except Exception as e:
+            logger.error(f"Failed to resolve private invite {channel}: {str(e)}")
+            raise
+
+        raise ValueError(f"Cannot resolve private invite link: {channel}")
+
+    parsed = parse_channel_identifier(channel)
+    return await client.get_entity(parsed)
+
 async def send_message_to_destination(client, destination, message, parse_mode="markdown"):
     try:
-        dest_identifier = parse_channel_identifier(destination)
+        if isinstance(destination, str):
+            dest_identifier = await resolve_channel_target(client, destination)
+        else:
+            dest_identifier = destination
         
         await client.send_message(dest_identifier, message, parse_mode=parse_mode)
         logger.info(f"Successfully sent message to {destination}")
@@ -263,7 +387,23 @@ async def send_message_to_destination(client, destination, message, parse_mode="
         print(f"❌ Failed to send message to {destination}: {str(e)}")
         return False
 
-async def post_config_and_proxies_to_channel(client, all_configs, all_proxies, channel_stats):
+async def send_file_to_destination(client, destination, file_path, caption, parse_mode="markdown"):
+    try:
+        if isinstance(destination, str):
+            dest_identifier = await resolve_channel_target(client, destination)
+        else:
+            dest_identifier = destination
+
+        await client.send_file(dest_identifier, file_path, caption=caption, parse_mode=parse_mode)
+        logger.info(f"Successfully sent file to {destination}: {file_path}")
+        print(f"✅ File posted to {destination}: {os.path.basename(file_path)}")
+        return True
+    except Exception as e:
+        logger.error(f"Failed to send file to {destination}: {str(e)}")
+        print(f"❌ Failed to send file to {destination}: {str(e)}")
+        return False
+
+async def post_config_and_proxies_to_channel(client, all_configs, all_proxies, all_npvt_files, channel_stats):
     if not channel_stats:
         logger.warning("No channel stats available to determine the best channel.")
         print("⚠️  No channel stats available")
@@ -282,10 +422,17 @@ async def post_config_and_proxies_to_channel(client, all_configs, all_proxies, c
         print("⚠️  No valid channel with configs found")
         return
 
+    try:
+        destination_entity = await resolve_channel_target(client, DESTINATION_CHANNEL)
+    except Exception as e:
+        logger.error(f"Failed to resolve destination channel {DESTINATION_CHANNEL}: {str(e)}")
+        print(f"❌ Failed to resolve destination channel: {str(e)}")
+        return
+
     channel_configs = {"vless": [], "vmess": [], "shadowsocks": [], "trojan": []}
     channel_proxies = []
     try:
-        temp_configs, _, temp_proxies, _ = await fetch_configs_and_proxies_from_channel(client, best_channel)
+        temp_configs, _, temp_proxies, _, _ = await fetch_configs_and_proxies_from_channel(client, best_channel)
         for protocol in channel_configs:
             channel_configs[protocol].extend(temp_configs[protocol])
         channel_proxies.extend(temp_proxies)
@@ -334,6 +481,9 @@ async def post_config_and_proxies_to_channel(client, all_configs, all_proxies, c
         range(len(all_channel_configs)),
         min(POST_COUNT, len(all_channel_configs))
     )
+
+    shuffled_npvt = list(all_npvt_files)
+    random.shuffle(shuffled_npvt)
     
     for i, idx in enumerate(random_indices, start=1):
         selected_config = all_channel_configs[idx]
@@ -349,12 +499,22 @@ async def post_config_and_proxies_to_channel(client, all_configs, all_proxies, c
     
         message += "\n\n🆔 @V2RayRootFree"
     
-        success = await send_message_to_destination(
-            client,
-            DESTINATION_CHANNEL,
-            message,
-            parse_mode="markdown"
-        )
+        if shuffled_npvt:
+            npvt_file = shuffled_npvt[(i - 1) % len(shuffled_npvt)]
+            success = await send_file_to_destination(
+                client,
+                destination_entity,
+                npvt_file,
+                message,
+                parse_mode="markdown"
+            )
+        else:
+            success = await send_message_to_destination(
+                client,
+                destination_entity,
+                message,
+                parse_mode="markdown"
+            )
     
         if success:
             logger.info(f"Posted {config_type} config {i}")
@@ -400,12 +560,13 @@ async def main():
             all_configs = {"vless": [], "vmess": [], "shadowsocks": [], "trojan": []}
             all_operator_configs = defaultdict(list)
             all_proxies = []
+            all_npvt_files = []
             valid_channels = []
             for channel in TELEGRAM_CHANNELS:
                 logger.info(f"Fetching configs/proxies from {channel}...")
                 print(f"\n📡 Fetching from {channel}...")
                 try:
-                    channel_configs, channel_operator_configs, channel_proxies, is_valid = await fetch_configs_and_proxies_from_channel(client, channel)
+                    channel_configs, channel_operator_configs, channel_proxies, channel_npvt_files, is_valid = await fetch_configs_and_proxies_from_channel(client, channel)
                     if not is_valid:
                         print(f"⚠️  [{channel}] Invalid or inaccessible")
                         invalid_channels.append(channel)
@@ -425,7 +586,7 @@ async def main():
                     total_configs = sum(len(configs) for configs in channel_configs.values())
                     proxy_count = len(channel_proxies)
                     score = total_configs + proxy_count
-                    print(f"   └─ vless: {len(channel_configs['vless'])} | vmess: {len(channel_configs['vmess'])} | ss: {len(channel_configs['shadowsocks'])} | trojan: {len(channel_configs['trojan'])} | proxies: {proxy_count}")
+                    print(f"   └─ vless: {len(channel_configs['vless'])} | vmess: {len(channel_configs['vmess'])} | ss: {len(channel_configs['shadowsocks'])} | trojan: {len(channel_configs['trojan'])} | proxies: {proxy_count} | npvt: {len(channel_npvt_files)}")
 
                     channel_stats[channel] = {
                         "vless_count": len(channel_configs["vless"]),
@@ -441,6 +602,7 @@ async def main():
                     for op in channel_operator_configs:
                         all_operator_configs[op].extend(channel_operator_configs[op])
                     all_proxies.extend(channel_proxies)
+                    all_npvt_files.extend(channel_npvt_files)
                 except Exception as e:
                     print(f"❌ [{channel}] Exception: {str(e)}")
                     invalid_channels.append(channel)
@@ -466,7 +628,9 @@ async def main():
                 print(f"📊 Found {len(all_operator_configs[op])} configs for {op}")
                 logger.info(f"Found {len(all_operator_configs[op])} unique configs for operator {op}")
             all_proxies = list(set(all_proxies))
+            all_npvt_files = list(dict.fromkeys(all_npvt_files))
             print(f"📊 Found {len(all_proxies)} unique proxies")
+            print(f"📊 Found {len(all_npvt_files)} downloaded NPVT files")
             print("="*60 + "\n")
 
             for protocol in all_configs:
@@ -475,7 +639,7 @@ async def main():
             save_proxies(all_proxies)
             save_invalid_channels(invalid_channels)
             save_channel_stats(channel_stats)
-            await post_config_and_proxies_to_channel(client, all_configs, all_proxies, channel_stats)
+            await post_config_and_proxies_to_channel(client, all_configs, all_proxies, all_npvt_files, channel_stats)
             update_channels(valid_channels)
 
     except Exception as e:
