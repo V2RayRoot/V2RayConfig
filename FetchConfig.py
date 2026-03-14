@@ -341,15 +341,17 @@ def format_channel_source(channel):
 
 def build_npvt_caption(proxies_text, index, total, config_source, npvt_source, proxy_sources, config_type, config_value):
     sources_text = build_sources_text(config_source, npvt_source, proxy_sources)
-    return (
+    
+    caption = (
         f"🧩 **NPVT + Config Pack** ({index}/{total})\n\n"
         f"⚙️ **Random {config_type} Config**\n"
         f"```{config_value}```\n\n"
         f"🔗 **Latest 8 Proxies**\n{proxies_text}\n\n"
         f"📡 **Source Channels**\n{sources_text}\n\n"
-        f"🆔 @V2RayRootFree"
+        f"🆔 @V2RayRootFree\n\n"
+        f"**[Donate ❤️](https://t.me/isdjincfbot?start=_tgr_oGIFRgc2ZjA0)**"
     )
-
+    return caption
 def select_post_payloads(last_channels, channel_recent_configs, channel_recent_npvt, best_channel, required_count):
     selected = []
     used_config_idx = defaultdict(int)
