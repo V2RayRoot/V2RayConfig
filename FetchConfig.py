@@ -349,9 +349,11 @@ def build_npvt_caption(proxies_text, index, total, config_source, npvt_source, p
         f"🔗 **Latest 8 Proxies**\n{proxies_text}\n\n"
         f"📡 **Source Channels**\n{sources_text}\n\n"
         f"🆔 @V2RayRootFree\n\n"
-        f"**[Donate ❤️](https://t.me/isdjincfbot?start=_tgr_oGIFRgc2ZjA0)**"
+        "────────────────────\n"
+        f"**[Support ☕](https://t.me/isdjincfbot?start=_tgr_oGIFRgc2ZjA0)**"
     )
     return caption
+    
 def select_post_payloads(last_channels, channel_recent_configs, channel_recent_npvt, best_channel, required_count):
     selected = []
     used_config_idx = defaultdict(int)
