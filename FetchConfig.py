@@ -122,16 +122,18 @@ def detect_operator(text):
 def extract_npvt_password(text):
     if not text:
         return None
+
     patterns = [
-        r"(?:رمز\s*عبور|رمز|پسورد|password|pass)\s*[:\-=؟]?\s*[`'\"]?([^\s\n`'\"]+)[`'\"]?",
-        r"\b(?:pass(?:word)?)\s*[:=]\s*(\S+)",
+        r"(?:رمز\s*عبور|رمز|پسورد|password|pass)\s*[:=\-]\s*[`'\"]?([^\s\n`'\"]+)[`'\"]?",
+        r"(?:رمز\s*عبور|رمز|پسورد|password|pass)\s*\n+\s*([^\s\n`'\"]+)"
     ]
+
     for pattern in patterns:
         match = re.search(pattern, text, re.IGNORECASE)
         if match:
             return match.group(1).strip()
-    return None
 
+    return None
 def extract_npvt_filename(message):
     file_name = None
     if getattr(message, "file", None):
