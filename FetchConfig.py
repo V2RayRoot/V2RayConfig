@@ -119,6 +119,19 @@ def detect_operator(text):
             return op
     return None
 
+def extract_npvt_password(text):
+    if not text:
+        return None
+    patterns = [
+        r"(?:رمز\s*عبور|رمز|پسورد|password|pass)\s*[:\-=؟]?\s*[`'\"]?([^\s\n`'\"]+)[`'\"]?",
+        r"\b(?:pass(?:word)?)\s*[:=]\s*(\S+)",
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, text, re.IGNORECASE)
+        if match:
+            return match.group(1).strip()
+    return None
+
 def extract_npvt_filename(message):
     file_name = None
     if getattr(message, "file", None):
@@ -139,21 +152,24 @@ async def download_npvt_from_message(client, message, channel):
     if not file_name:
         return None
 
-    safe_channel = re.sub(r"[^\\w\\-\\.]+", "_", str(channel))
+    password = extract_npvt_password(message.message or "")
+
+    safe_channel = re.sub(r"[^\w\-\.]+", "_", str(channel))
     base_name = os.path.basename(file_name)
     output_name = f"{safe_channel}_{message.id}_{base_name}"
     output_path = os.path.join(NPVT_DIR, output_name)
 
     if os.path.exists(output_path):
         logger.info(f"[{channel}] NPVT already downloaded: {output_path}")
-        return output_path
+        return {"file_path": output_path, "password": password}
 
     try:
         downloaded_path = await client.download_media(message, file=output_path)
         if downloaded_path:
-            logger.info(f"[{channel}] Downloaded NPVT file: {downloaded_path}")
-            print(f"✅ [{channel}] Downloaded NPVT: {os.path.basename(downloaded_path)}")
-            return downloaded_path
+            logger.info(f"[{channel}] Downloaded NPVT: {downloaded_path} | password: {password}")
+            print(f"✅ [{channel}] Downloaded NPVT: {os.path.basename(downloaded_path)}" +
+                  (f" | 🔑 Pass: {password}" if password else ""))
+            return {"file_path": downloaded_path, "password": password}
     except Exception as e:
         logger.error(f"[{channel}] Failed to download NPVT from message {message.id}: {str(e)}")
 
@@ -191,7 +207,8 @@ async def fetch_configs_and_proxies_from_channel(client, channel):
             downloaded_npvt = await download_npvt_from_message(client, message, channel)
             if downloaded_npvt:
                 npvt_files.append({
-                    "file_path": downloaded_npvt,
+                    "file_path": downloaded_npvt["file_path"],
+                    "password": downloaded_npvt["password"],
                     "source": str(channel)
                 })
 
@@ -228,7 +245,7 @@ async def fetch_configs_and_proxies_from_channel(client, channel):
                                 "proxy": proxy,
                                 "source": str(channel)
                             })
-        
+
         summary = f"[{channel}] ✔️ Processed {message_count} messages → Found {configs_found_count} configs + {len(proxies)} proxies + {len(npvt_files)} npvt"
         logger.info(summary)
         print(summary)
@@ -339,20 +356,21 @@ def format_channel_source(channel):
         return f"https://{value}"
     return value
 
-def build_npvt_caption(proxies_text, index, total, config_source, npvt_source, proxy_sources, config_type, config_value):
+def build_npvt_caption(proxies_text, index, total, config_source, npvt_source, proxy_sources, config_type, config_value, npvt_password=None):
     sources_text = build_sources_text(config_source, npvt_source, proxy_sources)
-    
+    password_line = f"\n🔑 **NPVT Password:** `{npvt_password}`\n" if npvt_password else "\n🔑 **NPVT Password:** None / Haven't\n"
     caption = (
         f"🧩 **NPVT + Config Pack** ({index}/{total})\n\n"
         f"⚙️ **Random {config_type} Config**\n"
-        f"```{config_value}```\n\n"
+        f"```{config_value}```\n"
+        f"{password_line}\n"
         f"🔗 **Latest 8 Proxies**\n{proxies_text}\n\n"
         f"📡 **Source Channels**\n{sources_text}\n\n"
         f"🆔 @V2RayRootFree\n\n"
         f"**[Support ☕](https://t.me/isdjincfbot?start=_tgr_oGIFRgc2ZjA0)**"
     )
     return caption
-    
+
 def select_post_payloads(last_channels, channel_recent_configs, channel_recent_npvt, best_channel, required_count):
     selected = []
     used_config_idx = defaultdict(int)
@@ -485,23 +503,23 @@ def parse_channel_identifier(channel_str):
 
     if channel_str.startswith("+") or channel_str.startswith("joinchat/"):
         return channel_str
-    
+
     if channel_str.startswith('-100'):
         return int(channel_str)
-    
+
     if channel_str.startswith('/c/') or channel_str.startswith('c/'):
         try:
             channel_id = int(channel_str.replace('/c/', '').replace('c/', ''))
             return -100 * (10**9) + channel_id
         except ValueError:
             return channel_str
-    
+
     if channel_str.isdigit():
         return int(channel_str)
 
     if channel_str and not channel_str.startswith('@'):
         return f"@{channel_str}"
-    
+
     return channel_str
 
 def extract_invite_hash(channel):
@@ -560,7 +578,7 @@ async def send_message_to_destination(client, destination, message, parse_mode="
             dest_identifier = await resolve_channel_target(client, destination)
         else:
             dest_identifier = destination
-        
+
         await client.send_message(dest_identifier, message, parse_mode=parse_mode, reply_to=reply_to)
         logger.info(f"Successfully sent message to {destination}")
         print(f"✅ Message posted to {destination}")
@@ -643,6 +661,7 @@ async def post_config_and_proxies_to_channel(client, channel_stats, valid_channe
         config_source = config_item["source"]
         npvt_file = npvt_item["file_path"]
         npvt_source = npvt_item["source"]
+        npvt_password = npvt_item.get("password", None)
 
         proxies_text = format_proxies_for_caption(selected_proxy_items, max_count=8)
         caption = build_npvt_caption(
@@ -653,7 +672,8 @@ async def post_config_and_proxies_to_channel(client, channel_stats, valid_channe
             npvt_source,
             proxy_sources,
             config_type,
-            selected_config
+            selected_config,
+            npvt_password
         )
 
         sent_file_message = await send_file_to_destination(
