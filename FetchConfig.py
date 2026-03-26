@@ -131,8 +131,11 @@ def extract_npvt_password(text):
     for pattern in patterns:
         match = re.search(pattern, text, re.IGNORECASE)
         if match:
-            return match.group(1).strip()
+            candidate = match.group(1).strip()
+            if re.fullmatch(r'[a-zA-Z0-9!@#$%^&*_\-+=.]+', candidate):
+                return candidate
 
+    return None
     return None
 def extract_npvt_filename(message):
     file_name = None
@@ -147,34 +150,6 @@ def extract_npvt_filename(message):
 
     if file_name and file_name.lower().endswith(".npvt"):
         return file_name
-    return None
-
-async def download_npvt_from_message(client, message, channel):
-    file_name = extract_npvt_filename(message)
-    if not file_name:
-        return None
-
-    password = extract_npvt_password(message.message or "")
-
-    safe_channel = re.sub(r"[^\w\-\.]+", "_", str(channel))
-    base_name = os.path.basename(file_name)
-    output_name = f"{safe_channel}_{message.id}_{base_name}"
-    output_path = os.path.join(NPVT_DIR, output_name)
-
-    if os.path.exists(output_path):
-        logger.info(f"[{channel}] NPVT already downloaded: {output_path}")
-        return {"file_path": output_path, "password": password}
-
-    try:
-        downloaded_path = await client.download_media(message, file=output_path)
-        if downloaded_path:
-            logger.info(f"[{channel}] Downloaded NPVT: {downloaded_path} | password: {password}")
-            print(f"✅ [{channel}] Downloaded NPVT: {os.path.basename(downloaded_path)}" +
-                  (f" | 🔑 Pass: {password}" if password else ""))
-            return {"file_path": downloaded_path, "password": password}
-    except Exception as e:
-        logger.error(f"[{channel}] Failed to download NPVT from message {message.id}: {str(e)}")
-
     return None
 
 async def fetch_configs_and_proxies_from_channel(client, channel):
@@ -197,13 +172,17 @@ async def fetch_configs_and_proxies_from_channel(client, channel):
         message_count = 0
         configs_found_count = 0
         today = datetime.now().date()
-        min_proxy_date = today - timedelta(days=7)
+        yesterday = today - timedelta(days=1)
+        min_date = yesterday
 
         async for message in client.iter_messages(channel_entity, limit=150):
             message_count += 1
             if message.date:
                 message_date = message.date.date()
             else:
+                continue
+
+            if message_date < min_date:
                 continue
 
             downloaded_npvt = await download_npvt_from_message(client, message, channel)
@@ -236,17 +215,16 @@ async def fetch_configs_and_proxies_from_channel(client, channel):
                             for config in matches:
                                 operator_configs[operator].append(config)
 
-                if message_date >= min_proxy_date:
-                    proxy_links = extract_proxies_from_message(message)
-                    if proxy_links:
-                        logger.info(f"[{channel}] Found {len(proxy_links)} proxies in message {message.id}")
-                        print(f"✅ [{channel}] Found {len(proxy_links)} proxies")
-                        proxies.extend(proxy_links)
-                        for proxy in proxy_links:
-                            proxy_timeline.append({
-                                "proxy": proxy,
-                                "source": str(channel)
-                            })
+                proxy_links = extract_proxies_from_message(message)
+                if proxy_links:
+                    logger.info(f"[{channel}] Found {len(proxy_links)} proxies in message {message.id}")
+                    print(f"✅ [{channel}] Found {len(proxy_links)} proxies")
+                    proxies.extend(proxy_links)
+                    for proxy in proxy_links:
+                        proxy_timeline.append({
+                            "proxy": proxy,
+                            "source": str(channel)
+                        })
 
         summary = f"[{channel}] ✔️ Processed {message_count} messages → Found {configs_found_count} configs + {len(proxies)} proxies + {len(npvt_files)} npvt"
         logger.info(summary)
@@ -257,6 +235,35 @@ async def fetch_configs_and_proxies_from_channel(client, channel):
         print(f"❌ [{channel}] Error: {str(e)}")
         return configs, config_timeline, operator_configs, proxies, npvt_files, proxy_timeline, False
 
+
+async def download_npvt_from_message(client, message, channel):
+    file_name = extract_npvt_filename(message)
+    if not file_name:
+        return None
+
+    password = extract_npvt_password(message.message or "")
+
+    safe_channel = re.sub(r"[^\w\-\.]+", "_", str(channel))
+    base_name = os.path.basename(file_name)
+    output_name = f"{safe_channel}_{message.id}_{base_name}"
+    output_path = os.path.join(NPVT_DIR, output_name)
+
+    if os.path.exists(output_path):
+        logger.info(f"[{channel}] NPVT already downloaded: {output_path}")
+        return {"file_path": output_path, "password": password}
+
+    try:
+        downloaded_path = await client.download_media(message, file=output_path)
+        if downloaded_path:
+            logger.info(f"[{channel}] Downloaded NPVT: {downloaded_path} | password: {password}")
+            print(f"✅ [{channel}] Downloaded NPVT: {os.path.basename(downloaded_path)}" +
+                  (f" | 🔑 Pass: {password}" if password else ""))
+            return {"file_path": downloaded_path, "password": password}
+    except Exception as e:
+        logger.error(f"[{channel}] Failed to download NPVT from message {message.id}: {str(e)}")
+
+    return None
+    
 def save_configs(configs, protocol):
     output_file = os.path.join(OUTPUT_DIR, f"{protocol}.txt")
     logger.info(f"Saving configs to {output_file}")
