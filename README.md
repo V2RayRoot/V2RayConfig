@@ -30,4 +30,4 @@ You can use this file to see which channels are providing the most configs.
 - Configurations are updated every 30 minutes.
 - The best config is posted to the Telegram channel @V2RayRootFree.
 - Some channels may be invalid or contain no configs. Check `Logs/invalid_channels.txt` for details.
-- **Know a new channel?** If you know a Telegram channel that provides V2Ray configs, please share it in the [Issues](https://github.com/USERNAME/REPOSITORY/issues) section, and we'll add it to the list!
+- **Know a new channel?** If you know a Telegram channel that provides V2Ray configs, please share it in the [Issues](https://github.com/V2RayRoot/V2RayConfig/issues) section, and we'll add it to the list!
