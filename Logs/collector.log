@@ -1,1112 +1,893 @@
-2026-04-03 07:43:22,735 - INFO - Creating directory: Config/npvt
-2026-04-03 07:43:22,735 - DEBUG - Using selector: EpollSelector
-2026-04-03 07:43:22,736 - INFO - Starting config+proxy collection process
-2026-04-03 07:43:22,736 - INFO - Loaded 13 channels from telegram_channels.json
-2026-04-03 07:43:22,736 - INFO - Connecting to 149.154.167.91:443/TcpFull...
-2026-04-03 07:43:22,736 - DEBUG - Connection attempt 1...
-2026-04-03 07:43:22,823 - DEBUG - Connection success!
-2026-04-03 07:43:22,823 - DEBUG - Starting send loop
-2026-04-03 07:43:22,823 - DEBUG - Starting receive loop
-2026-04-03 07:43:22,823 - INFO - Connection to 149.154.167.91:443/TcpFull complete!
-2026-04-03 07:43:22,823 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:22,823 - DEBUG - Assigned msg_id = 7624435404672562568 to InvokeWithLayerRequest (7fcdf54331c0)
-2026-04-03 07:43:22,823 - DEBUG - Encrypting 1 message(s) in 80 bytes for sending
-2026-04-03 07:43:22,824 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:22,824 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:22,824 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:22,911 - DEBUG - Handling bad salt for message 7624435404672562568
-2026-04-03 07:43:22,911 - DEBUG - 1 message(s) will be resent
-2026-04-03 07:43:22,912 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:22,912 - DEBUG - Assigned msg_id = 7624435405025595632 to InvokeWithLayerRequest (7fcdf54331c0)
-2026-04-03 07:43:22,912 - DEBUG - Encrypting 1 message(s) in 80 bytes for sending
-2026-04-03 07:43:22,912 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:22,912 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:22,912 - DEBUG - Assigned msg_id = 7624435405027227372 to MsgsAck (7fcdf5804fa0)
-2026-04-03 07:43:22,912 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:22,912 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:22,912 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:22,999 - DEBUG - Handling container
-2026-04-03 07:43:23,000 - DEBUG - Handling new session created
-2026-04-03 07:43:23,000 - DEBUG - Handling acknowledge for [7624435405025595632]
-2026-04-03 07:43:23,000 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:23,007 - DEBUG - Handling RPC result for message 7624435405025595632
-2026-04-03 07:43:23,008 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:23,008 - DEBUG - Assigned msg_id = 7624435405705629916 to GetUsersRequest (7fcdf5433970)
-2026-04-03 07:43:23,008 - DEBUG - Encrypting 1 message(s) in 32 bytes for sending
-2026-04-03 07:43:23,008 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:23,008 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:23,008 - DEBUG - Assigned msg_id = 7624435405706629368 to MsgsAck (7fcdf5433c10)
-2026-04-03 07:43:23,008 - DEBUG - Encrypting 1 message(s) in 60 bytes for sending
-2026-04-03 07:43:23,008 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:23,008 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:23,119 - DEBUG - Handling RPC result for message 7624435405705629916
-2026-04-03 07:43:23,119 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:23,120 - DEBUG - Assigned msg_id = 7624435406152697176 to GetStateRequest (7fcdf5433970)
-2026-04-03 07:43:23,120 - DEBUG - Encrypting 1 message(s) in 20 bytes for sending
-2026-04-03 07:43:23,120 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:23,120 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:23,120 - DEBUG - Assigned msg_id = 7624435406153677552 to MsgsAck (7fcdf5433790)
-2026-04-03 07:43:23,120 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:23,120 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:23,120 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:23,217 - DEBUG - Handling RPC result for message 7624435406152697176
-2026-04-03 07:43:23,217 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:23,217 - DEBUG - Assigned msg_id = 7624435406541517824 to GetDifferenceRequest (7fcdf5433970)
-2026-04-03 07:43:23,217 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:23,217 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:23,217 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:23,217 - DEBUG - Assigned msg_id = 7624435406542640300 to MsgsAck (7fcdf54336d0)
-2026-04-03 07:43:23,217 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:23,217 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:23,217 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:23,320 - DEBUG - Handling RPC result for message 7624435406541517824
-2026-04-03 07:43:23,320 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:23,320 - DEBUG - Assigned msg_id = 7624435406954597088 to GetUsersRequest (7fcdf5433b80)
-2026-04-03 07:43:23,320 - DEBUG - Encrypting 1 message(s) in 32 bytes for sending
-2026-04-03 07:43:23,320 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:23,320 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:23,320 - DEBUG - Assigned msg_id = 7624435406955466836 to MsgsAck (7fcdf5433400)
-2026-04-03 07:43:23,320 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:23,320 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:23,321 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:23,412 - DEBUG - Handling RPC result for message 7624435406954597088
-2026-04-03 07:43:23,412 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:23,412 - INFO - Fetching configs/proxies from @Alpha_V2ray_Iran...
-2026-04-03 07:43:23,413 - DEBUG - Assigned msg_id = 7624435407324719044 to ResolveUsernameRequest (7fcdf5433700)
-2026-04-03 07:43:23,413 - DEBUG - Encrypting 1 message(s) in 44 bytes for sending
-2026-04-03 07:43:23,413 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:23,413 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:23,413 - DEBUG - Assigned msg_id = 7624435407325693696 to MsgsAck (7fcdf5433df0)
-2026-04-03 07:43:23,413 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:23,413 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:23,413 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:23,509 - DEBUG - Handling RPC result for message 7624435407324719044
-2026-04-03 07:43:23,509 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:23,509 - DEBUG - Assigned msg_id = 7624435407711349100 to GetHistoryRequest (7fcdf5433fa0)
-2026-04-03 07:43:23,509 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
-2026-04-03 07:43:23,510 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:23,510 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:23,510 - DEBUG - Assigned msg_id = 7624435407712549776 to MsgsAck (7fcdf5433ee0)
-2026-04-03 07:43:23,510 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:23,510 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:23,510 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:23,933 - DEBUG - Handling RPC result for message 7624435407711349100
-2026-04-03 07:43:23,948 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:23,951 - INFO - Starting direct file download in chunks of 131072 at 0, stride 131072
-2026-04-03 07:43:23,951 - DEBUG - Assigned msg_id = 7624435409477594944 to GetFileRequest (7fcdf51d2680)
-2026-04-03 07:43:23,951 - DEBUG - Encrypting 1 message(s) in 92 bytes for sending
-2026-04-03 07:43:23,951 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:23,951 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:23,951 - DEBUG - Assigned msg_id = 7624435409478782268 to MsgsAck (7fcdf53c4280)
-2026-04-03 07:43:23,951 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:23,951 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:23,951 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:24,080 - DEBUG - Handling RPC result for message 7624435409477594944
-2026-04-03 07:43:24,080 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:24,080 - INFO - [@Alpha_V2ray_Iran] Downloaded NPVT: Config/npvt/_Alpha_V2ray_Iran_1009112_🇱🇦SERVER~DNS🇱🇦.npvt | password: None
-2026-04-03 07:43:24,080 - INFO - [@Alpha_V2ray_Iran] Found 2 proxies in message 1009111
-2026-04-03 07:43:24,080 - INFO - [@Alpha_V2ray_Iran] Found 2 vless configs in message 1009110
-2026-04-03 07:43:24,080 - INFO - [@Alpha_V2ray_Iran] Found 2 shadowsocks configs in message 1009110
-2026-04-03 07:43:24,081 - INFO - Starting direct file download in chunks of 131072 at 0, stride 131072
-2026-04-03 07:43:24,081 - DEBUG - Assigned msg_id = 7624435410291805480 to GetFileRequest (7fcdf53c45e0)
-2026-04-03 07:43:24,081 - DEBUG - Encrypting 1 message(s) in 92 bytes for sending
-2026-04-03 07:43:24,081 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:24,081 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:24,081 - DEBUG - Assigned msg_id = 7624435410292612288 to MsgsAck (7fcdf52f42e0)
-2026-04-03 07:43:24,081 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:24,081 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:24,081 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:24,190 - DEBUG - Handling RPC result for message 7624435410291805480
-2026-04-03 07:43:24,190 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:24,190 - INFO - [@Alpha_V2ray_Iran] Downloaded NPVT: Config/npvt/_Alpha_V2ray_Iran_1009109_@Acccrd (20GB).npvt | password: @acccrd
-2026-04-03 07:43:24,190 - INFO - Starting direct file download in chunks of 131072 at 0, stride 131072
-2026-04-03 07:43:24,190 - DEBUG - Assigned msg_id = 7624435410729504796 to GetFileRequest (7fcdf53c4640)
-2026-04-03 07:43:24,190 - DEBUG - Encrypting 1 message(s) in 92 bytes for sending
-2026-04-03 07:43:24,190 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:24,190 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:24,190 - DEBUG - Assigned msg_id = 7624435410730307792 to MsgsAck (7fcdf52f4310)
-2026-04-03 07:43:24,190 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:24,190 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:24,190 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:24,288 - DEBUG - Handling RPC result for message 7624435410729504796
-2026-04-03 07:43:24,288 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:24,288 - INFO - [@Alpha_V2ray_Iran] Downloaded NPVT: Config/npvt/_Alpha_V2ray_Iran_1009104_@wibeofme تلگرام.npvt | password: iran
-2026-04-03 07:43:24,288 - INFO - [@Alpha_V2ray_Iran] Found 4 proxies in message 1009103
-2026-04-03 07:43:24,288 - INFO - [@Alpha_V2ray_Iran] Found 6 proxies in message 1009102
-2026-04-03 07:43:24,288 - INFO - Starting direct file download in chunks of 131072 at 0, stride 131072
-2026-04-03 07:43:24,288 - DEBUG - Assigned msg_id = 7624435411122653220 to GetFileRequest (7fcdf53c4790)
-2026-04-03 07:43:24,288 - DEBUG - Encrypting 1 message(s) in 92 bytes for sending
-2026-04-03 07:43:24,289 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:24,289 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:24,289 - DEBUG - Assigned msg_id = 7624435411123450492 to MsgsAck (7fcdf53c4760)
-2026-04-03 07:43:24,289 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:24,289 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:24,289 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:24,382 - DEBUG - Handling RPC result for message 7624435411122653220
-2026-04-03 07:43:24,382 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:24,383 - INFO - [@Alpha_V2ray_Iran] Downloaded NPVT: Config/npvt/_Alpha_V2ray_Iran_1009101_@UnNurmal.npvt | password: @UnNurmal
-2026-04-03 07:43:24,383 - INFO - [@Alpha_V2ray_Iran] Found 9 vless configs in message 1009095
-2026-04-03 07:43:24,383 - INFO - [@Alpha_V2ray_Iran] Found 9 shadowsocks configs in message 1009095
-2026-04-03 07:43:24,383 - INFO - [@Alpha_V2ray_Iran] Found 4 proxies in message 1009094
-2026-04-03 07:43:24,384 - DEBUG - Assigned msg_id = 7624435411504416676 to GetHistoryRequest (7fcdf5433fa0)
-2026-04-03 07:43:24,384 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
-2026-04-03 07:43:24,384 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:24,384 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:24,384 - DEBUG - Assigned msg_id = 7624435411505464764 to MsgsAck (7fcdf52f4550)
-2026-04-03 07:43:24,384 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:24,384 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:24,384 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:24,608 - DEBUG - Handling RPC result for message 7624435411504416676
-2026-04-03 07:43:24,614 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:24,615 - INFO - [@Alpha_V2ray_Iran] ✔️ Processed 150 messages → Found 22 configs + 16 proxies + 4 npvt
-2026-04-03 07:43:24,615 - INFO - Fetching configs/proxies from @Farah_VPN...
-2026-04-03 07:43:24,615 - DEBUG - Assigned msg_id = 7624435412429667684 to ResolveUsernameRequest (7fcdf53bca90)
-2026-04-03 07:43:24,615 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:24,615 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:24,615 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:24,615 - DEBUG - Assigned msg_id = 7624435412430677624 to MsgsAck (7fcdf5804fa0)
-2026-04-03 07:43:24,615 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:24,616 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:24,616 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:24,714 - DEBUG - Handling RPC result for message 7624435412429667684
-2026-04-03 07:43:24,715 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:24,715 - DEBUG - Assigned msg_id = 7624435412828241560 to GetHistoryRequest (7fcdf530cac0)
-2026-04-03 07:43:24,715 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
-2026-04-03 07:43:24,715 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:24,715 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:24,715 - DEBUG - Assigned msg_id = 7624435412829386924 to MsgsAck (7fcdf530cb80)
-2026-04-03 07:43:24,715 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:24,715 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:24,715 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:24,863 - DEBUG - Handling RPC result for message 7624435412828241560
-2026-04-03 07:43:24,866 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:24,867 - INFO - [@Farah_VPN] Found 1 vless configs in message 124264
-2026-04-03 07:43:24,867 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124264
-2026-04-03 07:43:24,867 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124263
-2026-04-03 07:43:24,867 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124263
-2026-04-03 07:43:24,867 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124262
-2026-04-03 07:43:24,867 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124261
-2026-04-03 07:43:24,867 - INFO - [@Farah_VPN] Found 1 vless configs in message 124260
-2026-04-03 07:43:24,867 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124260
-2026-04-03 07:43:24,867 - INFO - [@Farah_VPN] Found 1 vless configs in message 124259
-2026-04-03 07:43:24,867 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124259
-2026-04-03 07:43:24,867 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124258
-2026-04-03 07:43:24,867 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124258
-2026-04-03 07:43:24,867 - INFO - [@Farah_VPN] Found 1 vless configs in message 124257
-2026-04-03 07:43:24,867 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124257
-2026-04-03 07:43:24,868 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124256
-2026-04-03 07:43:24,868 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124255
-2026-04-03 07:43:24,868 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124255
-2026-04-03 07:43:24,868 - INFO - [@Farah_VPN] Found 1 vless configs in message 124254
-2026-04-03 07:43:24,868 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124254
-2026-04-03 07:43:24,868 - INFO - [@Farah_VPN] Found 1 vless configs in message 124253
-2026-04-03 07:43:24,868 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124253
-2026-04-03 07:43:24,868 - INFO - [@Farah_VPN] Found 1 vless configs in message 124252
-2026-04-03 07:43:24,868 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124252
-2026-04-03 07:43:24,868 - INFO - [@Farah_VPN] Found 1 vless configs in message 124251
-2026-04-03 07:43:24,868 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124251
-2026-04-03 07:43:24,868 - INFO - [@Farah_VPN] Found 1 vless configs in message 124250
-2026-04-03 07:43:24,868 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124250
-2026-04-03 07:43:24,868 - INFO - [@Farah_VPN] Found 1 vless configs in message 124249
-2026-04-03 07:43:24,868 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124249
-2026-04-03 07:43:24,868 - INFO - [@Farah_VPN] Found 1 vless configs in message 124248
-2026-04-03 07:43:24,868 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124248
-2026-04-03 07:43:24,868 - INFO - [@Farah_VPN] Found 1 vless configs in message 124247
-2026-04-03 07:43:24,868 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124247
-2026-04-03 07:43:24,868 - INFO - [@Farah_VPN] Found 1 vless configs in message 124246
-2026-04-03 07:43:24,868 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124246
-2026-04-03 07:43:24,868 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124245
-2026-04-03 07:43:24,868 - INFO - [@Farah_VPN] Found 1 vless configs in message 124244
-2026-04-03 07:43:24,868 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124244
-2026-04-03 07:43:24,869 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124243
-2026-04-03 07:43:24,869 - INFO - [@Farah_VPN] Found 1 vless configs in message 124242
-2026-04-03 07:43:24,869 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124242
-2026-04-03 07:43:24,869 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124241
-2026-04-03 07:43:24,869 - INFO - [@Farah_VPN] Found 1 vless configs in message 124240
-2026-04-03 07:43:24,869 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124240
-2026-04-03 07:43:24,869 - INFO - [@Farah_VPN] Found 1 vless configs in message 124239
-2026-04-03 07:43:24,869 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124239
-2026-04-03 07:43:24,869 - INFO - [@Farah_VPN] Found 1 vless configs in message 124238
-2026-04-03 07:43:24,869 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124238
-2026-04-03 07:43:24,869 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124237
-2026-04-03 07:43:24,869 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124236
-2026-04-03 07:43:24,869 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124236
-2026-04-03 07:43:24,869 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124235
-2026-04-03 07:43:24,869 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124235
-2026-04-03 07:43:24,869 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124234
-2026-04-03 07:43:24,869 - INFO - [@Farah_VPN] Found 1 vless configs in message 124233
-2026-04-03 07:43:24,869 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124233
-2026-04-03 07:43:24,869 - INFO - [@Farah_VPN] Found 1 vless configs in message 124232
-2026-04-03 07:43:24,869 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124232
-2026-04-03 07:43:24,869 - INFO - [@Farah_VPN] Found 1 vless configs in message 124231
-2026-04-03 07:43:24,869 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124231
-2026-04-03 07:43:24,869 - INFO - [@Farah_VPN] Found 1 vless configs in message 124230
-2026-04-03 07:43:24,869 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124230
-2026-04-03 07:43:24,869 - INFO - [@Farah_VPN] Found 1 vless configs in message 124229
-2026-04-03 07:43:24,870 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124229
-2026-04-03 07:43:24,870 - INFO - [@Farah_VPN] Found 1 vless configs in message 124228
-2026-04-03 07:43:24,870 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124228
-2026-04-03 07:43:24,870 - INFO - [@Farah_VPN] Found 1 vless configs in message 124227
-2026-04-03 07:43:24,870 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124227
-2026-04-03 07:43:24,870 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124226
-2026-04-03 07:43:24,870 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124225
-2026-04-03 07:43:24,870 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124224
-2026-04-03 07:43:24,870 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124223
-2026-04-03 07:43:24,870 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124222
-2026-04-03 07:43:24,870 - INFO - [@Farah_VPN] Found 1 vless configs in message 124221
-2026-04-03 07:43:24,870 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124221
-2026-04-03 07:43:24,870 - INFO - [@Farah_VPN] Found 1 vless configs in message 124220
-2026-04-03 07:43:24,870 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124220
-2026-04-03 07:43:24,870 - INFO - [@Farah_VPN] Found 1 vless configs in message 124219
-2026-04-03 07:43:24,870 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124219
-2026-04-03 07:43:24,870 - INFO - [@Farah_VPN] Found 1 vless configs in message 124218
-2026-04-03 07:43:24,870 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124218
-2026-04-03 07:43:24,870 - INFO - [@Farah_VPN] Found 1 vless configs in message 124217
-2026-04-03 07:43:24,870 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124217
-2026-04-03 07:43:24,870 - INFO - [@Farah_VPN] Found 1 vless configs in message 124216
-2026-04-03 07:43:24,870 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124216
-2026-04-03 07:43:24,870 - INFO - [@Farah_VPN] Found 1 vless configs in message 124215
-2026-04-03 07:43:24,870 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124215
-2026-04-03 07:43:24,870 - INFO - [@Farah_VPN] Found 1 vless configs in message 124214
-2026-04-03 07:43:24,871 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124214
-2026-04-03 07:43:24,871 - INFO - [@Farah_VPN] Found 1 vless configs in message 124213
-2026-04-03 07:43:24,871 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124213
-2026-04-03 07:43:24,871 - INFO - [@Farah_VPN] Found 1 vless configs in message 124212
-2026-04-03 07:43:24,871 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124212
-2026-04-03 07:43:24,871 - INFO - [@Farah_VPN] Found 1 vless configs in message 124211
-2026-04-03 07:43:24,871 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124211
-2026-04-03 07:43:24,871 - INFO - [@Farah_VPN] Found 1 vless configs in message 124210
-2026-04-03 07:43:24,871 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124210
-2026-04-03 07:43:24,871 - INFO - [@Farah_VPN] Found 1 vless configs in message 124209
-2026-04-03 07:43:24,871 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124209
-2026-04-03 07:43:24,871 - INFO - [@Farah_VPN] Found 1 vless configs in message 124208
-2026-04-03 07:43:24,871 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124208
-2026-04-03 07:43:24,871 - INFO - [@Farah_VPN] Found 1 vless configs in message 124207
-2026-04-03 07:43:24,871 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124207
-2026-04-03 07:43:24,871 - INFO - [@Farah_VPN] Found 1 vless configs in message 124206
-2026-04-03 07:43:24,871 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124206
-2026-04-03 07:43:24,871 - INFO - [@Farah_VPN] Found 1 vless configs in message 124205
-2026-04-03 07:43:24,871 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124205
-2026-04-03 07:43:24,871 - INFO - [@Farah_VPN] Found 1 vless configs in message 124204
-2026-04-03 07:43:24,871 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124204
-2026-04-03 07:43:24,871 - INFO - [@Farah_VPN] Found 1 vless configs in message 124203
-2026-04-03 07:43:24,871 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124203
-2026-04-03 07:43:24,871 - INFO - [@Farah_VPN] Found 1 vless configs in message 124202
-2026-04-03 07:43:24,871 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124202
-2026-04-03 07:43:24,871 - INFO - [@Farah_VPN] Found 1 vless configs in message 124201
-2026-04-03 07:43:24,872 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124201
-2026-04-03 07:43:24,872 - INFO - [@Farah_VPN] Found 1 vless configs in message 124200
-2026-04-03 07:43:24,872 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124200
-2026-04-03 07:43:24,872 - INFO - [@Farah_VPN] Found 1 vless configs in message 124199
-2026-04-03 07:43:24,872 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124199
-2026-04-03 07:43:24,872 - INFO - [@Farah_VPN] Found 1 vless configs in message 124198
-2026-04-03 07:43:24,872 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124198
-2026-04-03 07:43:24,872 - INFO - [@Farah_VPN] Found 1 vless configs in message 124197
-2026-04-03 07:43:24,872 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124197
-2026-04-03 07:43:24,872 - INFO - [@Farah_VPN] Found 1 vless configs in message 124196
-2026-04-03 07:43:24,872 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124196
-2026-04-03 07:43:24,872 - INFO - [@Farah_VPN] Found 1 vless configs in message 124195
-2026-04-03 07:43:24,872 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124195
-2026-04-03 07:43:24,872 - INFO - [@Farah_VPN] Found 1 vless configs in message 124194
-2026-04-03 07:43:24,872 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124194
-2026-04-03 07:43:24,872 - INFO - [@Farah_VPN] Found 1 vless configs in message 124193
-2026-04-03 07:43:24,872 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124193
-2026-04-03 07:43:24,872 - INFO - [@Farah_VPN] Found 1 vless configs in message 124192
-2026-04-03 07:43:24,872 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124192
-2026-04-03 07:43:24,872 - INFO - [@Farah_VPN] Found 1 vless configs in message 124191
-2026-04-03 07:43:24,872 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124191
-2026-04-03 07:43:24,872 - INFO - [@Farah_VPN] Found 1 vless configs in message 124190
-2026-04-03 07:43:24,872 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124190
-2026-04-03 07:43:24,872 - INFO - [@Farah_VPN] Found 1 vless configs in message 124189
-2026-04-03 07:43:24,872 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124189
-2026-04-03 07:43:24,873 - INFO - [@Farah_VPN] Found 1 vless configs in message 124188
-2026-04-03 07:43:24,873 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124188
-2026-04-03 07:43:24,873 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124187
-2026-04-03 07:43:24,873 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124186
-2026-04-03 07:43:24,873 - INFO - [@Farah_VPN] Found 1 vless configs in message 124185
-2026-04-03 07:43:24,873 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124185
-2026-04-03 07:43:24,873 - INFO - [@Farah_VPN] Found 1 vless configs in message 124184
-2026-04-03 07:43:24,873 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124184
-2026-04-03 07:43:24,873 - INFO - [@Farah_VPN] Found 1 vless configs in message 124183
-2026-04-03 07:43:24,873 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124183
-2026-04-03 07:43:24,873 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124182
-2026-04-03 07:43:24,873 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124181
-2026-04-03 07:43:24,873 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124180
-2026-04-03 07:43:24,873 - INFO - [@Farah_VPN] Found 1 vless configs in message 124179
-2026-04-03 07:43:24,873 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124179
-2026-04-03 07:43:24,873 - INFO - [@Farah_VPN] Found 1 vless configs in message 124178
-2026-04-03 07:43:24,873 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124178
-2026-04-03 07:43:24,873 - INFO - [@Farah_VPN] Found 1 vless configs in message 124177
-2026-04-03 07:43:24,873 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124177
-2026-04-03 07:43:24,873 - INFO - [@Farah_VPN] Found 1 vless configs in message 124176
-2026-04-03 07:43:24,873 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124176
-2026-04-03 07:43:24,873 - INFO - [@Farah_VPN] Found 1 vless configs in message 124175
-2026-04-03 07:43:24,873 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124175
-2026-04-03 07:43:24,873 - INFO - [@Farah_VPN] Found 1 vless configs in message 124174
-2026-04-03 07:43:24,873 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124174
-2026-04-03 07:43:24,873 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124173
-2026-04-03 07:43:24,874 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124172
-2026-04-03 07:43:24,874 - INFO - [@Farah_VPN] Found 1 vless configs in message 124171
-2026-04-03 07:43:24,874 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124171
-2026-04-03 07:43:24,874 - INFO - [@Farah_VPN] Found 1 vless configs in message 124170
-2026-04-03 07:43:24,874 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124170
-2026-04-03 07:43:24,874 - INFO - [@Farah_VPN] Found 1 vless configs in message 124169
-2026-04-03 07:43:24,874 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124169
-2026-04-03 07:43:24,874 - INFO - [@Farah_VPN] Found 1 vless configs in message 124168
-2026-04-03 07:43:24,874 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124168
-2026-04-03 07:43:24,874 - INFO - [@Farah_VPN] Found 1 vless configs in message 124167
-2026-04-03 07:43:24,874 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124167
-2026-04-03 07:43:24,874 - INFO - [@Farah_VPN] Found 1 vless configs in message 124166
-2026-04-03 07:43:24,874 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124166
-2026-04-03 07:43:24,874 - INFO - [@Farah_VPN] Found 1 vless configs in message 124165
-2026-04-03 07:43:24,874 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124165
-2026-04-03 07:43:24,875 - DEBUG - Assigned msg_id = 7624435413467437000 to GetHistoryRequest (7fcdf530cac0)
-2026-04-03 07:43:24,875 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
-2026-04-03 07:43:24,875 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:24,875 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:24,875 - DEBUG - Assigned msg_id = 7624435413469176504 to MsgsAck (7fcdf54336d0)
-2026-04-03 07:43:24,875 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:24,875 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:24,875 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:25,005 - DEBUG - Handling RPC result for message 7624435413467437000
-2026-04-03 07:43:25,007 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:25,007 - INFO - [@Farah_VPN] Found 1 vless configs in message 124164
-2026-04-03 07:43:25,007 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124164
-2026-04-03 07:43:25,007 - INFO - [@Farah_VPN] Found 1 vless configs in message 124163
-2026-04-03 07:43:25,007 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124163
-2026-04-03 07:43:25,008 - INFO - [@Farah_VPN] Found 1 vless configs in message 124162
-2026-04-03 07:43:25,008 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124162
-2026-04-03 07:43:25,008 - INFO - [@Farah_VPN] Found 1 vless configs in message 124161
-2026-04-03 07:43:25,008 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124161
-2026-04-03 07:43:25,008 - INFO - [@Farah_VPN] Found 1 vless configs in message 124160
-2026-04-03 07:43:25,008 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124160
-2026-04-03 07:43:25,008 - INFO - [@Farah_VPN] Found 1 vless configs in message 124159
-2026-04-03 07:43:25,008 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124159
-2026-04-03 07:43:25,008 - INFO - [@Farah_VPN] Found 1 vless configs in message 124158
-2026-04-03 07:43:25,008 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124158
-2026-04-03 07:43:25,008 - INFO - [@Farah_VPN] Found 1 vless configs in message 124157
-2026-04-03 07:43:25,008 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124157
-2026-04-03 07:43:25,008 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124156
-2026-04-03 07:43:25,008 - INFO - [@Farah_VPN] Found 1 vless configs in message 124155
-2026-04-03 07:43:25,008 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124155
-2026-04-03 07:43:25,008 - INFO - [@Farah_VPN] Found 1 vless configs in message 124154
-2026-04-03 07:43:25,008 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124154
-2026-04-03 07:43:25,008 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124153
-2026-04-03 07:43:25,008 - INFO - [@Farah_VPN] Found 1 vless configs in message 124152
-2026-04-03 07:43:25,008 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124152
-2026-04-03 07:43:25,008 - INFO - [@Farah_VPN] Found 1 vless configs in message 124151
-2026-04-03 07:43:25,008 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124151
-2026-04-03 07:43:25,008 - INFO - [@Farah_VPN] Found 1 vless configs in message 124150
-2026-04-03 07:43:25,008 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124150
-2026-04-03 07:43:25,008 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124149
-2026-04-03 07:43:25,009 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124148
-2026-04-03 07:43:25,009 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124147
-2026-04-03 07:43:25,009 - INFO - [@Farah_VPN] Found 1 vless configs in message 124146
-2026-04-03 07:43:25,009 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124146
-2026-04-03 07:43:25,009 - INFO - [@Farah_VPN] Found 1 vless configs in message 124145
-2026-04-03 07:43:25,009 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124145
-2026-04-03 07:43:25,009 - INFO - [@Farah_VPN] Found 1 vless configs in message 124144
-2026-04-03 07:43:25,009 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124144
-2026-04-03 07:43:25,009 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124143
-2026-04-03 07:43:25,009 - INFO - [@Farah_VPN] Found 1 vless configs in message 124142
-2026-04-03 07:43:25,009 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124142
-2026-04-03 07:43:25,009 - INFO - [@Farah_VPN] Found 1 vless configs in message 124141
-2026-04-03 07:43:25,009 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124141
-2026-04-03 07:43:25,009 - INFO - [@Farah_VPN] Found 1 vless configs in message 124140
-2026-04-03 07:43:25,009 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124140
-2026-04-03 07:43:25,009 - INFO - [@Farah_VPN] Found 1 vless configs in message 124139
-2026-04-03 07:43:25,009 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124139
-2026-04-03 07:43:25,009 - INFO - [@Farah_VPN] Found 1 vless configs in message 124138
-2026-04-03 07:43:25,009 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124138
-2026-04-03 07:43:25,009 - INFO - [@Farah_VPN] Found 1 vless configs in message 124137
-2026-04-03 07:43:25,009 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124137
-2026-04-03 07:43:25,009 - INFO - [@Farah_VPN] Found 1 vless configs in message 124136
-2026-04-03 07:43:25,009 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124136
-2026-04-03 07:43:25,010 - INFO - [@Farah_VPN] Found 1 vless configs in message 124135
-2026-04-03 07:43:25,010 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124135
-2026-04-03 07:43:25,010 - INFO - [@Farah_VPN] Found 1 vless configs in message 124134
-2026-04-03 07:43:25,010 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124134
-2026-04-03 07:43:25,010 - INFO - [@Farah_VPN] Found 1 vless configs in message 124133
-2026-04-03 07:43:25,010 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124133
-2026-04-03 07:43:25,010 - INFO - [@Farah_VPN] Found 1 vless configs in message 124132
-2026-04-03 07:43:25,010 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124132
-2026-04-03 07:43:25,010 - INFO - [@Farah_VPN] Found 1 vless configs in message 124131
-2026-04-03 07:43:25,010 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124131
-2026-04-03 07:43:25,010 - INFO - [@Farah_VPN] Found 1 vless configs in message 124130
-2026-04-03 07:43:25,010 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124130
-2026-04-03 07:43:25,010 - INFO - [@Farah_VPN] Found 1 vless configs in message 124129
-2026-04-03 07:43:25,010 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124129
-2026-04-03 07:43:25,010 - INFO - [@Farah_VPN] Found 1 vless configs in message 124128
-2026-04-03 07:43:25,010 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124128
-2026-04-03 07:43:25,010 - INFO - [@Farah_VPN] Found 1 vless configs in message 124127
-2026-04-03 07:43:25,010 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124127
-2026-04-03 07:43:25,010 - INFO - [@Farah_VPN] Found 1 vless configs in message 124126
-2026-04-03 07:43:25,010 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124126
-2026-04-03 07:43:25,010 - INFO - [@Farah_VPN] Found 1 vless configs in message 124125
-2026-04-03 07:43:25,010 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124125
-2026-04-03 07:43:25,010 - INFO - [@Farah_VPN] Found 1 vless configs in message 124124
-2026-04-03 07:43:25,010 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124124
-2026-04-03 07:43:25,010 - INFO - [@Farah_VPN] Found 1 vless configs in message 124123
-2026-04-03 07:43:25,010 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124123
-2026-04-03 07:43:25,011 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124122
-2026-04-03 07:43:25,011 - INFO - [@Farah_VPN] Found 1 vless configs in message 124121
-2026-04-03 07:43:25,011 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124121
-2026-04-03 07:43:25,011 - INFO - [@Farah_VPN] Found 1 vless configs in message 124120
-2026-04-03 07:43:25,011 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124120
-2026-04-03 07:43:25,011 - INFO - [@Farah_VPN] Found 1 vless configs in message 124119
-2026-04-03 07:43:25,011 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124119
-2026-04-03 07:43:25,011 - INFO - [@Farah_VPN] Found 1 vless configs in message 124118
-2026-04-03 07:43:25,011 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124118
-2026-04-03 07:43:25,011 - INFO - [@Farah_VPN] Found 1 vless configs in message 124117
-2026-04-03 07:43:25,011 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124117
-2026-04-03 07:43:25,011 - INFO - [@Farah_VPN] Found 1 vless configs in message 124116
-2026-04-03 07:43:25,011 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124116
-2026-04-03 07:43:25,011 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124115
-2026-04-03 07:43:25,011 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124115
-2026-04-03 07:43:25,011 - INFO - [@Farah_VPN] ✔️ Processed 150 messages → Found 273 configs + 0 proxies + 0 npvt
-2026-04-03 07:43:25,011 - INFO - Fetching configs/proxies from @iMTProto...
-2026-04-03 07:43:25,011 - DEBUG - Assigned msg_id = 7624435414309479568 to ResolveUsernameRequest (7fcdf53bf010)
-2026-04-03 07:43:25,011 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:25,012 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:25,012 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:25,012 - DEBUG - Assigned msg_id = 7624435414310484744 to MsgsAck (7fcdf53c79d0)
-2026-04-03 07:43:25,012 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:25,012 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:25,012 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:25,109 - DEBUG - Handling RPC result for message 7624435414309479568
-2026-04-03 07:43:25,109 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:25,109 - DEBUG - Assigned msg_id = 7624435414701191760 to GetHistoryRequest (7fcdf53c5720)
-2026-04-03 07:43:25,109 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
-2026-04-03 07:43:25,109 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:25,110 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:25,110 - DEBUG - Assigned msg_id = 7624435414702330444 to MsgsAck (7fcdf53c54b0)
-2026-04-03 07:43:25,110 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:25,110 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:25,110 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:25,396 - DEBUG - Handling RPC result for message 7624435414701191760
-2026-04-03 07:43:25,405 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:25,407 - DEBUG - Assigned msg_id = 7624435415890084124 to GetHistoryRequest (7fcdf53c5720)
-2026-04-03 07:43:25,407 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
-2026-04-03 07:43:25,407 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:25,407 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:25,407 - DEBUG - Assigned msg_id = 7624435415891251420 to MsgsAck (7fcdf51d33d0)
-2026-04-03 07:43:25,407 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:25,407 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:25,407 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:25,627 - DEBUG - Handling RPC result for message 7624435415890084124
-2026-04-03 07:43:25,632 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:25,632 - INFO - [@iMTProto] ✔️ Processed 150 messages → Found 0 configs + 0 proxies + 0 npvt
-2026-04-03 07:43:25,632 - INFO - Fetching configs/proxies from @ZibaNabz...
-2026-04-03 07:43:25,633 - DEBUG - Assigned msg_id = 7624435416794921732 to ResolveUsernameRequest (7fcdf536d420)
-2026-04-03 07:43:25,633 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:25,633 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:25,633 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:25,633 - DEBUG - Assigned msg_id = 7624435416796071864 to MsgsAck (7fcdf5433ee0)
-2026-04-03 07:43:25,633 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:25,633 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:25,633 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:25,731 - DEBUG - Handling RPC result for message 7624435416794921732
-2026-04-03 07:43:25,731 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:25,732 - DEBUG - Assigned msg_id = 7624435417190517280 to GetHistoryRequest (7fcdf5433700)
-2026-04-03 07:43:25,732 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
-2026-04-03 07:43:25,732 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:25,732 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:25,732 - DEBUG - Assigned msg_id = 7624435417191501472 to MsgsAck (7fcdf5433400)
-2026-04-03 07:43:25,732 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:25,732 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:25,732 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:25,992 - DEBUG - Handling RPC result for message 7624435417190517280
-2026-04-03 07:43:25,999 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:26,001 - INFO - [@ZibaNabz] Found 1 proxies in message 23394
-2026-04-03 07:43:26,001 - DEBUG - Assigned msg_id = 7624435418563271024 to GetHistoryRequest (7fcdf5433700)
-2026-04-03 07:43:26,001 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
-2026-04-03 07:43:26,001 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:26,001 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:26,001 - DEBUG - Assigned msg_id = 7624435418564397312 to MsgsAck (7fcdf53be380)
-2026-04-03 07:43:26,001 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:26,002 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:26,002 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:26,181 - DEBUG - Handling RPC result for message 7624435418563271024
-2026-04-03 07:43:26,185 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:26,185 - INFO - [@ZibaNabz] ✔️ Processed 150 messages → Found 0 configs + 1 proxies + 0 npvt
-2026-04-03 07:43:26,185 - INFO - Fetching configs/proxies from @vaddress...
-2026-04-03 07:43:26,186 - DEBUG - Assigned msg_id = 7624435419301479792 to ResolveUsernameRequest (7fcdf51d3af0)
-2026-04-03 07:43:26,186 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:26,186 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:26,186 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:26,186 - DEBUG - Assigned msg_id = 7624435419302478292 to MsgsAck (7fcdf530e0e0)
-2026-04-03 07:43:26,186 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:26,186 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:26,186 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:26,303 - DEBUG - Handling RPC result for message 7624435419301479792
-2026-04-03 07:43:26,303 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:26,303 - DEBUG - Assigned msg_id = 7624435419772034144 to GetHistoryRequest (7fcdf530e890)
-2026-04-03 07:43:26,303 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
-2026-04-03 07:43:26,303 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:26,304 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:26,304 - DEBUG - Assigned msg_id = 7624435419773235776 to MsgsAck (7fcdf530d360)
-2026-04-03 07:43:26,304 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:26,304 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:26,304 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:26,491 - DEBUG - Handling RPC result for message 7624435419772034144
-2026-04-03 07:43:26,498 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:26,499 - DEBUG - Assigned msg_id = 7624435420555481412 to GetHistoryRequest (7fcdf530e890)
-2026-04-03 07:43:26,499 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
-2026-04-03 07:43:26,499 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:26,499 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:26,499 - DEBUG - Assigned msg_id = 7624435420556509472 to MsgsAck (7fcdf5804fa0)
-2026-04-03 07:43:26,499 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:26,500 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:26,500 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:26,646 - DEBUG - Handling RPC result for message 7624435420555481412
-2026-04-03 07:43:26,650 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:26,651 - INFO - [@vaddress] ✔️ Processed 150 messages → Found 0 configs + 0 proxies + 0 npvt
-2026-04-03 07:43:26,651 - INFO - Fetching configs/proxies from @Letiranbreath...
-2026-04-03 07:43:26,651 - DEBUG - Assigned msg_id = 7624435421162546612 to ResolveUsernameRequest (7fcdf536ef50)
-2026-04-03 07:43:26,651 - DEBUG - Encrypting 1 message(s) in 40 bytes for sending
-2026-04-03 07:43:26,651 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:26,651 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:26,651 - DEBUG - Assigned msg_id = 7624435421163719632 to MsgsAck (7fcdf5324040)
-2026-04-03 07:43:26,651 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:26,651 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:26,651 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:26,747 - DEBUG - Handling RPC result for message 7624435421162546612
-2026-04-03 07:43:26,747 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:26,748 - DEBUG - Assigned msg_id = 7624435421549439884 to GetHistoryRequest (7fcdf53250f0)
-2026-04-03 07:43:26,748 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
-2026-04-03 07:43:26,748 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:26,748 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:26,748 - DEBUG - Assigned msg_id = 7624435421550662496 to MsgsAck (7fcdf5324970)
-2026-04-03 07:43:26,748 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:26,748 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:26,748 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:26,895 - DEBUG - Handling RPC result for message 7624435421549439884
-2026-04-03 07:43:26,897 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:26,897 - DEBUG - Assigned msg_id = 7624435422148500896 to GetHistoryRequest (7fcdf53250f0)
-2026-04-03 07:43:26,897 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
-2026-04-03 07:43:26,898 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:26,898 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:26,898 - DEBUG - Assigned msg_id = 7624435422149355388 to MsgsAck (7fcdf53244c0)
-2026-04-03 07:43:26,898 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:26,898 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:26,898 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:26,997 - DEBUG - Handling RPC result for message 7624435422148500896
-2026-04-03 07:43:26,997 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:26,997 - INFO - [@Letiranbreath] ✔️ Processed 31 messages → Found 0 configs + 0 proxies + 0 npvt
-2026-04-03 07:43:26,997 - INFO - Fetching configs/proxies from @mitivpn...
-2026-04-03 07:43:26,997 - DEBUG - Assigned msg_id = 7624435422547021368 to ResolveUsernameRequest (7fcdf5325540)
-2026-04-03 07:43:26,997 - DEBUG - Encrypting 1 message(s) in 32 bytes for sending
-2026-04-03 07:43:26,997 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:26,997 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:26,997 - DEBUG - Assigned msg_id = 7624435422547845340 to MsgsAck (7fcdf5324fd0)
-2026-04-03 07:43:26,997 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:26,997 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:26,997 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:27,096 - DEBUG - Handling RPC result for message 7624435422547021368
-2026-04-03 07:43:27,096 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:27,096 - DEBUG - Assigned msg_id = 7624435423239366632 to GetHistoryRequest (7fcdf5324520)
-2026-04-03 07:43:27,096 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
-2026-04-03 07:43:27,096 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:27,097 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:27,097 - DEBUG - Assigned msg_id = 7624435423240231612 to MsgsAck (7fcdf5324670)
-2026-04-03 07:43:27,097 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:27,097 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:27,097 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:27,361 - DEBUG - Handling RPC result for message 7624435423239366632
-2026-04-03 07:43:27,374 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:27,376 - DEBUG - Assigned msg_id = 7624435424356293776 to GetHistoryRequest (7fcdf5324520)
-2026-04-03 07:43:27,376 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
-2026-04-03 07:43:27,376 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:27,376 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:27,376 - DEBUG - Assigned msg_id = 7624435424357383828 to MsgsAck (7fcdf530b970)
-2026-04-03 07:43:27,376 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:27,376 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:27,376 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:27,723 - DEBUG - Handling RPC result for message 7624435424356293776
-2026-04-03 07:43:27,730 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:27,731 - DEBUG - Assigned msg_id = 7624435425776682000 to GetHistoryRequest (7fcdf5324520)
-2026-04-03 07:43:27,731 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
-2026-04-03 07:43:27,731 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:27,731 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:27,731 - DEBUG - Assigned msg_id = 7624435425777873140 to MsgsAck (7fcdf53bcc10)
-2026-04-03 07:43:27,731 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:27,731 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:27,731 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:27,827 - DEBUG - Handling RPC result for message 7624435425776682000
-2026-04-03 07:43:27,828 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:27,828 - INFO - [@mitivpn] ✔️ Processed 130 messages → Found 0 configs + 0 proxies + 0 npvt
-2026-04-03 07:43:27,828 - INFO - Fetching configs/proxies from @xgvpn...
-2026-04-03 07:43:27,828 - DEBUG - Assigned msg_id = 7624435426165450196 to ResolveUsernameRequest (7fcdf53bd2a0)
-2026-04-03 07:43:27,828 - DEBUG - Encrypting 1 message(s) in 32 bytes for sending
-2026-04-03 07:43:27,828 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:27,828 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:27,828 - DEBUG - Assigned msg_id = 7624435426166628936 to MsgsAck (7fcdf53bd660)
-2026-04-03 07:43:27,828 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:27,828 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:27,828 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:27,923 - DEBUG - Handling RPC result for message 7624435426165450196
-2026-04-03 07:43:27,923 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:27,924 - DEBUG - Assigned msg_id = 7624435426548010924 to GetHistoryRequest (7fcdf53bd8a0)
-2026-04-03 07:43:27,924 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
-2026-04-03 07:43:27,924 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:27,924 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:27,924 - DEBUG - Assigned msg_id = 7624435426549059012 to MsgsAck (7fcdf53be3b0)
-2026-04-03 07:43:27,924 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:27,924 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:27,924 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:28,198 - DEBUG - Handling RPC result for message 7624435426548010924
-2026-04-03 07:43:28,202 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:28,204 - DEBUG - Assigned msg_id = 7624435427963766796 to GetHistoryRequest (7fcdf53bd8a0)
-2026-04-03 07:43:28,204 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
-2026-04-03 07:43:28,204 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:28,204 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:28,204 - DEBUG - Assigned msg_id = 7624435427964953168 to MsgsAck (7fcdf51d0700)
-2026-04-03 07:43:28,204 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:28,204 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:28,204 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:28,415 - DEBUG - Handling RPC result for message 7624435427963766796
-2026-04-03 07:43:28,418 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:28,418 - INFO - [@xgvpn] ✔️ Processed 150 messages → Found 0 configs + 0 proxies + 0 npvt
-2026-04-03 07:43:28,418 - INFO - Fetching configs/proxies from @v2ryng_proxy...
-2026-04-03 07:43:28,419 - DEBUG - Assigned msg_id = 7624435428822989208 to ResolveUsernameRequest (7fcdf536c4c0)
-2026-04-03 07:43:28,419 - DEBUG - Encrypting 1 message(s) in 40 bytes for sending
-2026-04-03 07:43:28,419 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:28,419 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:28,419 - DEBUG - Assigned msg_id = 7624435428824003916 to MsgsAck (7fcdf52f5240)
-2026-04-03 07:43:28,419 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:28,419 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:28,419 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:28,514 - DEBUG - Handling RPC result for message 7624435428822989208
-2026-04-03 07:43:28,514 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:28,515 - DEBUG - Assigned msg_id = 7624435429207578404 to GetHistoryRequest (7fcdf52f4910)
-2026-04-03 07:43:28,515 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
-2026-04-03 07:43:28,515 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:28,515 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:28,515 - DEBUG - Assigned msg_id = 7624435429208870632 to MsgsAck (7fcdf52f62c0)
-2026-04-03 07:43:28,515 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:28,515 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:28,515 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:28,830 - DEBUG - Handling RPC result for message 7624435429207578404
-2026-04-03 07:43:28,838 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:28,840 - INFO - Starting direct file download in chunks of 131072 at 0, stride 131072
-2026-04-03 07:43:28,840 - DEBUG - Assigned msg_id = 7624435430507713060 to GetFileRequest (7fcdf531bf40)
-2026-04-03 07:43:28,840 - DEBUG - Encrypting 1 message(s) in 96 bytes for sending
-2026-04-03 07:43:28,840 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:28,840 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:28,840 - DEBUG - Assigned msg_id = 7624435430508922320 to MsgsAck (7fcdf530fa90)
-2026-04-03 07:43:28,840 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:28,840 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:28,840 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:28,944 - DEBUG - Handling RPC result for message 7624435430507713060
-2026-04-03 07:43:28,944 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:28,944 - INFO - [@v2ryng_proxy] Downloaded NPVT: Config/npvt/_v2ryng_proxy_430_saministamm.npvt | password: None
-2026-04-03 07:43:28,944 - INFO - [@v2ryng_proxy] Found 2 proxies in message 429
-2026-04-03 07:43:28,945 - DEBUG - Assigned msg_id = 7624435430926991208 to GetHistoryRequest (7fcdf52f4910)
-2026-04-03 07:43:28,945 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
-2026-04-03 07:43:28,945 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:28,945 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:28,945 - DEBUG - Assigned msg_id = 7624435430927925808 to MsgsAck (7fcdf51d0730)
-2026-04-03 07:43:28,945 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:28,945 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:28,945 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:29,160 - DEBUG - Handling RPC result for message 7624435430926991208
-2026-04-03 07:43:29,163 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:29,163 - INFO - [@v2ryng_proxy] ✔️ Processed 150 messages → Found 0 configs + 2 proxies + 1 npvt
-2026-04-03 07:43:29,164 - INFO - Fetching configs/proxies from @DSR_TM...
-2026-04-03 07:43:29,164 - DEBUG - Assigned msg_id = 7624435432099005088 to ResolveUsernameRequest (7fcdf51d0490)
-2026-04-03 07:43:29,164 - DEBUG - Encrypting 1 message(s) in 32 bytes for sending
-2026-04-03 07:43:29,164 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:29,164 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:29,164 - DEBUG - Assigned msg_id = 7624435432100280148 to MsgsAck (7fcdf536e4a0)
-2026-04-03 07:43:29,164 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:29,164 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:29,164 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:29,266 - DEBUG - Handling RPC result for message 7624435432099005088
-2026-04-03 07:43:29,266 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:29,267 - DEBUG - Assigned msg_id = 7624435432510052068 to GetHistoryRequest (7fcdf536e110)
-2026-04-03 07:43:29,267 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
-2026-04-03 07:43:29,267 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:29,267 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:29,267 - DEBUG - Assigned msg_id = 7624435432511178360 to MsgsAck (7fcdf536c370)
-2026-04-03 07:43:29,267 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:29,267 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:29,267 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:29,489 - DEBUG - Handling RPC result for message 7624435432510052068
-2026-04-03 07:43:29,494 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:29,495 - DEBUG - Assigned msg_id = 7624435433423714980 to GetHistoryRequest (7fcdf536e110)
-2026-04-03 07:43:29,495 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
-2026-04-03 07:43:29,495 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:29,495 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:29,495 - DEBUG - Assigned msg_id = 7624435433424784048 to MsgsAck (7fcdf5356ec0)
-2026-04-03 07:43:29,495 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:29,495 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:29,495 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:29,741 - DEBUG - Handling RPC result for message 7624435433423714980
-2026-04-03 07:43:29,744 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:29,744 - INFO - [@DSR_TM] ✔️ Processed 150 messages → Found 0 configs + 0 proxies + 0 npvt
-2026-04-03 07:43:29,744 - INFO - Fetching configs/proxies from @chat_nakone...
-2026-04-03 07:43:29,745 - DEBUG - Assigned msg_id = 7624435434422200544 to ResolveUsernameRequest (7fcdf5357100)
-2026-04-03 07:43:29,745 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:29,745 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:29,745 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:29,745 - DEBUG - Assigned msg_id = 7624435434423158032 to MsgsAck (7fcdf5433fd0)
-2026-04-03 07:43:29,745 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:29,745 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:29,745 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:29,839 - DEBUG - Handling RPC result for message 7624435434422200544
-2026-04-03 07:43:29,839 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:29,839 - DEBUG - Assigned msg_id = 7624435434800221784 to GetHistoryRequest (7fcdf54333a0)
-2026-04-03 07:43:29,839 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
-2026-04-03 07:43:29,839 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:29,839 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:29,839 - DEBUG - Assigned msg_id = 7624435434801226004 to MsgsAck (7fcdf5433c10)
-2026-04-03 07:43:29,839 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:29,839 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:29,840 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:30,011 - DEBUG - Handling RPC result for message 7624435434800221784
-2026-04-03 07:43:30,015 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:30,017 - DEBUG - Assigned msg_id = 7624435435807452188 to GetHistoryRequest (7fcdf54333a0)
-2026-04-03 07:43:30,017 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
-2026-04-03 07:43:30,017 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:30,017 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:30,017 - DEBUG - Assigned msg_id = 7624435435808569896 to MsgsAck (7fcdf53bc340)
-2026-04-03 07:43:30,017 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:30,018 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:30,018 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:30,161 - DEBUG - Handling RPC result for message 7624435435807452188
-2026-04-03 07:43:30,163 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:30,164 - INFO - [@chat_nakone] ✔️ Processed 150 messages → Found 0 configs + 0 proxies + 0 npvt
-2026-04-03 07:43:30,164 - INFO - Fetching configs/proxies from @duckvp_n...
-2026-04-03 07:43:30,164 - DEBUG - Assigned msg_id = 7624435436394242272 to ResolveUsernameRequest (7fcdf53bfe50)
-2026-04-03 07:43:30,164 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:30,164 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:30,164 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:30,164 - DEBUG - Assigned msg_id = 7624435436395150172 to MsgsAck (7fcdf51d2680)
-2026-04-03 07:43:30,164 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:30,164 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:30,164 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:30,264 - DEBUG - Handling RPC result for message 7624435436394242272
-2026-04-03 07:43:30,264 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:30,264 - DEBUG - Assigned msg_id = 7624435436795308100 to GetHistoryRequest (7fcdf51d1b70)
-2026-04-03 07:43:30,264 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
-2026-04-03 07:43:30,264 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:30,264 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:30,264 - DEBUG - Assigned msg_id = 7624435436796185480 to MsgsAck (7fcdf51d2470)
-2026-04-03 07:43:30,264 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:30,264 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:30,265 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:30,537 - DEBUG - Handling RPC result for message 7624435436795308100
-2026-04-03 07:43:30,544 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:30,546 - INFO - [@duckvp_n] Found 2 proxies in message 12124
-2026-04-03 07:43:30,546 - INFO - [@duckvp_n] Found 8 proxies in message 12123
-2026-04-03 07:43:30,546 - INFO - [@duckvp_n] Found 6 proxies in message 12121
-2026-04-03 07:43:30,546 - INFO - [@duckvp_n] Found 1 vless configs in message 12117
-2026-04-03 07:43:30,546 - INFO - [@duckvp_n] Found 1 shadowsocks configs in message 12117
-2026-04-03 07:43:30,546 - INFO - [@duckvp_n] Found 6 proxies in message 12115
-2026-04-03 07:43:30,546 - INFO - [@duckvp_n] Found 2 proxies in message 12107
-2026-04-03 07:43:30,547 - INFO - [@duckvp_n] Found 1 shadowsocks configs in message 12088
-2026-04-03 07:43:30,547 - INFO - [@duckvp_n] Found 6 proxies in message 12085
-2026-04-03 07:43:30,547 - INFO - [@duckvp_n] Found 2 proxies in message 12081
-2026-04-03 07:43:30,547 - DEBUG - Assigned msg_id = 7624435437928111064 to GetHistoryRequest (7fcdf51d1b70)
-2026-04-03 07:43:30,547 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
-2026-04-03 07:43:30,547 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:30,548 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:30,548 - DEBUG - Assigned msg_id = 7624435437929140076 to MsgsAck (7fcdf53bc070)
-2026-04-03 07:43:30,548 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:30,548 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:30,548 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:30,756 - DEBUG - Handling RPC result for message 7624435437928111064
-2026-04-03 07:43:30,760 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:30,761 - INFO - [@duckvp_n] ✔️ Processed 150 messages → Found 3 configs + 32 proxies + 0 npvt
-2026-04-03 07:43:30,761 - INFO - Fetching configs/proxies from @DrovOne...
-2026-04-03 07:43:30,761 - DEBUG - Assigned msg_id = 7624435438782668100 to ResolveUsernameRequest (7fcdf53bd930)
-2026-04-03 07:43:30,761 - DEBUG - Encrypting 1 message(s) in 32 bytes for sending
-2026-04-03 07:43:30,761 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:30,761 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:30,761 - DEBUG - Assigned msg_id = 7624435438783742892 to MsgsAck (7fcdf53c6e90)
-2026-04-03 07:43:30,761 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:30,761 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:30,761 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:30,856 - DEBUG - Handling RPC result for message 7624435438782668100
-2026-04-03 07:43:30,856 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:30,857 - DEBUG - Assigned msg_id = 7624435439164984688 to GetHistoryRequest (7fcdf53c7340)
-2026-04-03 07:43:30,857 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
-2026-04-03 07:43:30,857 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:30,857 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:30,857 - DEBUG - Assigned msg_id = 7624435439165920244 to MsgsAck (7fcdf53c6a40)
-2026-04-03 07:43:30,857 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:30,857 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:30,857 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:31,076 - DEBUG - Handling RPC result for message 7624435439164984688
-2026-04-03 07:43:31,083 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:31,085 - INFO - [@DrovOne] Found 1 vless configs in message 61319
-2026-04-03 07:43:31,085 - INFO - [@DrovOne] Found 1 shadowsocks configs in message 61319
-2026-04-03 07:43:31,085 - INFO - [@DrovOne] Found 1 vless configs in message 61318
-2026-04-03 07:43:31,085 - INFO - [@DrovOne] Found 1 shadowsocks configs in message 61318
-2026-04-03 07:43:31,085 - INFO - [@DrovOne] Found 2 proxies in message 61317
-2026-04-03 07:43:31,085 - INFO - [@DrovOne] Found 4 proxies in message 61315
-2026-04-03 07:43:31,085 - INFO - Starting direct file download in chunks of 131072 at 0, stride 131072
-2026-04-03 07:43:31,085 - DEBUG - Assigned msg_id = 7624435440375810256 to GetFileRequest (7fcdf530c340)
-2026-04-03 07:43:31,086 - DEBUG - Encrypting 1 message(s) in 92 bytes for sending
-2026-04-03 07:43:31,086 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:31,086 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:31,086 - DEBUG - Assigned msg_id = 7624435440376892676 to MsgsAck (7fcdf53c6b00)
-2026-04-03 07:43:31,086 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:31,086 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:31,086 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:31,181 - DEBUG - Handling RPC result for message 7624435440375810256
-2026-04-03 07:43:31,181 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:31,181 - INFO - [@DrovOne] Downloaded NPVT: Config/npvt/_DrovOne_61307_DrovOne.npvt | password: @nftvici
-2026-04-03 07:43:31,182 - DEBUG - Assigned msg_id = 7624435440760239232 to GetHistoryRequest (7fcdf53c7340)
-2026-04-03 07:43:31,182 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
-2026-04-03 07:43:31,182 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:31,182 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:31,182 - DEBUG - Assigned msg_id = 7624435440761204352 to MsgsAck (7fcdf5355300)
-2026-04-03 07:43:31,182 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:31,182 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:31,182 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:31,423 - DEBUG - Handling RPC result for message 7624435440760239232
-2026-04-03 07:43:31,427 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:31,427 - INFO - [@DrovOne] ✔️ Processed 150 messages → Found 4 configs + 6 proxies + 1 npvt
-2026-04-03 07:43:31,427 - INFO - Found 113 unique vless configs
-2026-04-03 07:43:31,428 - INFO - Found 6 unique vmess configs
-2026-04-03 07:43:31,428 - INFO - Found 135 unique shadowsocks configs
-2026-04-03 07:43:31,428 - INFO - Found 11 unique trojan configs
-2026-04-03 07:43:31,428 - INFO - Saving configs to Config/vless.txt
-2026-04-03 07:43:31,428 - INFO - Saved 113 vless configs to Config/vless.txt
-2026-04-03 07:43:31,428 - INFO - Saving configs to Config/vmess.txt
-2026-04-03 07:43:31,429 - INFO - Saved 6 vmess configs to Config/vmess.txt
-2026-04-03 07:43:31,429 - INFO - Saving configs to Config/shadowsocks.txt
-2026-04-03 07:43:31,429 - INFO - Saved 135 shadowsocks configs to Config/shadowsocks.txt
-2026-04-03 07:43:31,429 - INFO - Saving configs to Config/trojan.txt
-2026-04-03 07:43:31,429 - INFO - Saved 11 trojan configs to Config/trojan.txt
-2026-04-03 07:43:31,429 - INFO - Saving proxies to Config/proxies.txt
-2026-04-03 07:43:31,429 - INFO - Saved 23 proxies to Config/proxies.txt
-2026-04-03 07:43:31,429 - INFO - Saving invalid channels to Logs/invalid_channels.txt
-2026-04-03 07:43:31,429 - INFO - No invalid channels found, wrote placeholder to Logs/invalid_channels.txt
-2026-04-03 07:43:31,429 - INFO - Saving channel stats to Logs/channel_stats.json
-2026-04-03 07:43:31,430 - INFO - Saved channel stats to Logs/channel_stats.json
-2026-04-03 07:43:31,430 - DEBUG - Assigned msg_id = 7624435441753303160 to ResolveUsernameRequest (7fcdf53c4610)
-2026-04-03 07:43:31,430 - DEBUG - Encrypting 1 message(s) in 40 bytes for sending
-2026-04-03 07:43:31,430 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:31,430 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:31,430 - DEBUG - Assigned msg_id = 7624435441754446616 to MsgsAck (7fcdf54337f0)
-2026-04-03 07:43:31,430 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:31,430 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:31,430 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:31,577 - DEBUG - Handling RPC result for message 7624435441753303160
-2026-04-03 07:43:31,577 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:31,940 - INFO - Uploading file of 1768 bytes in 1 chunks of 131072
-2026-04-03 07:43:31,940 - DEBUG - Assigned msg_id = 7624435443795046436 to SaveFilePartRequest (7fcdf53192a0)
-2026-04-03 07:43:31,940 - DEBUG - Encrypting 1 message(s) in 1448 bytes for sending
-2026-04-03 07:43:31,941 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:31,941 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:31,941 - DEBUG - Assigned msg_id = 7624435443798429120 to MsgsAck (7fcdf5433df0)
-2026-04-03 07:43:31,941 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:31,941 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:31,941 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:32,037 - DEBUG - Handling RPC result for message 7624435443795046436
-2026-04-03 07:43:32,037 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:32,038 - DEBUG - Uploaded 1/1
-2026-04-03 07:43:32,038 - DEBUG - Assigned msg_id = 7624435444481409304 to SendMediaRequest (7fcdf5433c10)
-2026-04-03 07:43:32,038 - DEBUG - Encrypting 1 message(s) in 808 bytes for sending
-2026-04-03 07:43:32,039 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:32,039 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:32,039 - DEBUG - Assigned msg_id = 7624435444484007112 to MsgsAck (7fcdf5433850)
-2026-04-03 07:43:32,039 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:32,039 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:32,039 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:32,279 - DEBUG - Handling RPC result for message 7624435444481409304
-2026-04-03 07:43:32,280 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:32,280 - INFO - Successfully sent file to Channel(id=2632729135, title='V2Root | V2RayConfig', photo=ChatPhoto(photo_id=5769391000370482495, dc_id=4, has_video=False, stripped_thumb=b'\x01\x08\x08\xd6\xfd\xee\xfe\x8b\xb74QE\x00\x7f'), date=datetime.datetime(2025, 4, 26, 10, 6, 35, tzinfo=datetime.timezone.utc), creator=True, left=False, broadcast=True, verified=False, megagroup=False, restricted=False, signatures=False, min=False, scam=False, has_link=True, has_geo=False, slowmode_enabled=False, call_active=False, call_not_empty=False, fake=False, gigagroup=False, noforwards=False, join_to_send=False, join_request=False, forum=False, stories_hidden=False, stories_hidden_min=False, stories_unavailable=True, signature_profiles=False, autotranslation=False, broadcast_messages_allowed=True, monoforum=False, forum_tabs=False, access_hash=-1429950462722475319, username='V2RayRootFree', restriction_reason=[], admin_rights=ChatAdminRights(change_info=True, post_messages=True, edit_messages=True, delete_messages=True, ban_users=True, invite_users=True, pin_messages=True, add_admins=True, anonymous=False, manage_call=True, other=True, manage_topics=True, post_stories=True, edit_stories=True, delete_stories=True, manage_direct_messages=True), banned_rights=None, default_banned_rights=None, participants_count=None, usernames=[], stories_max_id=None, color=None, profile_color=None, emoji_status=None, level=None, subscription_until_date=None, bot_verification_icon=None, send_paid_messages_stars=None, linked_monoforum_id=1072632729135): Config/npvt/_DrovOne_61307_DrovOne.npvt
-2026-04-03 07:43:32,280 - INFO - Posted Vless + NPVT (1/5)
-2026-04-03 07:43:35,171 - DEBUG - Handling gzipped data
-2026-04-03 07:43:35,172 - DEBUG - Handling update Updates
-2026-04-03 07:43:35,172 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:36,283 - INFO - Uploading file of 1768 bytes in 1 chunks of 131072
-2026-04-03 07:43:36,283 - DEBUG - Assigned msg_id = 7624435462642060040 to SaveFilePartRequest (7fcdf531b0a0)
-2026-04-03 07:43:36,283 - DEBUG - Encrypting 1 message(s) in 1452 bytes for sending
-2026-04-03 07:43:36,284 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:36,284 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:36,284 - DEBUG - Assigned msg_id = 7624435462644187688 to MsgsAck (7fcdf5433c10)
-2026-04-03 07:43:36,284 - DEBUG - Encrypting 1 message(s) in 44 bytes for sending
-2026-04-03 07:43:36,284 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:36,284 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:36,376 - DEBUG - Handling RPC result for message 7624435462642060040
-2026-04-03 07:43:36,376 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:36,376 - DEBUG - Uploaded 1/1
-2026-04-03 07:43:36,377 - DEBUG - Assigned msg_id = 7624435463014667272 to SendMediaRequest (7fcdf531b700)
-2026-04-03 07:43:36,377 - DEBUG - Encrypting 1 message(s) in 808 bytes for sending
-2026-04-03 07:43:36,377 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:36,377 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:36,377 - DEBUG - Assigned msg_id = 7624435463016346692 to MsgsAck (7fcdf5433e80)
-2026-04-03 07:43:36,377 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:36,377 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:36,377 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:36,586 - DEBUG - Handling RPC result for message 7624435463014667272
-2026-04-03 07:43:36,586 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:36,586 - INFO - Successfully sent file to Channel(id=2632729135, title='V2Root | V2RayConfig', photo=ChatPhoto(photo_id=5769391000370482495, dc_id=4, has_video=False, stripped_thumb=b'\x01\x08\x08\xd6\xfd\xee\xfe\x8b\xb74QE\x00\x7f'), date=datetime.datetime(2025, 4, 26, 10, 6, 35, tzinfo=datetime.timezone.utc), creator=True, left=False, broadcast=True, verified=False, megagroup=False, restricted=False, signatures=False, min=False, scam=False, has_link=True, has_geo=False, slowmode_enabled=False, call_active=False, call_not_empty=False, fake=False, gigagroup=False, noforwards=False, join_to_send=False, join_request=False, forum=False, stories_hidden=False, stories_hidden_min=False, stories_unavailable=True, signature_profiles=False, autotranslation=False, broadcast_messages_allowed=True, monoforum=False, forum_tabs=False, access_hash=-1429950462722475319, username='V2RayRootFree', restriction_reason=[], admin_rights=ChatAdminRights(change_info=True, post_messages=True, edit_messages=True, delete_messages=True, ban_users=True, invite_users=True, pin_messages=True, add_admins=True, anonymous=False, manage_call=True, other=True, manage_topics=True, post_stories=True, edit_stories=True, delete_stories=True, manage_direct_messages=True), banned_rights=None, default_banned_rights=None, participants_count=None, usernames=[], stories_max_id=None, color=None, profile_color=None, emoji_status=None, level=None, subscription_until_date=None, bot_verification_icon=None, send_paid_messages_stars=None, linked_monoforum_id=1072632729135): Config/npvt/_DrovOne_61307_DrovOne.npvt
-2026-04-03 07:43:36,587 - INFO - Posted Vless + NPVT (2/5)
-2026-04-03 07:43:37,088 - DEBUG - Timeout waiting for updates expired
-2026-04-03 07:43:37,088 - DEBUG - Getting difference for channel 2632729135 updates
-2026-04-03 07:43:37,088 - DEBUG - Assigned msg_id = 7624435466155893684 to GetChannelDifferenceRequest (7fcdf5433ee0)
-2026-04-03 07:43:37,088 - DEBUG - Encrypting 1 message(s) in 56 bytes for sending
-2026-04-03 07:43:37,088 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:37,088 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:37,088 - DEBUG - Assigned msg_id = 7624435466157049540 to MsgsAck (7fcdf5433d60)
-2026-04-03 07:43:37,088 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:37,089 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:37,089 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:37,192 - DEBUG - Handling RPC result for message 7624435466155893684
-2026-04-03 07:43:37,192 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:37,193 - INFO - Got difference for channel 2632729135 updates
-2026-04-03 07:43:39,191 - DEBUG - Handling gzipped data
-2026-04-03 07:43:39,191 - DEBUG - Handling update Updates
-2026-04-03 07:43:39,191 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:39,692 - DEBUG - Timeout waiting for updates expired
-2026-04-03 07:43:39,693 - DEBUG - Getting difference for channel 2707570120 updates
-2026-04-03 07:43:39,693 - DEBUG - Assigned msg_id = 7624435477164532312 to GetChannelDifferenceRequest (7fcdf5319ea0)
-2026-04-03 07:43:39,693 - DEBUG - Encrypting 1 message(s) in 56 bytes for sending
-2026-04-03 07:43:39,693 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:39,693 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:39,693 - DEBUG - Assigned msg_id = 7624435477165764456 to MsgsAck (7fcdf5433a30)
-2026-04-03 07:43:39,693 - DEBUG - Encrypting 1 message(s) in 44 bytes for sending
-2026-04-03 07:43:39,693 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:39,693 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:39,796 - DEBUG - Handling RPC result for message 7624435477164532312
-2026-04-03 07:43:39,796 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:39,796 - INFO - Got difference for channel 2707570120 updates
-2026-04-03 07:43:40,588 - INFO - Uploading file of 1768 bytes in 1 chunks of 131072
-2026-04-03 07:43:40,589 - DEBUG - Assigned msg_id = 7624435481043079624 to SaveFilePartRequest (7fcdf531a9e0)
-2026-04-03 07:43:40,589 - DEBUG - Encrypting 1 message(s) in 1448 bytes for sending
-2026-04-03 07:43:40,589 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:40,589 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:40,589 - DEBUG - Assigned msg_id = 7624435481045326480 to MsgsAck (7fcdf531a710)
-2026-04-03 07:43:40,589 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:40,589 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:40,589 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:40,695 - DEBUG - Handling RPC result for message 7624435481043079624
-2026-04-03 07:43:40,695 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:40,695 - DEBUG - Uploaded 1/1
-2026-04-03 07:43:40,696 - DEBUG - Assigned msg_id = 7624435481470394384 to SendMediaRequest (7fcdf531a0e0)
-2026-04-03 07:43:40,696 - DEBUG - Encrypting 1 message(s) in 804 bytes for sending
-2026-04-03 07:43:40,696 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:40,696 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:40,696 - DEBUG - Assigned msg_id = 7624435481472450504 to MsgsAck (7fcdf531ad10)
-2026-04-03 07:43:40,696 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:40,696 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:40,696 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:40,925 - DEBUG - Handling RPC result for message 7624435481470394384
-2026-04-03 07:43:40,926 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:40,926 - INFO - Successfully sent file to Channel(id=2632729135, title='V2Root | V2RayConfig', photo=ChatPhoto(photo_id=5769391000370482495, dc_id=4, has_video=False, stripped_thumb=b'\x01\x08\x08\xd6\xfd\xee\xfe\x8b\xb74QE\x00\x7f'), date=datetime.datetime(2025, 4, 26, 10, 6, 35, tzinfo=datetime.timezone.utc), creator=True, left=False, broadcast=True, verified=False, megagroup=False, restricted=False, signatures=False, min=False, scam=False, has_link=True, has_geo=False, slowmode_enabled=False, call_active=False, call_not_empty=False, fake=False, gigagroup=False, noforwards=False, join_to_send=False, join_request=False, forum=False, stories_hidden=False, stories_hidden_min=False, stories_unavailable=True, signature_profiles=False, autotranslation=False, broadcast_messages_allowed=True, monoforum=False, forum_tabs=False, access_hash=-1429950462722475319, username='V2RayRootFree', restriction_reason=[], admin_rights=ChatAdminRights(change_info=True, post_messages=True, edit_messages=True, delete_messages=True, ban_users=True, invite_users=True, pin_messages=True, add_admins=True, anonymous=False, manage_call=True, other=True, manage_topics=True, post_stories=True, edit_stories=True, delete_stories=True, manage_direct_messages=True), banned_rights=None, default_banned_rights=None, participants_count=None, usernames=[], stories_max_id=None, color=None, profile_color=None, emoji_status=None, level=None, subscription_until_date=None, bot_verification_icon=None, send_paid_messages_stars=None, linked_monoforum_id=1072632729135): Config/npvt/_DrovOne_61307_DrovOne.npvt
-2026-04-03 07:43:40,926 - INFO - Posted Vless + NPVT (3/5)
-2026-04-03 07:43:41,427 - DEBUG - Timeout waiting for updates expired
-2026-04-03 07:43:41,427 - DEBUG - Getting difference for channel 2632729135 updates
-2026-04-03 07:43:41,428 - DEBUG - Assigned msg_id = 7624435484693550004 to GetChannelDifferenceRequest (7fcdf53190f0)
-2026-04-03 07:43:41,428 - DEBUG - Encrypting 1 message(s) in 56 bytes for sending
-2026-04-03 07:43:41,428 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:41,428 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:41,428 - DEBUG - Assigned msg_id = 7624435484694723976 to MsgsAck (7fcdf531bd90)
-2026-04-03 07:43:41,428 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:41,428 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:41,428 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:41,531 - DEBUG - Handling RPC result for message 7624435484693550004
-2026-04-03 07:43:41,531 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:41,532 - INFO - Got difference for channel 2632729135 updates
-2026-04-03 07:43:43,136 - DEBUG - Handling gzipped data
-2026-04-03 07:43:43,137 - DEBUG - Handling update Updates
-2026-04-03 07:43:43,137 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:44,930 - INFO - Uploading file of 1768 bytes in 1 chunks of 131072
-2026-04-03 07:43:44,930 - DEBUG - Assigned msg_id = 7624435499588644760 to SaveFilePartRequest (7fcdf53bcd60)
-2026-04-03 07:43:44,930 - DEBUG - Encrypting 1 message(s) in 1448 bytes for sending
-2026-04-03 07:43:44,931 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:44,931 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:44,931 - DEBUG - Assigned msg_id = 7624435499590891616 to MsgsAck (7fcdf5319270)
-2026-04-03 07:43:44,931 - DEBUG - Encrypting 1 message(s) in 44 bytes for sending
-2026-04-03 07:43:44,931 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:44,931 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:45,026 - DEBUG - Handling RPC result for message 7624435499588644760
-2026-04-03 07:43:45,026 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:45,026 - DEBUG - Uploaded 1/1
-2026-04-03 07:43:45,027 - DEBUG - Assigned msg_id = 7624435500269719500 to SendMediaRequest (7fcdf53bdf00)
-2026-04-03 07:43:45,027 - DEBUG - Encrypting 1 message(s) in 804 bytes for sending
-2026-04-03 07:43:45,027 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:45,027 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:45,027 - DEBUG - Assigned msg_id = 7624435500271633528 to MsgsAck (7fcdf531b9a0)
-2026-04-03 07:43:45,027 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:45,027 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:45,027 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:45,238 - DEBUG - Handling RPC result for message 7624435500269719500
-2026-04-03 07:43:45,238 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:45,239 - INFO - Successfully sent file to Channel(id=2632729135, title='V2Root | V2RayConfig', photo=ChatPhoto(photo_id=5769391000370482495, dc_id=4, has_video=False, stripped_thumb=b'\x01\x08\x08\xd6\xfd\xee\xfe\x8b\xb74QE\x00\x7f'), date=datetime.datetime(2025, 4, 26, 10, 6, 35, tzinfo=datetime.timezone.utc), creator=True, left=False, broadcast=True, verified=False, megagroup=False, restricted=False, signatures=False, min=False, scam=False, has_link=True, has_geo=False, slowmode_enabled=False, call_active=False, call_not_empty=False, fake=False, gigagroup=False, noforwards=False, join_to_send=False, join_request=False, forum=False, stories_hidden=False, stories_hidden_min=False, stories_unavailable=True, signature_profiles=False, autotranslation=False, broadcast_messages_allowed=True, monoforum=False, forum_tabs=False, access_hash=-1429950462722475319, username='V2RayRootFree', restriction_reason=[], admin_rights=ChatAdminRights(change_info=True, post_messages=True, edit_messages=True, delete_messages=True, ban_users=True, invite_users=True, pin_messages=True, add_admins=True, anonymous=False, manage_call=True, other=True, manage_topics=True, post_stories=True, edit_stories=True, delete_stories=True, manage_direct_messages=True), banned_rights=None, default_banned_rights=None, participants_count=None, usernames=[], stories_max_id=None, color=None, profile_color=None, emoji_status=None, level=None, subscription_until_date=None, bot_verification_icon=None, send_paid_messages_stars=None, linked_monoforum_id=1072632729135): Config/npvt/_DrovOne_61307_DrovOne.npvt
-2026-04-03 07:43:45,239 - INFO - Posted Vless + NPVT (4/5)
-2026-04-03 07:43:45,740 - DEBUG - Timeout waiting for updates expired
-2026-04-03 07:43:45,740 - DEBUG - Getting difference for channel 2632729135 updates
-2026-04-03 07:43:45,740 - DEBUG - Assigned msg_id = 7624435503124493024 to GetChannelDifferenceRequest (7fcdf531a560)
-2026-04-03 07:43:45,740 - DEBUG - Encrypting 1 message(s) in 56 bytes for sending
-2026-04-03 07:43:45,740 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:45,740 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:45,741 - DEBUG - Assigned msg_id = 7624435503125488660 to MsgsAck (7fcdf531a890)
-2026-04-03 07:43:45,741 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:45,741 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:45,741 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:45,863 - DEBUG - Handling RPC result for message 7624435503124493024
-2026-04-03 07:43:45,863 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:45,864 - INFO - Got difference for channel 2632729135 updates
-2026-04-03 07:43:48,355 - DEBUG - Handling gzipped data
-2026-04-03 07:43:48,355 - DEBUG - Handling update Updates
-2026-04-03 07:43:48,356 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:48,857 - DEBUG - Timeout waiting for updates expired
-2026-04-03 07:43:48,857 - DEBUG - Getting difference for channel 2707570120 updates
-2026-04-03 07:43:48,857 - DEBUG - Assigned msg_id = 7624435516476111676 to GetChannelDifferenceRequest (7fcdf5318220)
-2026-04-03 07:43:48,857 - DEBUG - Encrypting 1 message(s) in 56 bytes for sending
-2026-04-03 07:43:48,857 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:48,857 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:48,857 - DEBUG - Assigned msg_id = 7624435516477196960 to MsgsAck (7fcdf531a560)
-2026-04-03 07:43:48,857 - DEBUG - Encrypting 1 message(s) in 44 bytes for sending
-2026-04-03 07:43:48,857 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:48,857 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:48,971 - DEBUG - Handling RPC result for message 7624435516476111676
-2026-04-03 07:43:48,971 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:48,971 - INFO - Got difference for channel 2707570120 updates
-2026-04-03 07:43:49,242 - INFO - Uploading file of 1768 bytes in 1 chunks of 131072
-2026-04-03 07:43:49,242 - DEBUG - Assigned msg_id = 7624435518311251552 to SaveFilePartRequest (7fcdf531b700)
-2026-04-03 07:43:49,242 - DEBUG - Encrypting 1 message(s) in 1448 bytes for sending
-2026-04-03 07:43:49,242 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:49,242 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:49,243 - DEBUG - Assigned msg_id = 7624435518313389688 to MsgsAck (7fcdf5433790)
-2026-04-03 07:43:49,243 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:49,243 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:49,243 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:49,336 - DEBUG - Handling RPC result for message 7624435518311251552
-2026-04-03 07:43:49,337 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:49,337 - DEBUG - Uploaded 1/1
-2026-04-03 07:43:49,337 - DEBUG - Assigned msg_id = 7624435518691238312 to SendMediaRequest (7fcdf53184f0)
-2026-04-03 07:43:49,337 - DEBUG - Encrypting 1 message(s) in 804 bytes for sending
-2026-04-03 07:43:49,337 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:49,337 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:49,337 - DEBUG - Assigned msg_id = 7624435518692932992 to MsgsAck (7fcdf531b4c0)
-2026-04-03 07:43:49,337 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-04-03 07:43:49,338 - DEBUG - Encrypted messages put in a queue to be sent
-2026-04-03 07:43:49,338 - DEBUG - Waiting for messages to send...
-2026-04-03 07:43:49,562 - DEBUG - Handling RPC result for message 7624435518691238312
-2026-04-03 07:43:49,563 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:49,563 - INFO - Successfully sent file to Channel(id=2632729135, title='V2Root | V2RayConfig', photo=ChatPhoto(photo_id=5769391000370482495, dc_id=4, has_video=False, stripped_thumb=b'\x01\x08\x08\xd6\xfd\xee\xfe\x8b\xb74QE\x00\x7f'), date=datetime.datetime(2025, 4, 26, 10, 6, 35, tzinfo=datetime.timezone.utc), creator=True, left=False, broadcast=True, verified=False, megagroup=False, restricted=False, signatures=False, min=False, scam=False, has_link=True, has_geo=False, slowmode_enabled=False, call_active=False, call_not_empty=False, fake=False, gigagroup=False, noforwards=False, join_to_send=False, join_request=False, forum=False, stories_hidden=False, stories_hidden_min=False, stories_unavailable=True, signature_profiles=False, autotranslation=False, broadcast_messages_allowed=True, monoforum=False, forum_tabs=False, access_hash=-1429950462722475319, username='V2RayRootFree', restriction_reason=[], admin_rights=ChatAdminRights(change_info=True, post_messages=True, edit_messages=True, delete_messages=True, ban_users=True, invite_users=True, pin_messages=True, add_admins=True, anonymous=False, manage_call=True, other=True, manage_topics=True, post_stories=True, edit_stories=True, delete_stories=True, manage_direct_messages=True), banned_rights=None, default_banned_rights=None, participants_count=None, usernames=[], stories_max_id=None, color=None, profile_color=None, emoji_status=None, level=None, subscription_until_date=None, bot_verification_icon=None, send_paid_messages_stars=None, linked_monoforum_id=1072632729135): Config/npvt/_DrovOne_61307_DrovOne.npvt
-2026-04-03 07:43:49,563 - INFO - Posted Vless + NPVT (5/5)
-2026-04-03 07:43:52,329 - DEBUG - Handling update UpdateShort
-2026-04-03 07:43:52,329 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:52,330 - DEBUG - Handling update UpdateShort
-2026-04-03 07:43:52,332 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:52,334 - DEBUG - Handling update UpdateShort
-2026-04-03 07:43:52,334 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:52,334 - DEBUG - Handling update UpdateShort
-2026-04-03 07:43:52,334 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:52,351 - DEBUG - Handling gzipped data
-2026-04-03 07:43:52,351 - DEBUG - Handling update Updates
-2026-04-03 07:43:52,351 - DEBUG - Receiving items from the network...
-2026-04-03 07:43:53,565 - INFO - Updated telegram_channels.json with 13 channels
-2026-04-03 07:43:53,565 - INFO - Disconnecting from 149.154.167.91:443/TcpFull...
-2026-04-03 07:43:53,565 - DEBUG - Closing current connection...
-2026-04-03 07:43:53,566 - DEBUG - Cancelling 0 pending message(s)...
-2026-04-03 07:43:53,566 - INFO - Disconnection from 149.154.167.91:443/TcpFull complete!
-2026-04-03 07:43:53,566 - INFO - Config+proxy collection process completed
+2026-04-03 08:54:12,584 - INFO - Creating directory: Config/npvt
+2026-04-03 08:54:12,584 - DEBUG - Using selector: EpollSelector
+2026-04-03 08:54:12,584 - INFO - Starting config+proxy collection process
+2026-04-03 08:54:12,585 - INFO - Loaded 13 channels from telegram_channels.json
+2026-04-03 08:54:12,585 - INFO - Connecting to 149.154.167.91:443/TcpFull...
+2026-04-03 08:54:12,585 - DEBUG - Connection attempt 1...
+2026-04-03 08:54:12,712 - DEBUG - Connection success!
+2026-04-03 08:54:12,712 - DEBUG - Starting send loop
+2026-04-03 08:54:12,712 - DEBUG - Starting receive loop
+2026-04-03 08:54:12,712 - INFO - Connection to 149.154.167.91:443/TcpFull complete!
+2026-04-03 08:54:12,712 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:12,712 - DEBUG - Assigned msg_id = 7624453657839267056 to InvokeWithLayerRequest (7f14f96af190)
+2026-04-03 08:54:12,712 - DEBUG - Encrypting 1 message(s) in 80 bytes for sending
+2026-04-03 08:54:12,713 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:12,713 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:12,713 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:12,840 - DEBUG - Handling bad salt for message 7624453657839267056
+2026-04-03 08:54:12,840 - DEBUG - 1 message(s) will be resent
+2026-04-03 08:54:12,840 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:12,841 - DEBUG - Assigned msg_id = 7624453658352302828 to InvokeWithLayerRequest (7f14f96af190)
+2026-04-03 08:54:12,841 - DEBUG - Encrypting 1 message(s) in 80 bytes for sending
+2026-04-03 08:54:12,841 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:12,841 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:12,841 - DEBUG - Assigned msg_id = 7624453658353116312 to MsgsAck (7f14f9a9cfa0)
+2026-04-03 08:54:12,841 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:12,841 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:12,841 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:12,969 - DEBUG - Handling container
+2026-04-03 08:54:12,969 - DEBUG - Handling new session created
+2026-04-03 08:54:12,969 - DEBUG - Handling acknowledge for [7624453658352302828]
+2026-04-03 08:54:12,969 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:12,975 - DEBUG - Handling RPC result for message 7624453658352302828
+2026-04-03 08:54:12,976 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:12,976 - DEBUG - Assigned msg_id = 7624453658893109600 to GetUsersRequest (7f14f96af970)
+2026-04-03 08:54:12,976 - DEBUG - Encrypting 1 message(s) in 32 bytes for sending
+2026-04-03 08:54:12,976 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:12,976 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:12,976 - DEBUG - Assigned msg_id = 7624453658893919268 to MsgsAck (7f14f96afbe0)
+2026-04-03 08:54:12,976 - DEBUG - Encrypting 1 message(s) in 60 bytes for sending
+2026-04-03 08:54:12,976 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:12,976 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:13,119 - DEBUG - Handling RPC result for message 7624453658893109600
+2026-04-03 08:54:13,119 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:13,120 - DEBUG - Assigned msg_id = 7624453659763409536 to GetStateRequest (7f14f96af970)
+2026-04-03 08:54:13,120 - DEBUG - Encrypting 1 message(s) in 20 bytes for sending
+2026-04-03 08:54:13,120 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:13,120 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:13,120 - DEBUG - Assigned msg_id = 7624453659764467164 to MsgsAck (7f14f96af790)
+2026-04-03 08:54:13,120 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:13,120 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:13,120 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:13,255 - DEBUG - Handling RPC result for message 7624453659763409536
+2026-04-03 08:54:13,255 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:13,255 - DEBUG - Assigned msg_id = 7624453660304896276 to GetDifferenceRequest (7f14f96af970)
+2026-04-03 08:54:13,255 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:13,255 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:13,255 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:13,255 - DEBUG - Assigned msg_id = 7624453660306191368 to MsgsAck (7f14f96af6a0)
+2026-04-03 08:54:13,255 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:13,255 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:13,256 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:13,404 - DEBUG - Handling RPC result for message 7624453660304896276
+2026-04-03 08:54:13,404 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:13,405 - DEBUG - Assigned msg_id = 7624453660903317376 to GetUsersRequest (7f14f96afb50)
+2026-04-03 08:54:13,405 - DEBUG - Encrypting 1 message(s) in 32 bytes for sending
+2026-04-03 08:54:13,405 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:13,405 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:13,405 - DEBUG - Assigned msg_id = 7624453660904199524 to MsgsAck (7f14f96af880)
+2026-04-03 08:54:13,405 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:13,405 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:13,405 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:13,536 - DEBUG - Handling RPC result for message 7624453660903317376
+2026-04-03 08:54:13,536 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:13,536 - INFO - Fetching configs/proxies from @Alpha_V2ray_Iran...
+2026-04-03 08:54:13,536 - DEBUG - Assigned msg_id = 7624453661430916708 to ResolveUsernameRequest (7f14f96af6d0)
+2026-04-03 08:54:13,537 - DEBUG - Encrypting 1 message(s) in 44 bytes for sending
+2026-04-03 08:54:13,537 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:13,537 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:13,537 - DEBUG - Assigned msg_id = 7624453661431881828 to MsgsAck (7f14f96afdc0)
+2026-04-03 08:54:13,537 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:13,537 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:13,537 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:13,672 - DEBUG - Handling RPC result for message 7624453661430916708
+2026-04-03 08:54:13,672 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:13,672 - DEBUG - Assigned msg_id = 7624453661974119108 to GetHistoryRequest (7f14f96aff70)
+2026-04-03 08:54:13,672 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
+2026-04-03 08:54:13,672 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:13,672 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:13,672 - DEBUG - Assigned msg_id = 7624453661975110932 to MsgsAck (7f14f96afeb0)
+2026-04-03 08:54:13,673 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:13,673 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:13,673 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:14,302 - DEBUG - Handling RPC result for message 7624453661974119108
+2026-04-03 08:54:14,317 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:14,320 - INFO - Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-04-03 08:54:14,320 - DEBUG - Assigned msg_id = 7624453664861164612 to GetFileRequest (7f14f944edd0)
+2026-04-03 08:54:14,320 - DEBUG - Encrypting 1 message(s) in 92 bytes for sending
+2026-04-03 08:54:14,320 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:14,321 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:14,321 - DEBUG - Assigned msg_id = 7624453664862331912 to MsgsAck (7f14f9640040)
+2026-04-03 08:54:14,321 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:14,321 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:14,321 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:14,479 - DEBUG - Handling RPC result for message 7624453664861164612
+2026-04-03 08:54:14,479 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:14,480 - INFO - [@Alpha_V2ray_Iran] Downloaded NPVT: Config/npvt/_Alpha_V2ray_Iran_1009115_🇸🇱SERVER~DNS🇸🇱.npvt | password: None
+2026-04-03 08:54:14,480 - INFO - Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-04-03 08:54:14,480 - DEBUG - Assigned msg_id = 7624453665501967952 to GetFileRequest (7f14f96403d0)
+2026-04-03 08:54:14,481 - DEBUG - Encrypting 1 message(s) in 92 bytes for sending
+2026-04-03 08:54:14,481 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:14,481 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:14,481 - DEBUG - Assigned msg_id = 7624453665502833888 to MsgsAck (7f14f95702b0)
+2026-04-03 08:54:14,481 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:14,481 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:14,481 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:14,632 - DEBUG - Handling RPC result for message 7624453665501967952
+2026-04-03 08:54:14,633 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:14,633 - INFO - [@Alpha_V2ray_Iran] Downloaded NPVT: Config/npvt/_Alpha_V2ray_Iran_1009112_🇱🇦SERVER~DNS🇱🇦.npvt | password: None
+2026-04-03 08:54:14,633 - INFO - [@Alpha_V2ray_Iran] Found 2 proxies in message 1009111
+2026-04-03 08:54:14,633 - INFO - [@Alpha_V2ray_Iran] Found 2 vless configs in message 1009110
+2026-04-03 08:54:14,633 - INFO - [@Alpha_V2ray_Iran] Found 2 shadowsocks configs in message 1009110
+2026-04-03 08:54:14,633 - INFO - Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-04-03 08:54:14,634 - DEBUG - Assigned msg_id = 7624453666114192528 to GetFileRequest (7f14f9640310)
+2026-04-03 08:54:14,634 - DEBUG - Encrypting 1 message(s) in 92 bytes for sending
+2026-04-03 08:54:14,634 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:14,634 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:14,634 - DEBUG - Assigned msg_id = 7624453666115041300 to MsgsAck (7f14f95702e0)
+2026-04-03 08:54:14,634 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:14,634 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:14,634 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:14,785 - DEBUG - Handling RPC result for message 7624453666114192528
+2026-04-03 08:54:14,785 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:14,785 - INFO - [@Alpha_V2ray_Iran] Downloaded NPVT: Config/npvt/_Alpha_V2ray_Iran_1009109_@Acccrd (20GB).npvt | password: @acccrd
+2026-04-03 08:54:14,786 - INFO - Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-04-03 08:54:14,786 - DEBUG - Assigned msg_id = 7624453666723202272 to GetFileRequest (7f14f9640670)
+2026-04-03 08:54:14,786 - DEBUG - Encrypting 1 message(s) in 92 bytes for sending
+2026-04-03 08:54:14,786 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:14,786 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:14,786 - DEBUG - Assigned msg_id = 7624453666724105404 to MsgsAck (7f14f96405b0)
+2026-04-03 08:54:14,786 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:14,786 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:14,786 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:14,920 - DEBUG - Handling RPC result for message 7624453666723202272
+2026-04-03 08:54:14,920 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:14,920 - INFO - [@Alpha_V2ray_Iran] Downloaded NPVT: Config/npvt/_Alpha_V2ray_Iran_1009104_@wibeofme تلگرام.npvt | password: iran
+2026-04-03 08:54:14,921 - INFO - [@Alpha_V2ray_Iran] Found 4 proxies in message 1009103
+2026-04-03 08:54:14,921 - INFO - [@Alpha_V2ray_Iran] Found 6 proxies in message 1009102
+2026-04-03 08:54:14,921 - INFO - Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-04-03 08:54:14,921 - DEBUG - Assigned msg_id = 7624453667264371440 to GetFileRequest (7f14f96405e0)
+2026-04-03 08:54:14,921 - DEBUG - Encrypting 1 message(s) in 92 bytes for sending
+2026-04-03 08:54:14,921 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:14,921 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:14,921 - DEBUG - Assigned msg_id = 7624453667265417620 to MsgsAck (7f14f96406a0)
+2026-04-03 08:54:14,921 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:14,921 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:14,922 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:15,063 - DEBUG - Handling RPC result for message 7624453667264371440
+2026-04-03 08:54:15,063 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:15,063 - INFO - [@Alpha_V2ray_Iran] Downloaded NPVT: Config/npvt/_Alpha_V2ray_Iran_1009101_@UnNurmal.npvt | password: @UnNurmal
+2026-04-03 08:54:15,063 - INFO - [@Alpha_V2ray_Iran] Found 9 vless configs in message 1009095
+2026-04-03 08:54:15,063 - INFO - [@Alpha_V2ray_Iran] Found 9 shadowsocks configs in message 1009095
+2026-04-03 08:54:15,063 - INFO - [@Alpha_V2ray_Iran] Found 4 proxies in message 1009094
+2026-04-03 08:54:15,064 - DEBUG - Assigned msg_id = 7624453668131417440 to GetHistoryRequest (7f14f96aff70)
+2026-04-03 08:54:15,064 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
+2026-04-03 08:54:15,064 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:15,064 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:15,064 - DEBUG - Assigned msg_id = 7624453668132486508 to MsgsAck (7f14f95704f0)
+2026-04-03 08:54:15,064 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:15,065 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:15,065 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:15,366 - DEBUG - Handling RPC result for message 7624453668131417440
+2026-04-03 08:54:15,373 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:15,374 - INFO - [@Alpha_V2ray_Iran] ✔️ Processed 150 messages → Found 22 configs + 16 proxies + 5 npvt
+2026-04-03 08:54:15,374 - INFO - Fetching configs/proxies from @Farah_VPN...
+2026-04-03 08:54:15,374 - DEBUG - Assigned msg_id = 7624453669372447180 to ResolveUsernameRequest (7f14f944ebf0)
+2026-04-03 08:54:15,374 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:15,375 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:15,375 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:15,375 - DEBUG - Assigned msg_id = 7624453669373560116 to MsgsAck (7f14f9a9cfa0)
+2026-04-03 08:54:15,375 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:15,375 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:15,375 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:15,511 - DEBUG - Handling RPC result for message 7624453669372447180
+2026-04-03 08:54:15,511 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:15,511 - DEBUG - Assigned msg_id = 7624453669920741248 to GetHistoryRequest (7f14f96410f0)
+2026-04-03 08:54:15,511 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
+2026-04-03 08:54:15,512 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:15,512 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:15,512 - DEBUG - Assigned msg_id = 7624453669921713996 to MsgsAck (7f14f96411e0)
+2026-04-03 08:54:15,512 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:15,512 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:15,512 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:15,727 - DEBUG - Handling RPC result for message 7624453669920741248
+2026-04-03 08:54:15,730 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:15,732 - INFO - [@Farah_VPN] Found 1 vless configs in message 124396
+2026-04-03 08:54:15,732 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124396
+2026-04-03 08:54:15,732 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124395
+2026-04-03 08:54:15,732 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124394
+2026-04-03 08:54:15,732 - INFO - [@Farah_VPN] Found 1 vless configs in message 124393
+2026-04-03 08:54:15,732 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124393
+2026-04-03 08:54:15,732 - INFO - [@Farah_VPN] Found 1 vless configs in message 124392
+2026-04-03 08:54:15,732 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124392
+2026-04-03 08:54:15,732 - INFO - [@Farah_VPN] Found 1 vless configs in message 124391
+2026-04-03 08:54:15,732 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124391
+2026-04-03 08:54:15,732 - INFO - [@Farah_VPN] Found 1 vless configs in message 124390
+2026-04-03 08:54:15,732 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124390
+2026-04-03 08:54:15,732 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124389
+2026-04-03 08:54:15,732 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124389
+2026-04-03 08:54:15,732 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124388
+2026-04-03 08:54:15,732 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124388
+2026-04-03 08:54:15,732 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124387
+2026-04-03 08:54:15,732 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124386
+2026-04-03 08:54:15,732 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124385
+2026-04-03 08:54:15,732 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124384
+2026-04-03 08:54:15,732 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124383
+2026-04-03 08:54:15,733 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124383
+2026-04-03 08:54:15,733 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124382
+2026-04-03 08:54:15,733 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124382
+2026-04-03 08:54:15,733 - INFO - [@Farah_VPN] Found 1 vless configs in message 124381
+2026-04-03 08:54:15,733 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124381
+2026-04-03 08:54:15,733 - INFO - [@Farah_VPN] Found 1 vless configs in message 124380
+2026-04-03 08:54:15,733 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124380
+2026-04-03 08:54:15,733 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124379
+2026-04-03 08:54:15,733 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124378
+2026-04-03 08:54:15,733 - INFO - [@Farah_VPN] Found 1 vless configs in message 124377
+2026-04-03 08:54:15,733 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124377
+2026-04-03 08:54:15,733 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124376
+2026-04-03 08:54:15,733 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124376
+2026-04-03 08:54:15,733 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124375
+2026-04-03 08:54:15,733 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124375
+2026-04-03 08:54:15,733 - INFO - [@Farah_VPN] Found 1 vless configs in message 124374
+2026-04-03 08:54:15,733 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124374
+2026-04-03 08:54:15,733 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124373
+2026-04-03 08:54:15,733 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124372
+2026-04-03 08:54:15,733 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124372
+2026-04-03 08:54:15,733 - INFO - [@Farah_VPN] Found 1 vless configs in message 124371
+2026-04-03 08:54:15,733 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124371
+2026-04-03 08:54:15,733 - INFO - [@Farah_VPN] Found 1 vless configs in message 124370
+2026-04-03 08:54:15,733 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124370
+2026-04-03 08:54:15,734 - INFO - [@Farah_VPN] Found 1 vless configs in message 124369
+2026-04-03 08:54:15,734 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124369
+2026-04-03 08:54:15,734 - INFO - [@Farah_VPN] Found 1 vless configs in message 124368
+2026-04-03 08:54:15,734 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124368
+2026-04-03 08:54:15,734 - INFO - [@Farah_VPN] Found 1 vless configs in message 124367
+2026-04-03 08:54:15,734 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124367
+2026-04-03 08:54:15,734 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124366
+2026-04-03 08:54:15,734 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124366
+2026-04-03 08:54:15,734 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124365
+2026-04-03 08:54:15,734 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124365
+2026-04-03 08:54:15,734 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124364
+2026-04-03 08:54:15,734 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124363
+2026-04-03 08:54:15,734 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124362
+2026-04-03 08:54:15,734 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124361
+2026-04-03 08:54:15,734 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124360
+2026-04-03 08:54:15,734 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124359
+2026-04-03 08:54:15,734 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124358
+2026-04-03 08:54:15,734 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124358
+2026-04-03 08:54:15,734 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124357
+2026-04-03 08:54:15,734 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124357
+2026-04-03 08:54:15,734 - INFO - [@Farah_VPN] Found 1 vless configs in message 124356
+2026-04-03 08:54:15,734 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124356
+2026-04-03 08:54:15,734 - INFO - [@Farah_VPN] Found 1 vless configs in message 124355
+2026-04-03 08:54:15,734 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124355
+2026-04-03 08:54:15,734 - INFO - [@Farah_VPN] Found 1 vless configs in message 124354
+2026-04-03 08:54:15,735 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124354
+2026-04-03 08:54:15,735 - INFO - [@Farah_VPN] Found 1 vless configs in message 124353
+2026-04-03 08:54:15,735 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124353
+2026-04-03 08:54:15,735 - INFO - [@Farah_VPN] Found 1 vless configs in message 124352
+2026-04-03 08:54:15,735 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124352
+2026-04-03 08:54:15,735 - INFO - [@Farah_VPN] Found 1 vless configs in message 124351
+2026-04-03 08:54:15,735 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124351
+2026-04-03 08:54:15,735 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124350
+2026-04-03 08:54:15,735 - INFO - [@Farah_VPN] Found 1 vless configs in message 124349
+2026-04-03 08:54:15,735 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124349
+2026-04-03 08:54:15,735 - INFO - [@Farah_VPN] Found 1 vless configs in message 124348
+2026-04-03 08:54:15,735 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124348
+2026-04-03 08:54:15,735 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124347
+2026-04-03 08:54:15,735 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124346
+2026-04-03 08:54:15,735 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124345
+2026-04-03 08:54:15,735 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124344
+2026-04-03 08:54:15,735 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124344
+2026-04-03 08:54:15,735 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124343
+2026-04-03 08:54:15,735 - INFO - [@Farah_VPN] Found 1 vless configs in message 124342
+2026-04-03 08:54:15,735 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124342
+2026-04-03 08:54:15,735 - INFO - [@Farah_VPN] Found 1 vless configs in message 124341
+2026-04-03 08:54:15,735 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124341
+2026-04-03 08:54:15,735 - INFO - [@Farah_VPN] Found 1 vless configs in message 124340
+2026-04-03 08:54:15,735 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124340
+2026-04-03 08:54:15,736 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124339
+2026-04-03 08:54:15,736 - INFO - [@Farah_VPN] Found 1 vless configs in message 124338
+2026-04-03 08:54:15,736 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124338
+2026-04-03 08:54:15,736 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124337
+2026-04-03 08:54:15,736 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124337
+2026-04-03 08:54:15,736 - INFO - [@Farah_VPN] Found 1 vless configs in message 124336
+2026-04-03 08:54:15,736 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124336
+2026-04-03 08:54:15,736 - INFO - [@Farah_VPN] Found 1 vless configs in message 124335
+2026-04-03 08:54:15,736 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124335
+2026-04-03 08:54:15,736 - INFO - [@Farah_VPN] Found 1 vless configs in message 124334
+2026-04-03 08:54:15,736 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124334
+2026-04-03 08:54:15,736 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124333
+2026-04-03 08:54:15,736 - INFO - [@Farah_VPN] Found 1 vless configs in message 124332
+2026-04-03 08:54:15,736 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124332
+2026-04-03 08:54:15,736 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124331
+2026-04-03 08:54:15,736 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124330
+2026-04-03 08:54:15,736 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124329
+2026-04-03 08:54:15,736 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124329
+2026-04-03 08:54:15,736 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124328
+2026-04-03 08:54:15,736 - INFO - [@Farah_VPN] Found 1 vless configs in message 124327
+2026-04-03 08:54:15,736 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124327
+2026-04-03 08:54:15,736 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124326
+2026-04-03 08:54:15,737 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124326
+2026-04-03 08:54:15,737 - INFO - [@Farah_VPN] Found 1 vless configs in message 124325
+2026-04-03 08:54:15,737 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124325
+2026-04-03 08:54:15,737 - INFO - [@Farah_VPN] Found 1 vless configs in message 124324
+2026-04-03 08:54:15,737 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124324
+2026-04-03 08:54:15,737 - INFO - [@Farah_VPN] Found 1 vless configs in message 124323
+2026-04-03 08:54:15,737 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124323
+2026-04-03 08:54:15,737 - INFO - [@Farah_VPN] Found 1 vless configs in message 124322
+2026-04-03 08:54:15,737 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124322
+2026-04-03 08:54:15,737 - INFO - [@Farah_VPN] Found 1 vless configs in message 124321
+2026-04-03 08:54:15,737 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124321
+2026-04-03 08:54:15,737 - INFO - [@Farah_VPN] Found 1 vless configs in message 124320
+2026-04-03 08:54:15,737 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124320
+2026-04-03 08:54:15,737 - INFO - [@Farah_VPN] Found 1 vless configs in message 124319
+2026-04-03 08:54:15,737 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124319
+2026-04-03 08:54:15,737 - INFO - [@Farah_VPN] Found 1 vless configs in message 124318
+2026-04-03 08:54:15,737 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124318
+2026-04-03 08:54:15,737 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124317
+2026-04-03 08:54:15,737 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124316
+2026-04-03 08:54:15,737 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124315
+2026-04-03 08:54:15,737 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124314
+2026-04-03 08:54:15,737 - INFO - [@Farah_VPN] Found 1 vless configs in message 124313
+2026-04-03 08:54:15,737 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124313
+2026-04-03 08:54:15,737 - INFO - [@Farah_VPN] Found 1 vless configs in message 124312
+2026-04-03 08:54:15,737 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124312
+2026-04-03 08:54:15,737 - INFO - [@Farah_VPN] Found 1 vless configs in message 124311
+2026-04-03 08:54:15,738 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124311
+2026-04-03 08:54:15,738 - INFO - [@Farah_VPN] Found 1 vless configs in message 124310
+2026-04-03 08:54:15,738 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124310
+2026-04-03 08:54:15,738 - INFO - [@Farah_VPN] Found 1 vless configs in message 124309
+2026-04-03 08:54:15,738 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124309
+2026-04-03 08:54:15,738 - INFO - [@Farah_VPN] Found 1 vless configs in message 124308
+2026-04-03 08:54:15,738 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124308
+2026-04-03 08:54:15,738 - INFO - [@Farah_VPN] Found 1 vless configs in message 124307
+2026-04-03 08:54:15,738 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124307
+2026-04-03 08:54:15,738 - INFO - [@Farah_VPN] Found 1 vless configs in message 124306
+2026-04-03 08:54:15,738 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124306
+2026-04-03 08:54:15,738 - INFO - [@Farah_VPN] Found 1 vless configs in message 124305
+2026-04-03 08:54:15,738 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124305
+2026-04-03 08:54:15,738 - INFO - [@Farah_VPN] Found 1 vless configs in message 124304
+2026-04-03 08:54:15,738 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124304
+2026-04-03 08:54:15,738 - INFO - [@Farah_VPN] Found 1 vless configs in message 124303
+2026-04-03 08:54:15,738 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124303
+2026-04-03 08:54:15,738 - INFO - [@Farah_VPN] Found 1 vless configs in message 124302
+2026-04-03 08:54:15,738 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124302
+2026-04-03 08:54:15,738 - INFO - [@Farah_VPN] Found 1 vless configs in message 124301
+2026-04-03 08:54:15,738 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124301
+2026-04-03 08:54:15,738 - INFO - [@Farah_VPN] Found 1 vless configs in message 124300
+2026-04-03 08:54:15,738 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124300
+2026-04-03 08:54:15,738 - INFO - [@Farah_VPN] Found 1 vless configs in message 124299
+2026-04-03 08:54:15,738 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124299
+2026-04-03 08:54:15,739 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124298
+2026-04-03 08:54:15,739 - INFO - [@Farah_VPN] Found 1 vless configs in message 124297
+2026-04-03 08:54:15,739 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124297
+2026-04-03 08:54:15,739 - DEBUG - Assigned msg_id = 7624453670830826924 to GetHistoryRequest (7f14f96410f0)
+2026-04-03 08:54:15,739 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
+2026-04-03 08:54:15,739 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:15,739 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:15,739 - DEBUG - Assigned msg_id = 7624453670832761932 to MsgsAck (7f14f96af880)
+2026-04-03 08:54:15,739 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:15,740 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:15,740 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:15,912 - DEBUG - Handling RPC result for message 7624453670830826924
+2026-04-03 08:54:15,914 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:15,914 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124296
+2026-04-03 08:54:15,914 - INFO - [@Farah_VPN] Found 1 vless configs in message 124295
+2026-04-03 08:54:15,914 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124295
+2026-04-03 08:54:15,915 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124294
+2026-04-03 08:54:15,915 - INFO - [@Farah_VPN] Found 1 vless configs in message 124293
+2026-04-03 08:54:15,915 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124293
+2026-04-03 08:54:15,915 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124292
+2026-04-03 08:54:15,915 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124291
+2026-04-03 08:54:15,915 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124290
+2026-04-03 08:54:15,915 - INFO - [@Farah_VPN] Found 1 vless configs in message 124289
+2026-04-03 08:54:15,915 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124289
+2026-04-03 08:54:15,915 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124288
+2026-04-03 08:54:15,915 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124287
+2026-04-03 08:54:15,915 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124287
+2026-04-03 08:54:15,915 - INFO - [@Farah_VPN] Found 1 vless configs in message 124286
+2026-04-03 08:54:15,915 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124286
+2026-04-03 08:54:15,915 - INFO - [@Farah_VPN] Found 1 vless configs in message 124285
+2026-04-03 08:54:15,915 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124285
+2026-04-03 08:54:15,915 - INFO - [@Farah_VPN] Found 1 vless configs in message 124284
+2026-04-03 08:54:15,915 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124284
+2026-04-03 08:54:15,915 - INFO - [@Farah_VPN] Found 1 vless configs in message 124283
+2026-04-03 08:54:15,915 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124283
+2026-04-03 08:54:15,915 - INFO - [@Farah_VPN] Found 1 vless configs in message 124282
+2026-04-03 08:54:15,915 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124282
+2026-04-03 08:54:15,915 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124281
+2026-04-03 08:54:15,915 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124280
+2026-04-03 08:54:15,916 - INFO - [@Farah_VPN] Found 1 vless configs in message 124279
+2026-04-03 08:54:15,916 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124279
+2026-04-03 08:54:15,916 - INFO - [@Farah_VPN] Found 1 vless configs in message 124278
+2026-04-03 08:54:15,916 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124278
+2026-04-03 08:54:15,916 - INFO - [@Farah_VPN] Found 1 vless configs in message 124277
+2026-04-03 08:54:15,916 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124277
+2026-04-03 08:54:15,916 - INFO - [@Farah_VPN] Found 1 vless configs in message 124276
+2026-04-03 08:54:15,916 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124276
+2026-04-03 08:54:15,916 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124275
+2026-04-03 08:54:15,916 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124275
+2026-04-03 08:54:15,916 - INFO - [@Farah_VPN] Found 1 vless configs in message 124274
+2026-04-03 08:54:15,916 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124274
+2026-04-03 08:54:15,916 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124273
+2026-04-03 08:54:15,916 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124273
+2026-04-03 08:54:15,916 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124272
+2026-04-03 08:54:15,916 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124272
+2026-04-03 08:54:15,916 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124271
+2026-04-03 08:54:15,916 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124271
+2026-04-03 08:54:15,916 - INFO - [@Farah_VPN] Found 1 vless configs in message 124270
+2026-04-03 08:54:15,916 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124270
+2026-04-03 08:54:15,916 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124269
+2026-04-03 08:54:15,916 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124269
+2026-04-03 08:54:15,916 - INFO - [@Farah_VPN] Found 1 vless configs in message 124268
+2026-04-03 08:54:15,916 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124268
+2026-04-03 08:54:15,917 - INFO - [@Farah_VPN] Found 1 vless configs in message 124267
+2026-04-03 08:54:15,917 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124267
+2026-04-03 08:54:15,917 - INFO - [@Farah_VPN] Found 1 vless configs in message 124266
+2026-04-03 08:54:15,917 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124266
+2026-04-03 08:54:15,917 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124265
+2026-04-03 08:54:15,917 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124265
+2026-04-03 08:54:15,917 - INFO - [@Farah_VPN] Found 1 vless configs in message 124264
+2026-04-03 08:54:15,917 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124264
+2026-04-03 08:54:15,917 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124263
+2026-04-03 08:54:15,917 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124263
+2026-04-03 08:54:15,917 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124262
+2026-04-03 08:54:15,917 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124261
+2026-04-03 08:54:15,917 - INFO - [@Farah_VPN] Found 1 vless configs in message 124260
+2026-04-03 08:54:15,917 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124260
+2026-04-03 08:54:15,917 - INFO - [@Farah_VPN] Found 1 vless configs in message 124259
+2026-04-03 08:54:15,917 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124259
+2026-04-03 08:54:15,917 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124258
+2026-04-03 08:54:15,917 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124258
+2026-04-03 08:54:15,917 - INFO - [@Farah_VPN] Found 1 vless configs in message 124257
+2026-04-03 08:54:15,917 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124257
+2026-04-03 08:54:15,917 - INFO - [@Farah_VPN] Found 1 trojan configs in message 124256
+2026-04-03 08:54:15,917 - INFO - [@Farah_VPN] Found 1 vmess configs in message 124255
+2026-04-03 08:54:15,918 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124255
+2026-04-03 08:54:15,918 - INFO - [@Farah_VPN] Found 1 vless configs in message 124254
+2026-04-03 08:54:15,918 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124254
+2026-04-03 08:54:15,918 - INFO - [@Farah_VPN] Found 1 vless configs in message 124253
+2026-04-03 08:54:15,918 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124253
+2026-04-03 08:54:15,918 - INFO - [@Farah_VPN] Found 1 vless configs in message 124252
+2026-04-03 08:54:15,918 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124252
+2026-04-03 08:54:15,918 - INFO - [@Farah_VPN] Found 1 vless configs in message 124251
+2026-04-03 08:54:15,918 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124251
+2026-04-03 08:54:15,918 - INFO - [@Farah_VPN] Found 1 vless configs in message 124250
+2026-04-03 08:54:15,918 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124250
+2026-04-03 08:54:15,918 - INFO - [@Farah_VPN] Found 1 vless configs in message 124249
+2026-04-03 08:54:15,918 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124249
+2026-04-03 08:54:15,918 - INFO - [@Farah_VPN] Found 1 vless configs in message 124248
+2026-04-03 08:54:15,918 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124248
+2026-04-03 08:54:15,918 - INFO - [@Farah_VPN] Found 1 vless configs in message 124247
+2026-04-03 08:54:15,918 - INFO - [@Farah_VPN] Found 1 shadowsocks configs in message 124247
+2026-04-03 08:54:15,918 - INFO - [@Farah_VPN] ✔️ Processed 150 messages → Found 259 configs + 0 proxies + 0 npvt
+2026-04-03 08:54:15,918 - INFO - Fetching configs/proxies from @iMTProto...
+2026-04-03 08:54:15,918 - DEBUG - Assigned msg_id = 7624453671548594640 to ResolveUsernameRequest (7f14f963b8e0)
+2026-04-03 08:54:15,918 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:15,919 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:15,919 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:15,919 - DEBUG - Assigned msg_id = 7624453671549638912 to MsgsAck (7f14f944cbe0)
+2026-04-03 08:54:15,919 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:15,919 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:15,919 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:16,057 - DEBUG - Handling RPC result for message 7624453671548594640
+2026-04-03 08:54:16,058 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:16,058 - DEBUG - Assigned msg_id = 7624453672400917816 to GetHistoryRequest (7f14f944ce20)
+2026-04-03 08:54:16,058 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
+2026-04-03 08:54:16,058 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:16,058 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:16,058 - DEBUG - Assigned msg_id = 7624453672401906776 to MsgsAck (7f14f944cd60)
+2026-04-03 08:54:16,058 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:16,058 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:16,058 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:16,431 - DEBUG - Handling RPC result for message 7624453672400917816
+2026-04-03 08:54:16,440 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:16,442 - DEBUG - Assigned msg_id = 7624453673937704852 to GetHistoryRequest (7f14f944ce20)
+2026-04-03 08:54:16,442 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
+2026-04-03 08:54:16,442 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:16,442 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:16,442 - DEBUG - Assigned msg_id = 7624453673938933184 to MsgsAck (7f14f9599c30)
+2026-04-03 08:54:16,442 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:16,442 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:16,442 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:16,720 - DEBUG - Handling RPC result for message 7624453673937704852
+2026-04-03 08:54:16,725 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:16,726 - INFO - [@iMTProto] ✔️ Processed 150 messages → Found 0 configs + 0 proxies + 0 npvt
+2026-04-03 08:54:16,726 - INFO - Fetching configs/proxies from @ZibaNabz...
+2026-04-03 08:54:16,726 - DEBUG - Assigned msg_id = 7624453675073519516 to ResolveUsernameRequest (7f14f95e13f0)
+2026-04-03 08:54:16,726 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:16,726 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:16,726 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:16,726 - DEBUG - Assigned msg_id = 7624453675074543764 to MsgsAck (7f14f96aff40)
+2026-04-03 08:54:16,726 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:16,726 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:16,726 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:16,861 - DEBUG - Handling RPC result for message 7624453675073519516
+2026-04-03 08:54:16,861 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:16,861 - DEBUG - Assigned msg_id = 7624453675615897944 to GetHistoryRequest (7f14f96afbe0)
+2026-04-03 08:54:16,862 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
+2026-04-03 08:54:16,862 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:16,862 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:16,862 - DEBUG - Assigned msg_id = 7624453675617061424 to MsgsAck (7f14f96af8b0)
+2026-04-03 08:54:16,862 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:16,862 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:16,862 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:17,207 - DEBUG - Handling RPC result for message 7624453675615897944
+2026-04-03 08:54:17,214 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:17,216 - INFO - [@ZibaNabz] Found 1 proxies in message 23394
+2026-04-03 08:54:17,216 - DEBUG - Assigned msg_id = 7624453677329191616 to GetHistoryRequest (7f14f96afbe0)
+2026-04-03 08:54:17,216 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
+2026-04-03 08:54:17,216 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:17,216 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:17,216 - DEBUG - Assigned msg_id = 7624453677330435208 to MsgsAck (7f14f963b850)
+2026-04-03 08:54:17,216 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:17,217 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:17,217 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:17,427 - DEBUG - Handling RPC result for message 7624453677329191616
+2026-04-03 08:54:17,431 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:17,432 - INFO - [@ZibaNabz] ✔️ Processed 150 messages → Found 0 configs + 1 proxies + 0 npvt
+2026-04-03 08:54:17,432 - INFO - Fetching configs/proxies from @vaddress...
+2026-04-03 08:54:17,432 - DEBUG - Assigned msg_id = 7624453678193025996 to ResolveUsernameRequest (7f14f959aad0)
+2026-04-03 08:54:17,432 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:17,432 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:17,432 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:17,432 - DEBUG - Assigned msg_id = 7624453678194148472 to MsgsAck (7f14f96408b0)
+2026-04-03 08:54:17,432 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:17,432 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:17,432 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:17,566 - DEBUG - Handling RPC result for message 7624453678193025996
+2026-04-03 08:54:17,567 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:17,567 - DEBUG - Assigned msg_id = 7624453678732879092 to GetHistoryRequest (7f14f9640df0)
+2026-04-03 08:54:17,567 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
+2026-04-03 08:54:17,567 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:17,567 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:17,567 - DEBUG - Assigned msg_id = 7624453678734071188 to MsgsAck (7f14f96404c0)
+2026-04-03 08:54:17,567 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:17,567 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:17,567 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:17,796 - DEBUG - Handling RPC result for message 7624453678732879092
+2026-04-03 08:54:17,803 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:17,805 - DEBUG - Assigned msg_id = 7624453679684355192 to GetHistoryRequest (7f14f9640df0)
+2026-04-03 08:54:17,805 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
+2026-04-03 08:54:17,805 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:17,805 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:17,805 - DEBUG - Assigned msg_id = 7624453679685409000 to MsgsAck (7f14f9a9cfa0)
+2026-04-03 08:54:17,805 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:17,805 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:17,805 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:17,990 - DEBUG - Handling RPC result for message 7624453679684355192
+2026-04-03 08:54:17,994 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:17,995 - INFO - [@vaddress] ✔️ Processed 150 messages → Found 0 configs + 0 proxies + 0 npvt
+2026-04-03 08:54:17,995 - INFO - Fetching configs/proxies from @Letiranbreath...
+2026-04-03 08:54:17,995 - DEBUG - Assigned msg_id = 7624453680445752552 to ResolveUsernameRequest (7f14f95e2740)
+2026-04-03 08:54:17,995 - DEBUG - Encrypting 1 message(s) in 40 bytes for sending
+2026-04-03 08:54:17,995 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:17,995 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:17,995 - DEBUG - Assigned msg_id = 7624453680446891240 to MsgsAck (7f14f959c6a0)
+2026-04-03 08:54:17,995 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:17,996 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:17,996 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:18,133 - DEBUG - Handling RPC result for message 7624453680445752552
+2026-04-03 08:54:18,133 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:18,133 - DEBUG - Assigned msg_id = 7624453681293633516 to GetHistoryRequest (7f14f959cc10)
+2026-04-03 08:54:18,133 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
+2026-04-03 08:54:18,134 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:18,134 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:18,134 - DEBUG - Assigned msg_id = 7624453681294659668 to MsgsAck (7f14f959caf0)
+2026-04-03 08:54:18,134 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:18,134 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:18,134 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:18,314 - DEBUG - Handling RPC result for message 7624453681293633516
+2026-04-03 08:54:18,316 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:18,317 - DEBUG - Assigned msg_id = 7624453682026760156 to GetHistoryRequest (7f14f959cc10)
+2026-04-03 08:54:18,317 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
+2026-04-03 08:54:18,317 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:18,317 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:18,317 - DEBUG - Assigned msg_id = 7624453682027693800 to MsgsAck (7f14f959ce50)
+2026-04-03 08:54:18,317 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:18,317 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:18,317 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:18,456 - DEBUG - Handling RPC result for message 7624453682026760156
+2026-04-03 08:54:18,456 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:18,456 - INFO - [@Letiranbreath] ✔️ Processed 31 messages → Found 0 configs + 0 proxies + 0 npvt
+2026-04-03 08:54:18,456 - INFO - Fetching configs/proxies from @mitivpn...
+2026-04-03 08:54:18,456 - DEBUG - Assigned msg_id = 7624453682585831696 to ResolveUsernameRequest (7f14f959d030)
+2026-04-03 08:54:18,457 - DEBUG - Encrypting 1 message(s) in 32 bytes for sending
+2026-04-03 08:54:18,457 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:18,457 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:18,457 - DEBUG - Assigned msg_id = 7624453682586653764 to MsgsAck (7f14f959c9a0)
+2026-04-03 08:54:18,457 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:18,457 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:18,457 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:18,597 - DEBUG - Handling RPC result for message 7624453682585831696
+2026-04-03 08:54:18,597 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:18,597 - DEBUG - Assigned msg_id = 7624453683149492316 to GetHistoryRequest (7f14f959c040)
+2026-04-03 08:54:18,597 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
+2026-04-03 08:54:18,598 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:18,598 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:18,598 - DEBUG - Assigned msg_id = 7624453683150382096 to MsgsAck (7f14f959ca60)
+2026-04-03 08:54:18,598 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:18,598 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:18,598 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:18,897 - DEBUG - Handling RPC result for message 7624453683149492316
+2026-04-03 08:54:18,910 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:18,912 - DEBUG - Assigned msg_id = 7624453684407095008 to GetHistoryRequest (7f14f959c040)
+2026-04-03 08:54:18,912 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
+2026-04-03 08:54:18,912 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:18,912 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:18,912 - DEBUG - Assigned msg_id = 7624453684408292824 to MsgsAck (7f14f9585930)
+2026-04-03 08:54:18,912 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:18,912 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:18,912 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:19,178 - DEBUG - Handling RPC result for message 7624453684407095008
+2026-04-03 08:54:19,185 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:19,186 - DEBUG - Assigned msg_id = 7624453685798223192 to GetHistoryRequest (7f14f959c040)
+2026-04-03 08:54:19,186 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
+2026-04-03 08:54:19,186 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:19,186 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:19,186 - DEBUG - Assigned msg_id = 7624453685799410516 to MsgsAck (7f14f963b970)
+2026-04-03 08:54:19,186 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:19,186 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:19,186 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:19,320 - DEBUG - Handling RPC result for message 7624453685798223192
+2026-04-03 08:54:19,320 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:19,320 - INFO - [@mitivpn] ✔️ Processed 130 messages → Found 0 configs + 0 proxies + 0 npvt
+2026-04-03 08:54:19,320 - INFO - Fetching configs/proxies from @xgvpn...
+2026-04-03 08:54:19,321 - DEBUG - Assigned msg_id = 7624453686336904224 to ResolveUsernameRequest (7f14f9639ea0)
+2026-04-03 08:54:19,321 - DEBUG - Encrypting 1 message(s) in 32 bytes for sending
+2026-04-03 08:54:19,321 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:19,321 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:19,321 - DEBUG - Assigned msg_id = 7624453686337816888 to MsgsAck (7f14f9639f30)
+2026-04-03 08:54:19,321 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:19,321 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:19,321 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:19,460 - DEBUG - Handling RPC result for message 7624453686336904224
+2026-04-03 08:54:19,460 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:19,460 - DEBUG - Assigned msg_id = 7624453686896135980 to GetHistoryRequest (7f14f963bd60)
+2026-04-03 08:54:19,460 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
+2026-04-03 08:54:19,460 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:19,461 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:19,461 - DEBUG - Assigned msg_id = 7624453686897190744 to MsgsAck (7f14f9638370)
+2026-04-03 08:54:19,461 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:19,461 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:19,461 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:19,811 - DEBUG - Handling RPC result for message 7624453686896135980
+2026-04-03 08:54:19,816 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:19,817 - DEBUG - Assigned msg_id = 7624453688323873216 to GetHistoryRequest (7f14f963bd60)
+2026-04-03 08:54:19,817 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
+2026-04-03 08:54:19,817 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:19,817 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:19,818 - DEBUG - Assigned msg_id = 7624453688324977572 to MsgsAck (7f14f959ad40)
+2026-04-03 08:54:19,818 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:19,818 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:19,818 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:20,080 - DEBUG - Handling RPC result for message 7624453688323873216
+2026-04-03 08:54:20,083 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:20,084 - INFO - [@xgvpn] ✔️ Processed 150 messages → Found 0 configs + 0 proxies + 0 npvt
+2026-04-03 08:54:20,084 - INFO - Fetching configs/proxies from @v2ryng_proxy...
+2026-04-03 08:54:20,084 - DEBUG - Assigned msg_id = 7624453689685630140 to ResolveUsernameRequest (7f14f95e2e00)
+2026-04-03 08:54:20,084 - DEBUG - Encrypting 1 message(s) in 40 bytes for sending
+2026-04-03 08:54:20,084 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:20,084 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:20,084 - DEBUG - Assigned msg_id = 7624453689686763104 to MsgsAck (7f14f9570d30)
+2026-04-03 08:54:20,084 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:20,084 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:20,084 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:20,221 - DEBUG - Handling RPC result for message 7624453689685630140
+2026-04-03 08:54:20,221 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:20,221 - DEBUG - Assigned msg_id = 7624453690235481560 to GetHistoryRequest (7f14f95702e0)
+2026-04-03 08:54:20,221 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
+2026-04-03 08:54:20,222 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:20,222 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:20,222 - DEBUG - Assigned msg_id = 7624453690236443816 to MsgsAck (7f14f9571270)
+2026-04-03 08:54:20,222 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:20,222 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:20,222 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:20,590 - DEBUG - Handling RPC result for message 7624453690235481560
+2026-04-03 08:54:20,596 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:20,598 - INFO - Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-04-03 08:54:20,598 - DEBUG - Assigned msg_id = 7624453691741845428 to GetFileRequest (7f14f958f130)
+2026-04-03 08:54:20,598 - DEBUG - Encrypting 1 message(s) in 96 bytes for sending
+2026-04-03 08:54:20,598 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:20,598 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:20,598 - DEBUG - Assigned msg_id = 7624453691743061360 to MsgsAck (7f14f9642500)
+2026-04-03 08:54:20,598 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:20,598 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:20,599 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:20,735 - DEBUG - Handling RPC result for message 7624453691741845428
+2026-04-03 08:54:20,735 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:20,735 - INFO - [@v2ryng_proxy] Downloaded NPVT: Config/npvt/_v2ryng_proxy_430_saministamm.npvt | password: None
+2026-04-03 08:54:20,735 - INFO - [@v2ryng_proxy] Found 2 proxies in message 429
+2026-04-03 08:54:20,736 - DEBUG - Assigned msg_id = 7624453692292440712 to GetHistoryRequest (7f14f95702e0)
+2026-04-03 08:54:20,736 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
+2026-04-03 08:54:20,736 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:20,736 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:20,736 - DEBUG - Assigned msg_id = 7624453692293440160 to MsgsAck (7f14f959bfa0)
+2026-04-03 08:54:20,736 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:20,736 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:20,736 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:20,999 - DEBUG - Handling RPC result for message 7624453692292440712
+2026-04-03 08:54:21,002 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:21,003 - INFO - [@v2ryng_proxy] ✔️ Processed 150 messages → Found 0 configs + 2 proxies + 1 npvt
+2026-04-03 08:54:21,003 - INFO - Fetching configs/proxies from @DSR_TM...
+2026-04-03 08:54:21,003 - DEBUG - Assigned msg_id = 7624453693658318460 to ResolveUsernameRequest (7f14f959a260)
+2026-04-03 08:54:21,003 - DEBUG - Encrypting 1 message(s) in 32 bytes for sending
+2026-04-03 08:54:21,004 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:21,004 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:21,004 - DEBUG - Assigned msg_id = 7624453693659378948 to MsgsAck (7f14f95e2f20)
+2026-04-03 08:54:21,004 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:21,004 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:21,004 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:21,148 - DEBUG - Handling RPC result for message 7624453693658318460
+2026-04-03 08:54:21,148 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:21,148 - DEBUG - Assigned msg_id = 7624453694238166748 to GetHistoryRequest (7f14f95e1750)
+2026-04-03 08:54:21,148 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
+2026-04-03 08:54:21,148 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:21,149 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:21,149 - DEBUG - Assigned msg_id = 7624453694239191948 to MsgsAck (7f14f95e1420)
+2026-04-03 08:54:21,149 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:21,149 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:21,149 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:21,488 - DEBUG - Handling RPC result for message 7624453694238166748
+2026-04-03 08:54:21,493 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:21,494 - DEBUG - Assigned msg_id = 7624453695621773660 to GetHistoryRequest (7f14f95e1750)
+2026-04-03 08:54:21,494 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
+2026-04-03 08:54:21,494 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:21,494 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:21,495 - DEBUG - Assigned msg_id = 7624453695622956216 to MsgsAck (7f14f95c9db0)
+2026-04-03 08:54:21,495 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:21,495 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:21,495 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:21,741 - DEBUG - Handling RPC result for message 7624453695621773660
+2026-04-03 08:54:21,745 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:21,746 - INFO - [@DSR_TM] ✔️ Processed 150 messages → Found 0 configs + 0 proxies + 0 npvt
+2026-04-03 08:54:21,746 - INFO - Fetching configs/proxies from @chat_nakone...
+2026-04-03 08:54:21,746 - DEBUG - Assigned msg_id = 7624453696628441752 to ResolveUsernameRequest (7f14f95cb520)
+2026-04-03 08:54:21,746 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:21,746 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:21,746 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:21,746 - DEBUG - Assigned msg_id = 7624453696629595696 to MsgsAck (7f14f96afe50)
+2026-04-03 08:54:21,746 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:21,746 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:21,746 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:21,882 - DEBUG - Handling RPC result for message 7624453696628441752
+2026-04-03 08:54:21,882 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:21,882 - DEBUG - Assigned msg_id = 7624453697173801364 to GetHistoryRequest (7f14f96af7f0)
+2026-04-03 08:54:21,882 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
+2026-04-03 08:54:21,882 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:21,882 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:21,882 - DEBUG - Assigned msg_id = 7624453697174860896 to MsgsAck (7f14f96afe80)
+2026-04-03 08:54:21,883 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:21,883 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:21,883 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:22,138 - DEBUG - Handling RPC result for message 7624453697173801364
+2026-04-03 08:54:22,143 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:22,145 - DEBUG - Assigned msg_id = 7624453698519430700 to GetHistoryRequest (7f14f96af7f0)
+2026-04-03 08:54:22,145 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
+2026-04-03 08:54:22,145 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:22,145 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:22,145 - DEBUG - Assigned msg_id = 7624453698520765844 to MsgsAck (7f14f9638910)
+2026-04-03 08:54:22,145 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:22,145 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:22,145 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:22,334 - DEBUG - Handling RPC result for message 7624453698519430700
+2026-04-03 08:54:22,337 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:22,338 - INFO - [@chat_nakone] ✔️ Processed 150 messages → Found 0 configs + 0 proxies + 0 npvt
+2026-04-03 08:54:22,338 - INFO - Fetching configs/proxies from @duckvp_n...
+2026-04-03 08:54:22,338 - DEBUG - Assigned msg_id = 7624453699292170108 to ResolveUsernameRequest (7f14f9639f30)
+2026-04-03 08:54:22,338 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:22,338 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:22,338 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:22,338 - DEBUG - Assigned msg_id = 7624453699293141904 to MsgsAck (7f14f9599270)
+2026-04-03 08:54:22,338 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:22,338 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:22,339 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:22,480 - DEBUG - Handling RPC result for message 7624453699292170108
+2026-04-03 08:54:22,481 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:22,481 - DEBUG - Assigned msg_id = 7624453699863213124 to GetHistoryRequest (7f14f95995a0)
+2026-04-03 08:54:22,481 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
+2026-04-03 08:54:22,481 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:22,481 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:22,481 - DEBUG - Assigned msg_id = 7624453699864083828 to MsgsAck (7f14f9599210)
+2026-04-03 08:54:22,481 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:22,481 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:22,481 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:22,813 - DEBUG - Handling RPC result for message 7624453699863213124
+2026-04-03 08:54:22,820 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:22,822 - INFO - [@duckvp_n] Found 2 proxies in message 12124
+2026-04-03 08:54:22,822 - INFO - [@duckvp_n] Found 8 proxies in message 12123
+2026-04-03 08:54:22,822 - INFO - [@duckvp_n] Found 6 proxies in message 12121
+2026-04-03 08:54:22,822 - INFO - [@duckvp_n] Found 1 vless configs in message 12117
+2026-04-03 08:54:22,822 - INFO - [@duckvp_n] Found 1 shadowsocks configs in message 12117
+2026-04-03 08:54:22,822 - INFO - [@duckvp_n] Found 6 proxies in message 12115
+2026-04-03 08:54:22,822 - INFO - [@duckvp_n] Found 2 proxies in message 12107
+2026-04-03 08:54:22,822 - INFO - [@duckvp_n] Found 1 shadowsocks configs in message 12088
+2026-04-03 08:54:22,823 - INFO - [@duckvp_n] Found 6 proxies in message 12085
+2026-04-03 08:54:22,823 - INFO - [@duckvp_n] Found 2 proxies in message 12081
+2026-04-03 08:54:22,823 - DEBUG - Assigned msg_id = 7624453701231917920 to GetHistoryRequest (7f14f95995a0)
+2026-04-03 08:54:22,823 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
+2026-04-03 08:54:22,823 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:22,823 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:22,823 - DEBUG - Assigned msg_id = 7624453701233132900 to MsgsAck (7f14f9638e20)
+2026-04-03 08:54:22,823 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:22,824 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:22,824 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:23,164 - DEBUG - Handling RPC result for message 7624453701231917920
+2026-04-03 08:54:23,167 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:23,168 - INFO - [@duckvp_n] ✔️ Processed 150 messages → Found 3 configs + 32 proxies + 0 npvt
+2026-04-03 08:54:23,168 - INFO - Fetching configs/proxies from @DrovOne...
+2026-04-03 08:54:23,169 - DEBUG - Assigned msg_id = 7624453702909239000 to ResolveUsernameRequest (7f14f9639570)
+2026-04-03 08:54:23,169 - DEBUG - Encrypting 1 message(s) in 32 bytes for sending
+2026-04-03 08:54:23,169 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:23,169 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:23,169 - DEBUG - Assigned msg_id = 7624453702910294716 to MsgsAck (7f14f944f1c0)
+2026-04-03 08:54:23,169 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:23,169 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:23,169 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:23,305 - DEBUG - Handling RPC result for message 7624453702909239000
+2026-04-03 08:54:23,305 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:23,305 - DEBUG - Assigned msg_id = 7624453703455582804 to GetHistoryRequest (7f14f944e530)
+2026-04-03 08:54:23,305 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
+2026-04-03 08:54:23,305 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:23,305 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:23,305 - DEBUG - Assigned msg_id = 7624453703456600372 to MsgsAck (7f14f944cbb0)
+2026-04-03 08:54:23,305 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:23,306 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:23,306 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:23,591 - DEBUG - Handling RPC result for message 7624453703455582804
+2026-04-03 08:54:23,597 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:23,598 - INFO - [@DrovOne] Found 1 vless configs in message 61319
+2026-04-03 08:54:23,598 - INFO - [@DrovOne] Found 1 shadowsocks configs in message 61319
+2026-04-03 08:54:23,598 - INFO - [@DrovOne] Found 1 vless configs in message 61318
+2026-04-03 08:54:23,598 - INFO - [@DrovOne] Found 1 shadowsocks configs in message 61318
+2026-04-03 08:54:23,599 - INFO - [@DrovOne] Found 2 proxies in message 61317
+2026-04-03 08:54:23,599 - INFO - [@DrovOne] Found 4 proxies in message 61315
+2026-04-03 08:54:23,599 - INFO - Starting direct file download in chunks of 131072 at 0, stride 131072
+2026-04-03 08:54:23,599 - DEBUG - Assigned msg_id = 7624453704630654520 to GetFileRequest (7f14f9643550)
+2026-04-03 08:54:23,599 - DEBUG - Encrypting 1 message(s) in 92 bytes for sending
+2026-04-03 08:54:23,599 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:23,599 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:23,599 - DEBUG - Assigned msg_id = 7624453704631798928 to MsgsAck (7f14f944c700)
+2026-04-03 08:54:23,599 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:23,599 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:23,599 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:23,733 - DEBUG - Handling RPC result for message 7624453704630654520
+2026-04-03 08:54:23,733 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:23,733 - INFO - [@DrovOne] Downloaded NPVT: Config/npvt/_DrovOne_61307_DrovOne.npvt | password: @nftvici
+2026-04-03 08:54:23,734 - DEBUG - Assigned msg_id = 7624453705169927780 to GetHistoryRequest (7f14f944e530)
+2026-04-03 08:54:23,734 - DEBUG - Encrypting 1 message(s) in 72 bytes for sending
+2026-04-03 08:54:23,734 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:23,734 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:23,734 - DEBUG - Assigned msg_id = 7624453705170917696 to MsgsAck (7f14f95c84c0)
+2026-04-03 08:54:23,734 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-04-03 08:54:23,734 - DEBUG - Encrypted messages put in a queue to be sent
+2026-04-03 08:54:23,734 - DEBUG - Waiting for messages to send...
+2026-04-03 08:54:24,008 - DEBUG - Handling RPC result for message 7624453705169927780
+2026-04-03 08:54:24,012 - DEBUG - Receiving items from the network...
+2026-04-03 08:54:24,012 - INFO - [@DrovOne] ✔️ Processed 150 messages → Found 4 configs + 6 proxies + 1 npvt
+2026-04-03 08:54:24,013 - INFO - Found 92 unique vless configs
+2026-04-03 08:54:24,013 - INFO - Found 25 unique vmess configs
+2026-04-03 08:54:24,013 - INFO - Found 136 unique shadowsocks configs
+2026-04-03 08:54:24,013 - INFO - Found 23 unique trojan configs
+2026-04-03 08:54:24,013 - INFO - Saving configs to Config/vless.txt
+2026-04-03 08:54:24,013 - INFO - Saved 92 vless configs to Config/vless.txt
+2026-04-03 08:54:24,013 - INFO - Saving configs to Config/vmess.txt
+2026-04-03 08:54:24,013 - INFO - Saved 25 vmess configs to Config/vmess.txt
+2026-04-03 08:54:24,013 - INFO - Saving configs to Config/shadowsocks.txt
+2026-04-03 08:54:24,014 - INFO - Saved 136 shadowsocks configs to Config/shadowsocks.txt
+2026-04-03 08:54:24,014 - INFO - Saving configs to Config/trojan.txt
+2026-04-03 08:54:24,014 - INFO - Saved 23 trojan configs to Config/trojan.txt
+2026-04-03 08:54:24,014 - INFO - Saving proxies to Config/proxies.txt
+2026-04-03 08:54:24,014 - INFO - Saved 23 proxies to Config/proxies.txt
+2026-04-03 08:54:24,014 - INFO - Saving invalid channels to Logs/invalid_channels.txt
+2026-04-03 08:54:24,014 - INFO - No invalid channels found, wrote placeholder to Logs/invalid_channels.txt
+2026-04-03 08:54:24,014 - INFO - Saving channel stats to Logs/channel_stats.json
+2026-04-03 08:54:24,015 - INFO - Saved channel stats to Logs/channel_stats.json
+2026-04-03 08:54:24,015 - WARNING - No payloads available to post.
+2026-04-03 08:54:24,015 - INFO - Updated telegram_channels.json with 13 channels
+2026-04-03 08:54:24,015 - INFO - Disconnecting from 149.154.167.91:443/TcpFull...
+2026-04-03 08:54:24,015 - DEBUG - Closing current connection...
+2026-04-03 08:54:24,015 - DEBUG - Cancelling 0 pending message(s)...
+2026-04-03 08:54:24,015 - INFO - Disconnection from 149.154.167.91:443/TcpFull complete!
+2026-04-03 08:54:24,016 - INFO - Config+proxy collection process completed
