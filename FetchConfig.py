@@ -380,60 +380,88 @@ def build_npvt_caption(proxies_text, index, total, config_source, npvt_source, p
     )
     return caption
 
+# def select_post_payloads(last_channels, channel_recent_configs, channel_recent_npvt, best_channel, required_count):
+#     selected = []
+#     used_config_idx = defaultdict(int)
+#     used_npvt_idx = defaultdict(int)
+
+#     def take_one_from_channel(channel):
+#         configs = channel_recent_configs.get(channel, [])
+#         npvts = channel_recent_npvt.get(channel, [])
+#         config_idx = used_config_idx.get(channel, 0)
+#         npvt_idx = used_npvt_idx.get(channel, 0)
+
+#         if config_idx < len(configs) and npvt_idx < len(npvts):
+#             payload = {
+#                 "channel": channel,
+#                 "config_item": configs[config_idx],
+#                 "npvt_item": npvts[npvt_idx]
+#             }
+#             used_config_idx[channel] = config_idx + 1
+#             used_npvt_idx[channel] = npvt_idx + 1
+#             return payload
+#         return None
+
+#     for channel in last_channels:
+#         payload = take_one_from_channel(channel)
+#         if payload:
+#             selected.append(payload)
+#         if len(selected) == required_count:
+#             return selected
+
+#     if best_channel:
+#         while len(selected) < required_count:
+#             payload = take_one_from_channel(best_channel)
+#             if not payload:
+#                 break
+#             selected.append(payload)
+
+#     if len(selected) < required_count:
+#         for channel in last_channels:
+#             while len(selected) < required_count:
+#                 payload = take_one_from_channel(channel)
+#                 if not payload:
+#                     break
+#                 selected.append(payload)
+#             if len(selected) == required_count:
+#                 break
+
+#     if selected and len(selected) < required_count:
+#         source = list(selected)
+#         repeat_idx = 0
+#         while len(selected) < required_count:
+#             selected.append(source[repeat_idx % len(source)])
+#             repeat_idx += 1
+
+#     return selected[:required_count]
+
 def select_post_payloads(last_channels, channel_recent_configs, channel_recent_npvt, best_channel, required_count):
+    all_channels = list(dict.fromkeys(last_channels + ([best_channel] if best_channel else [])))
+
+    all_configs = []
+    for channel in all_channels:
+        items = channel_recent_configs.get(channel, [])
+        all_configs.extend(reversed(items))
+
+    all_npvts = []
+    for channel in all_channels:
+        items = channel_recent_npvt.get(channel, [])
+        all_npvts.extend(reversed(items))
+
+    if not all_configs or not all_npvts:
+        return []
+
     selected = []
-    used_config_idx = defaultdict(int)
-    used_npvt_idx = defaultdict(int)
+    for i in range(required_count):
+        config_item = all_configs[i % len(all_configs)]
+        npvt_item = all_npvts[i % len(all_npvts)]
+        selected.append({
+            "channel": config_item["source"],
+            "config_item": config_item,
+            "npvt_item": npvt_item
+        })
 
-    def take_one_from_channel(channel):
-        configs = channel_recent_configs.get(channel, [])
-        npvts = channel_recent_npvt.get(channel, [])
-        config_idx = used_config_idx.get(channel, 0)
-        npvt_idx = used_npvt_idx.get(channel, 0)
-
-        if config_idx < len(configs) and npvt_idx < len(npvts):
-            payload = {
-                "channel": channel,
-                "config_item": configs[config_idx],
-                "npvt_item": npvts[npvt_idx]
-            }
-            used_config_idx[channel] = config_idx + 1
-            used_npvt_idx[channel] = npvt_idx + 1
-            return payload
-        return None
-
-    for channel in last_channels:
-        payload = take_one_from_channel(channel)
-        if payload:
-            selected.append(payload)
-        if len(selected) == required_count:
-            return selected
-
-    if best_channel:
-        while len(selected) < required_count:
-            payload = take_one_from_channel(best_channel)
-            if not payload:
-                break
-            selected.append(payload)
-
-    if len(selected) < required_count:
-        for channel in last_channels:
-            while len(selected) < required_count:
-                payload = take_one_from_channel(channel)
-                if not payload:
-                    break
-                selected.append(payload)
-            if len(selected) == required_count:
-                break
-
-    if selected and len(selected) < required_count:
-        source = list(selected)
-        repeat_idx = 0
-        while len(selected) < required_count:
-            selected.append(source[repeat_idx % len(source)])
-            repeat_idx += 1
-
-    return selected[:required_count]
+    return selected
 
 def select_proxy_items_for_post(random_channels, channel_recent_proxies, best_channel, required_count=8):
     selected = []
