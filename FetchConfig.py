@@ -328,18 +328,21 @@ def format_proxies_in_rows(proxies, per_row=4):
         lines.append(line)
     return "\n".join(lines)
 
-def format_proxies_for_caption(proxies, max_count=4):
+def format_proxies_for_caption(proxies, max_count=8):
     if not proxies:
-        return "No proxies found"
+        return None
 
     selected = list(proxies[:max_count])
     links = [f"[Proxy {i+1}]({item['proxy']})" for i, item in enumerate(selected)]
+
     first_row = " | ".join(links[:4])
     second_row = " | ".join(links[4:8])
+
     if second_row:
         return f"{first_row}\n{second_row}"
-    return first_row
 
+    return first_row
+    
 def build_sources_text(config_source, npvt_source, proxy_sources):
     proxies_sources_text = ", ".join([format_channel_source(src) for src in proxy_sources]) if proxy_sources else "N/A"
     return (
@@ -368,12 +371,17 @@ def format_channel_source(channel):
 def build_npvt_caption(proxies_text, index, total, config_source, npvt_source, proxy_sources, config_type, config_value, npvt_password=None):
     sources_text = build_sources_text(config_source, npvt_source, proxy_sources)
     password_line = f"\n🔑 **NPVT Password:** `{npvt_password}`\n" if npvt_password else "\n🔑 **NPVT Password:** None / Haven't\n"
+    proxy_section = (
+        f"🔗 **Latest Proxies**\n{proxies_text}\n\n"
+        if proxies_text else ""
+    )
+    
     caption = (
         f"🧩 **NPVT + Config Pack** ({index}/{total})\n\n"
         f"⚙️ **Random {config_type} Config**\n"
         f"```{config_value}```\n"
         f"{password_line}\n"
-        f"🔗 **Latest 8 Proxies**\n{proxies_text}\n\n"
+        f"{proxy_section}"
         f"📡 **Source Channels**\n{sources_text}\n\n"
         f"🆔 @V2RayRootFree\n\n"
         f"**[Support ☕](https://t.me/isdjincfbot?start=_tgr_oGIFRgc2ZjA0)**"
@@ -674,12 +682,13 @@ async def post_config_and_proxies_to_channel(client, channel_stats, valid_channe
         required_count=8
     )
 
-    if not selected_proxy_items:
-        logger.warning("No proxy items available to post.")
-        print("⚠️  No proxy items available to post")
-        return
 
-    proxy_sources = list(dict.fromkeys([item["source"] for item in selected_proxy_items]))
+    if not selected_proxy_items:
+        logger.warning("No proxy items available, posting without proxies.")
+        print("⚠️  No proxy items available — posting without proxies")
+        proxy_sources = []
+    else:
+        proxy_sources = list(dict.fromkeys([item["source"] for item in selected_proxy_items]))
 
     try:
         destination_entity = await resolve_channel_target(client, DESTINATION_CHANNEL)
@@ -700,7 +709,10 @@ async def post_config_and_proxies_to_channel(client, channel_stats, valid_channe
         npvt_source = npvt_item["source"]
         npvt_password = npvt_item.get("password", None)
 
-        proxies_text = format_proxies_for_caption(selected_proxy_items, max_count=8)
+        proxies_text = (
+            format_proxies_for_caption(selected_proxy_items, max_count=8)
+            if selected_proxy_items else None
+        )
         caption = build_npvt_caption(
             proxies_text,
             i,
