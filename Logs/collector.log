@@ -1,65 +1,64 @@
-2026-08-24 23:46:11,782 - INFO - Creating directory: Config/npvt
-2026-08-24 23:46:11,782 - DEBUG - Using selector: EpollSelector
-2026-08-24 23:46:11,782 - INFO - Starting config+proxy collection process
-2026-08-24 23:46:11,782 - INFO - Loaded 8 channels from telegram_channels.json
-2026-08-24 23:46:11,782 - INFO - Connecting to 149.154.167.91:443/TcpFull...
-2026-08-24 23:46:11,782 - DEBUG - Connection attempt 1...
-2026-08-24 23:46:11,894 - DEBUG - Connection success!
-2026-08-24 23:46:11,894 - DEBUG - Starting send loop
-2026-08-24 23:46:11,894 - DEBUG - Starting receive loop
-2026-08-24 23:46:11,894 - INFO - Connection to 149.154.167.91:443/TcpFull complete!
-2026-08-24 23:46:11,894 - DEBUG - Waiting for messages to send...
-2026-08-24 23:46:11,895 - DEBUG - Assigned msg_id = 7677748700858488544 to InvokeWithLayerRequest (7f02d5124580)
-2026-08-24 23:46:11,895 - DEBUG - Encrypting 1 message(s) in 80 bytes for sending
-2026-08-24 23:46:11,895 - DEBUG - Encrypted messages put in a queue to be sent
-2026-08-24 23:46:11,895 - DEBUG - Waiting for messages to send...
-2026-08-24 23:46:11,895 - DEBUG - Receiving items from the network...
-2026-08-24 23:46:12,004 - DEBUG - Updated time offset (old offset 0, bad 7677748701592217552, good 7677748701363378177, new -1)
-2026-08-24 23:46:12,004 - DEBUG - Handling bad salt for message 7677748700858488544
-2026-08-24 23:46:12,004 - DEBUG - 1 message(s) will be resent
-2026-08-24 23:46:12,004 - DEBUG - Receiving items from the network...
-2026-08-24 23:46:12,004 - DEBUG - Assigned msg_id = 7677748697297814832 to InvokeWithLayerRequest (7f02d5124580)
-2026-08-24 23:46:12,004 - DEBUG - Encrypting 1 message(s) in 80 bytes for sending
-2026-08-24 23:46:12,004 - DEBUG - Encrypted messages put in a queue to be sent
-2026-08-24 23:46:12,004 - DEBUG - Waiting for messages to send...
-2026-08-24 23:46:12,004 - DEBUG - Assigned msg_id = 7677748697298236356 to MsgsAck (7f02d546e7d0)
-2026-08-24 23:46:12,004 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-08-24 23:46:12,005 - DEBUG - Encrypted messages put in a queue to be sent
-2026-08-24 23:46:12,005 - DEBUG - Waiting for messages to send...
-2026-08-24 23:46:12,115 - DEBUG - Handling container
-2026-08-24 23:46:12,115 - DEBUG - Handling new session created
-2026-08-24 23:46:12,115 - DEBUG - Handling acknowledge for [7677748697297814832]
-2026-08-24 23:46:12,115 - DEBUG - Receiving items from the network...
-2026-08-24 23:46:12,122 - DEBUG - Handling RPC result for message 7677748697297814832
-2026-08-24 23:46:12,122 - DEBUG - Receiving items from the network...
-2026-08-24 23:46:12,122 - DEBUG - Assigned msg_id = 7677748697769485936 to GetUsersRequest (7f02d5124d60)
-2026-08-24 23:46:12,122 - DEBUG - Encrypting 1 message(s) in 32 bytes for sending
-2026-08-24 23:46:12,122 - DEBUG - Encrypted messages put in a queue to be sent
-2026-08-24 23:46:12,122 - DEBUG - Waiting for messages to send...
-2026-08-24 23:46:12,122 - DEBUG - Assigned msg_id = 7677748697769921764 to MsgsAck (7f02d5124fd0)
-2026-08-24 23:46:12,122 - DEBUG - Encrypting 1 message(s) in 60 bytes for sending
-2026-08-24 23:46:12,122 - DEBUG - Encrypted messages put in a queue to be sent
-2026-08-24 23:46:12,122 - DEBUG - Waiting for messages to send...
-2026-08-24 23:46:12,239 - DEBUG - Handling RPC result for message 7677748697769485936
-2026-08-24 23:46:12,239 - DEBUG - Receiving items from the network...
-2026-08-24 23:46:12,239 - DEBUG - Assigned msg_id = 7677748698236329540 to MsgsAck (7f02d5124dc0)
-2026-08-24 23:46:12,239 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-08-24 23:46:12,239 - DEBUG - Encrypted messages put in a queue to be sent
-2026-08-24 23:46:12,239 - DEBUG - Waiting for messages to send...
-2026-08-24 23:46:12,239 - DEBUG - Assigned msg_id = 7677748698236738668 to MsgsAck (7f02d51248b0)
-2026-08-24 23:46:12,239 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-08-24 23:46:12,239 - DEBUG - Encrypted messages put in a queue to be sent
-2026-08-24 23:46:12,239 - DEBUG - Waiting for messages to send...
-2026-08-24 23:46:12,239 - DEBUG - Assigned msg_id = 7677748698237728580 to GetUsersRequest (7f02d5124c40)
-2026-08-24 23:46:12,239 - DEBUG - Encrypting 1 message(s) in 32 bytes for sending
-2026-08-24 23:46:12,239 - DEBUG - Encrypted messages put in a queue to be sent
-2026-08-24 23:46:12,239 - DEBUG - Waiting for messages to send...
-2026-08-24 23:46:12,352 - DEBUG - Handling RPC result for message 7677748698237728580
-2026-08-24 23:46:12,352 - DEBUG - Receiving items from the network...
-2026-08-24 23:46:12,352 - DEBUG - Assigned msg_id = 7677748698689610944 to MsgsAck (7f02d5124f10)
-2026-08-24 23:46:12,352 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-08-24 23:46:12,352 - DEBUG - Encrypted messages put in a queue to be sent
-2026-08-24 23:46:12,352 - DEBUG - Waiting for messages to send...
-2026-08-24 23:46:12,352 - DEBUG - Assigned msg_id = 7677748698690004812 to MsgsAck (7f02d5124bb0)
-2026-08-24 23:46:12,352 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
-2026-08-24 23:46:12,353 - ERROR - Error in main loop: EOF when reading a line
+2026-08-25 01:13:16,781 - INFO - Creating directory: Config/npvt
+2026-08-25 01:13:16,781 - DEBUG - Using selector: EpollSelector
+2026-08-25 01:13:16,781 - INFO - Starting config+proxy collection process
+2026-08-25 01:13:16,782 - INFO - Loaded 8 channels from telegram_channels.json
+2026-08-25 01:13:16,782 - INFO - Connecting to 149.154.167.91:443/TcpFull...
+2026-08-25 01:13:16,782 - DEBUG - Connection attempt 1...
+2026-08-25 01:13:16,867 - DEBUG - Connection success!
+2026-08-25 01:13:16,868 - DEBUG - Starting send loop
+2026-08-25 01:13:16,868 - DEBUG - Starting receive loop
+2026-08-25 01:13:16,868 - INFO - Connection to 149.154.167.91:443/TcpFull complete!
+2026-08-25 01:13:16,868 - DEBUG - Waiting for messages to send...
+2026-08-25 01:13:16,868 - DEBUG - Assigned msg_id = 7677771141956241128 to InvokeWithLayerRequest (7fc5f65705e0)
+2026-08-25 01:13:16,868 - DEBUG - Encrypting 1 message(s) in 80 bytes for sending
+2026-08-25 01:13:16,868 - DEBUG - Encrypted messages put in a queue to be sent
+2026-08-25 01:13:16,868 - DEBUG - Waiting for messages to send...
+2026-08-25 01:13:16,868 - DEBUG - Receiving items from the network...
+2026-08-25 01:13:16,954 - DEBUG - Handling bad salt for message 7677771141956241128
+2026-08-25 01:13:16,954 - DEBUG - 1 message(s) will be resent
+2026-08-25 01:13:16,954 - DEBUG - Receiving items from the network...
+2026-08-25 01:13:16,954 - DEBUG - Assigned msg_id = 7677771142302460188 to InvokeWithLayerRequest (7fc5f65705e0)
+2026-08-25 01:13:16,955 - DEBUG - Encrypting 1 message(s) in 80 bytes for sending
+2026-08-25 01:13:16,955 - DEBUG - Encrypted messages put in a queue to be sent
+2026-08-25 01:13:16,955 - DEBUG - Waiting for messages to send...
+2026-08-25 01:13:16,955 - DEBUG - Assigned msg_id = 7677771142303223128 to MsgsAck (7fc5f68ba7d0)
+2026-08-25 01:13:16,955 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-08-25 01:13:16,955 - DEBUG - Encrypted messages put in a queue to be sent
+2026-08-25 01:13:16,955 - DEBUG - Waiting for messages to send...
+2026-08-25 01:13:17,041 - DEBUG - Handling container
+2026-08-25 01:13:17,041 - DEBUG - Handling new session created
+2026-08-25 01:13:17,041 - DEBUG - Handling acknowledge for [7677771142302460188]
+2026-08-25 01:13:17,041 - DEBUG - Receiving items from the network...
+2026-08-25 01:13:17,051 - DEBUG - Handling RPC result for message 7677771142302460188
+2026-08-25 01:13:17,051 - DEBUG - Receiving items from the network...
+2026-08-25 01:13:17,051 - DEBUG - Assigned msg_id = 7677771142984501004 to GetUsersRequest (7fc5f6570d60)
+2026-08-25 01:13:17,051 - DEBUG - Encrypting 1 message(s) in 32 bytes for sending
+2026-08-25 01:13:17,051 - DEBUG - Encrypted messages put in a queue to be sent
+2026-08-25 01:13:17,051 - DEBUG - Waiting for messages to send...
+2026-08-25 01:13:17,051 - DEBUG - Assigned msg_id = 7677771142985342144 to MsgsAck (7fc5f6571000)
+2026-08-25 01:13:17,051 - DEBUG - Encrypting 1 message(s) in 60 bytes for sending
+2026-08-25 01:13:17,052 - DEBUG - Encrypted messages put in a queue to be sent
+2026-08-25 01:13:17,052 - DEBUG - Waiting for messages to send...
+2026-08-25 01:13:17,143 - DEBUG - Handling RPC result for message 7677771142984501004
+2026-08-25 01:13:17,143 - DEBUG - Receiving items from the network...
+2026-08-25 01:13:17,143 - DEBUG - Assigned msg_id = 7677771143353109476 to MsgsAck (7fc5f6570df0)
+2026-08-25 01:13:17,143 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-08-25 01:13:17,144 - DEBUG - Encrypted messages put in a queue to be sent
+2026-08-25 01:13:17,144 - DEBUG - Waiting for messages to send...
+2026-08-25 01:13:17,144 - DEBUG - Assigned msg_id = 7677771143353794216 to MsgsAck (7fc5f65709a0)
+2026-08-25 01:13:17,144 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-08-25 01:13:17,144 - DEBUG - Encrypted messages put in a queue to be sent
+2026-08-25 01:13:17,144 - DEBUG - Waiting for messages to send...
+2026-08-25 01:13:17,144 - DEBUG - Assigned msg_id = 7677771143355422136 to GetUsersRequest (7fc5f6570c40)
+2026-08-25 01:13:17,144 - DEBUG - Encrypting 1 message(s) in 32 bytes for sending
+2026-08-25 01:13:17,144 - DEBUG - Encrypted messages put in a queue to be sent
+2026-08-25 01:13:17,144 - DEBUG - Waiting for messages to send...
+2026-08-25 01:13:17,234 - DEBUG - Handling RPC result for message 7677771143355422136
+2026-08-25 01:13:17,235 - DEBUG - Receiving items from the network...
+2026-08-25 01:13:17,235 - DEBUG - Assigned msg_id = 7677771143717918512 to MsgsAck (7fc5f6570f40)
+2026-08-25 01:13:17,235 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-08-25 01:13:17,235 - DEBUG - Encrypted messages put in a queue to be sent
+2026-08-25 01:13:17,235 - DEBUG - Waiting for messages to send...
+2026-08-25 01:13:17,235 - DEBUG - Assigned msg_id = 7677771143718581316 to MsgsAck (7fc5f6570bb0)
+2026-08-25 01:13:17,235 - DEBUG - Encrypting 1 message(s) in 36 bytes for sending
+2026-08-25 01:13:17,235 - ERROR - Error in main loop: EOF when reading a line
